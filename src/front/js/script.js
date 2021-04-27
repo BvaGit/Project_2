@@ -5,7 +5,7 @@ import hello from '../modules/hello';
 window.addEventListener('DOMContentLoaded', ()=>{
     hello();
 });
-var URL = "http://localhost:8080/"
+var URL = "http://localhost:3000/"
 var request = new XMLHttpRequest();
 
 var getBtn = document.getElementById('GETBUTTON')
@@ -17,7 +17,7 @@ getBtn.addEventListener('click', function(){
     getRequest(URL)
 })
 postBtn.addEventListener('click', function(){
-    postRequest(URL)
+    postRequest(URL, {a: 1})
 })
 putBtn.addEventListener('click', function(){
     putRequest(URL)
@@ -41,9 +41,10 @@ function getRequest (URL){
     })
 }
 
-function postRequest(URL) {
+function postRequest(URL, body) {
     return new Promise(function (resolve, reject) {
         request.open("POST", URL, true);
+        request.setRequestHeader("Content-Type", "application/json");
         request.addEventListener("load", function () {
           if (request.status < 400) {
             resolve(request.response);
@@ -52,7 +53,7 @@ function postRequest(URL) {
         request.addEventListener("error", function () {
           reject(new Error("Network error"));
         });
-        request.send();
+        request.send(JSON.stringify(body));
     })
 }
 
