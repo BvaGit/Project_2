@@ -20,10 +20,10 @@ postBtn.addEventListener('click', function(){
     postRequest(URL, {a: 1})
 })
 putBtn.addEventListener('click', function(){
-    putRequest(URL)
+    putRequest(URL, {a: 1})
 })
 deleteBtn.addEventListener('click', function(){
-    deleteRequest(URL)
+    deleteRequest(URL, {a: 1})
 })
 
 function getRequest (URL){
@@ -57,9 +57,10 @@ function postRequest(URL, body) {
     })
 }
 
-function putRequest(URL) {
+function putRequest(URL, body) {
     return new Promise(function (resolve, reject) {
         request.open("PUT", URL, true);
+        request.setRequestHeader("Content-Type", "application/json");
         request.addEventListener("load", function () {
           if (request.status < 400) {
             resolve(request.response);
@@ -68,13 +69,14 @@ function putRequest(URL) {
         request.addEventListener("error", function () {
           reject(new Error("Network error"));
         });
-        request.send();
+        request.send(JSON.stringify(body));
     })
 }
 
-function deleteRequest(URL) {
+function deleteRequest(URL, body) {
     return new Promise(function (resolve, reject) {
         request.open("DELETE", URL, true);
+        request.setRequestHeader("Content-Type", "application/json");
         request.addEventListener("load", function () {
           if (request.status < 400) {
             resolve(request.response);
@@ -83,6 +85,6 @@ function deleteRequest(URL) {
         request.addEventListener("error", function () {
           reject(new Error("Network error"));
         });
-        request.send();
+        request.send(JSON.stringify(body));
     })
 }

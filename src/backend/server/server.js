@@ -12,24 +12,25 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.get('/', function (req, res) {
   res.send('GET IS WORKING')
 })
 
 app.post('/', function (req, res) {
-  var serverAnswer = req.body
 console.log(req.body)
-  res.send('POST')
+  res.send('POST is working')
 })
 
 app.put('/', function (req, res) {
-  res.send('PUT ')
+  console.log(req.body)
+  res.send('PUT is working')
 })
 
 app.delete('/', function (req, res) {
-  res.send('DELETE')
+  console.log(req.body)
+  res.send('DELETE is working')
 })
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
