@@ -1,0 +1,9 @@
+{
+  "mysql_connection": {
+    "host": "localhost",
+    "user": "root",
+    "password": "root",
+    "database": "crud_project"
+
+  }
+}
