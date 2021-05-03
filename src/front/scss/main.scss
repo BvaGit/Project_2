@@ -67,13 +67,16 @@
             &:hover {
                 color: $hover-color;
             }
+            &:focus {
+                outline: none;
+            }
         }
     }
 }
 .main {
     width: 100%;
     height: auto;
-    margin: 50px 0 100px 0;
+    margin: 50px 0 50px;
 }
 .panel {
     &__label {
@@ -133,6 +136,37 @@
         justify-content: space-between;
         align-items: center;
         margin: 20px 0;
+        & ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        & ul ul {
+            display: none;
+            position: absolute;
+            top:100%;
+            background: $table-nav;
+            padding: 0;
+            border-top: 5px solid $main-page-bg;
+        }
+        & ul li:hover > ul {
+            display:block
+        }
+    }
+    &__dmsDropdown {
+        position: absolute;
+        top:100%;
+        left:0;
+        width: 177px;
+        height: auto; 
+    }
+    &__sortDropdown {
+        position: absolute;
+        top:100%;
+        left: 10px;
+        width: 133px;
+        height: auto;
     }
     &__nav {
         display: flex;
@@ -146,6 +180,9 @@
             width: 177px;
             height: 65px;
             background: $table-nav;
+            font-size: 28px;
+            color: $text-color;
+            text-decoration: none;
         }
         &-sort {
             display: flex;
@@ -155,6 +192,20 @@
             width: 133px;
             height: 65px;
             background: $table-nav;
+            font-size: 28px;
+            color: $text-color;
+            text-decoration: none;
+        }
+        &-hover {
+            font-size: 14px;
+            color: $text-color;
+            text-decoration: none;
+            padding: 10px 15px;
+            &:hover {
+                color: $hover-color;
+                text-decoration: underline;
+                font-size: 14px;
+            }
         }
     }
     &__search {

@@ -11,17 +11,17 @@
         <header id="header" class="header">
             <div class="header__bar container">
                 <div class="header__logo">
-                    <div class="header__logo-icon"></div>
-                    <div class="header__logo-logoname">QWERTY</div>
+                    <div id="icon" class="header__logo-icon"></div>
+                    <div id="logo" class="header__logo-logoname">QWERTY</div>
                 </div>  
                 <div class="header__nav">
-                    <label for="language">
+                    <label id="language" for="language">
                         <select name="language" id="language" class="header__nav-language nav-input-styles">
                             <option value="en">En</option>
                             <option value="ua">Ua</option>
                         </select>
                     </label>
-                    <label for="theme" class="side-border">
+                    <label id="theme" for="theme" class="side-border">
                         <select name="theme" id="theme" class="header__nav-theme nav-input-styles">
                             <option value="light">Light</option>
                             <option value="dark">Dark</option>
@@ -39,52 +39,72 @@
                 <div id="panel" class="panel">
                     <div class="panel__inputs">
                         <label for="firstName" class="panel__label">First name
-                            <input type="text" name="firstName" id="firstName" class="panel__inputs-firstName panel__input" placeholder="First name" maxlength="17">
+                            <input type="text" name="firstName" id="firstnameInput" class="panel__inputs-firstName panel__input" placeholder="First name" maxlength="17">
                         </label>
                         <label for="city" class="panel__label">City
-                            <input type="text" name="city" id="city" class="panel__inputs-city panel__input" placeholder="City" maxlength="17">
+                            <input type="text" name="city" id="cityInput" class="panel__inputs-city panel__input" placeholder="City" maxlength="17">
                         </label>
                         <label for="email" class="panel__label">Email
-                            <input type="email" name="email" id="email" class="panel__inputs-email panel__input" placeholder="Email">
+                            <input type="email" name="email" id="emailInput" class="panel__inputs-email panel__input" placeholder="Email">
                         </label>
                         <label for="lastName" class="panel__label">Last name
-                            <input type="text" name="lastName" id="lastName" class="panel__inputs-lastName panel__input" placeholder="Last name" maxlength="17">
+                            <input type="text" name="lastName" id="lastnameInput" class="panel__inputs-lastName panel__input" placeholder="Last name" maxlength="17">
                         </label>
                         <label for="phone" class="panel__label">Phone number
-                            <input type="tel" name="phone" id="phone" class="panel__inputs-phone panel__input" placeholder="Phone number">
+                            <input type="tel" name="phone" id="phonenumberInput" class="panel__inputs-phone panel__input" placeholder="Phone number">
                         </label>
                         <label for="company" class="panel__label">Company name
-                            <input type="text" name="company" id="company" class="panel__inputs-company panel__input" placeholder="Company name" maxlength="17">
+                            <input type="text" name="company" id="companynameInput" class="panel__inputs-company panel__input" placeholder="Company name" maxlength="17">
                         </label>
                         <label for="age" class="panel__label">Age
-                            <input type="number" name="age" id="age" class="panel__inputs-age panel__input" placeholder="Age" min="0" max="200" maxlength="3">
+                            <input type="number" name="age" id="ageInput" class="panel__inputs-age panel__input" placeholder="Age" min="0" max="200" maxlength="3">
                         </label>
                         <div class="panel__control">
-                            <button class="panel__control-create panel-control-style">Create</button>
-                            <button class="panel__control-update panel-control-style side-border">Update</button>
-                            <button class="panel__control-delete panel-control-style side-border">Delete</button>
-                            <button class="panel__control-clearAll panel-control-style side-border">Clear All</button>
+                            <button id="create" class="panel__control-create panel-control-style">Create</button>
+                            <button id="update" class="panel__control-update panel-control-style side-border">Update</button>
+                            <button id="delete" class="panel__control-delete panel-control-style side-border">Delete</button>
+                            <button id="clearAll" class="panel__control-clearAll panel-control-style side-border">Clear All</button>
                         </div>
                     </div>
                 </div>
                 <div id="table" class="table">
                     <div class="table__panel">
-                        <div class="table__nav">
-                            <div id="dms" class="table__nav-dms">MySQL</div>
-                            <div id="sort" class="table__nav-sort">Sort</div>
-                        </div>
+                        <ul class="table__nav">
+                            <li><a href="#" class="table__nav-dms" id="dms">MySQL</a>
+                              <ul class="table__dmsDropdown">
+                                <li><a href="#" class="table__nav-hover" id="MySQL">MySQL</a></li>
+                                <li><a href="#" class="table__nav-hover" id="PostgreSQL">PostgreSQL</a></li>
+                                <li><a href="#" class="table__nav-hover" id="H2">H2</a></li>
+                                <li><a href="#" class="table__nav-hover" id="MongoDB">MongoDB</a>
+                                <li><a href="#" class="table__nav-hover" id="Redis">Redis</a></li>
+                                <li><a href="#" class="table__nav-hover" id="Cassandra">Cassandra</a></li>
+                                <li><a href="#" class="table__nav-hover" id="GraphDB">GraphDB</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="#" id="sort" class="table__nav-sort">Sort</a>
+                              <ul class="table__sortDropdown">
+                                <li><a href="#" class="table__nav-hover" id="firstNameSort">First name</a></li>
+                                <li><a href="#" class="table__nav-hover" id="lastnameSort">Last name</a></li>
+                                <li><a href="#" class="table__nav-hover" id="ageSort">Age</a></li>
+                                <li><a href="#" class="table__nav-hover" id="citySort">City</a></li>
+                                <li><a href="#" class="table__nav-hover" id="phonenumberSort">Phone number</a></li>
+                                <li><a href="#" class="table__nav-hover" id="emailSort">Email</a></li>
+                                <li><a href="#" class="table__nav-hover" id="companynameSort">Company name</a></li>
+                              </ul>
+                            </li>
+                           </ul>
                         <div class="table__search">
                             <label class="table__search-labelFN" for="searchFN">
-                                <input type="text" name="searchFN" id="searchFN" class="table__search-firstName table__input" placeholder="First name" maxlength="22">
+                                <input type="text" name="searchFN" id="searchFirstname" class="table__search-firstName table__input" placeholder="First name" maxlength="22">
                             </label>
                             <label class="table__search-labelLN" for="searchLN">
-                                <input type="text" name="searchLN" id="searchLN" class="table__search-lastName table__input" placeholder="Last name" maxlength="25">
+                                <input type="text" name="searchLN" id="searchLastname" class="table__search-lastName table__input" placeholder="Last name" maxlength="25">
                             </label>
                         </div>
                     </div>
-                    <table class="table__data">
-                        <thead class="table__data-head thead">
-                            <tr class="thead__tr">
+                    <table id="table" class="table__data">
+                        <thead id="thead" class="table__data-head thead">
+                            <tr id="tableHeader" class="thead__tr">
                                 <th class="thead__tr-th">First Name</th>
                                 <th class="thead__tr-th">Last name</th>
                                 <th class="thead__tr-th">Age</th>
@@ -95,7 +115,7 @@
                             </tr>
                         </thead>
                         <tbody class="table__data-body tbody">
-                            <tr class="tbody__tr">
+                            <tr id="tableBody" class="tbody__tr">
                                 <td class="tbody__tr-td">Ivan</td>
                                 <td class="tbody__tr-td">Ivanov</td>
                                 <td class="tbody__tr-td">25</td>
