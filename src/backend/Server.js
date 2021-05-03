@@ -2,6 +2,7 @@ import express, { Router } from 'express'
 import { logger } from './middleware/logger.js'
 import { ServerOptions } from './service/ServerOptions.js'
 import { MySQLConnector } from './connectors/MySQLConnector.js'
+import { BaseConnector } from './connectors/BaseConnector.js'
 
 class Server {
   #app
@@ -114,12 +115,24 @@ class Server {
       res.status(400).send('person update failed')
     })
 
-    this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/:id`), (req, res) => {
+    this.addRoute(new ServerOptions('GET', `${dbms}/persons/:id`), (req, res) => {
       connection.deletePersonById(req.params.id, err => {
         if (err) {
           return console.error(`Error:${err.message}`)
         }
         res.status(200).send(`person with id: ${req.params.id} successfully deleted`)
+      })
+    })
+
+    this.addRoute(new ServerOptions('GET',`${dbms}/persons/:id/deleted`), (req, res) => {
+      connection.getDeletedPersonsByUserId(Number(req.params.id),(err, rows) =>{
+        if (err) {
+          return console.error(`Error: ${err.message}`)
+        }
+        if (rows.hasOwnProperty('rows')){
+          rows = rows.rows
+        }
+        res.status(200).json(persons)
       })
     })
   }

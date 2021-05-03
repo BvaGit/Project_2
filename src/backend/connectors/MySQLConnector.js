@@ -59,7 +59,12 @@ class MySQLConnector extends BaseConnector{
   
   getAllPersonsByUserId(user_id, func) {
     super.getAllPersonsByUserId(user_id, func)
-    this.#query(`SELECT * FROM persons WHERE user_id =${user_id}`, func)
+    this.#query(`SELECT * FROM persons WHERE user_id =${user_id} AND deleted=0`, func)
+  }
+
+  getDeletedPersonsByUserId(user_id, func) {
+    super.getAllPersonsByUserId(user_id, func)
+    this.#query(`SELECT * FROM persons WHERE user_id =${user_id} AND deleted=1`, func)
   }
 
   postPerson(person, func) {
@@ -80,6 +85,7 @@ class MySQLConnector extends BaseConnector{
     this.#query(`UPDATE persons SET deleted=1 WHERE user_id=${userId}`, () => {})
     this.#query(`UPDATE users SET deleted=1 WHERE id=${userId}`, func)
   }
+
 
   putPerson(person, func) {
     super.putPerson(person, func)
