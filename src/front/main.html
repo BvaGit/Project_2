@@ -6,33 +6,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body>    
     <div class="general">
         <header id="header" class="header">
-            <div class="header__logo"></div>
-            <div class="header__navigation">
-                <label for="language">
-                    <select name="language" id="language" class="header__language">
-                        <option value="en">en</option>
-                        <option value="ua">ua</option>
-                    </select>
-                </label>
-                <label for="theme">
-                    <select name="theme" id="language" class="header__theme">
-                        <option value="light">light</option>
-                        <option value="dark">dark</option>
-                    </select>
-                </label>
-                <div class="header__user">USER</div>
-                <div class="header__menu">
-                    <div class="header__menu-settings">Settings</div>
-                    <div class="header__menu-logout">Log out</div>
+            <div class="header__bar container">
+                <div class="header__logo">
+                    <div class="header__logo-icon"></div>
+                    <div class="header__logo-logoname">QWERTY</div>
+                </div>  
+                <div class="header__nav">
+                    <label for="language">
+                        <select name="language" id="language" class="header__nav-language nav-input-styles">
+                            <option value="en">En</option>
+                            <option value="ua">Ua</option>
+                        </select>
+                    </label>
+                    <label for="theme" class="side-border">
+                        <select name="theme" id="theme" class="header__nav-theme nav-input-styles">
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                    </label>
+                    <button id="settings" class="header__nav-settings nav-input-styles side-border">Settings</button>
+                    <a href="index.html">
+                        <button id="logout" class="header__nav-logout nav-input-styles">Logout</button>
+                    </a>
                 </div>
             </div>
         </header>
         <main id="main" class="main">
-            <div class="main__container">
-    
+            <div class="container">
+                <div id="panel" class="panel">
+                    <div class="panel__inputs">
+                        <label for="firstName" class="panel__label">First name
+                            <input type="text" name="firstName" id="firstName" class="panel__inputs-firstName panel__input" placeholder="First name" maxlength="17">
+                        </label>
+                        <label for="city" class="panel__label">City
+                            <input type="text" name="city" id="city" class="panel__inputs-city panel__input" placeholder="City" maxlength="17">
+                        </label>
+                        <label for="email" class="panel__label">Email
+                            <input type="email" name="email" id="email" class="panel__inputs-email panel__input" placeholder="Email">
+                        </label>
+                        <label for="lastName" class="panel__label">Last name
+                            <input type="text" name="lastName" id="lastName" class="panel__inputs-lastName panel__input" placeholder="Last name" maxlength="17">
+                        </label>
+                        <label for="phone" class="panel__label">Phone number
+                            <input type="tel" name="phone" id="phone" class="panel__inputs-phone panel__input" placeholder="Phone number">
+                        </label>
+                        <label for="company" class="panel__label">Company name
+                            <input type="text" name="company" id="company" class="panel__inputs-company panel__input" placeholder="Company name" maxlength="17">
+                        </label>
+                        <label for="age" class="panel__label">Age
+                            <input type="number" name="age" id="age" class="panel__inputs-age panel__input" placeholder="Age" min="0" max="200" maxlength="3">
+                        </label>
+                        <div class="panel__control">
+                            <button class="panel__control-create panel-control-style">Create</button>
+                            <button class="panel__control-update panel-control-style side-border">Update</button>
+                            <button class="panel__control-delete panel-control-style side-border">Delete</button>
+                            <button class="panel__control-clearAll panel-control-style side-border">Clear All</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="table" class="table">
+                    <div class="table__panel">
+                        <div class="table__nav">
+                            <div id="dms" class="table__nav-dms">MySQL</div>
+                            <div id="sort" class="table__nav-sort">Sort</div>
+                        </div>
+                        <div class="table__search">
+                            <label class="table__search-labelFN" for="searchFN">
+                                <input type="text" name="searchFN" id="searchFN" class="table__search-firstName table__input" placeholder="First name" maxlength="22">
+                            </label>
+                            <label class="table__search-labelLN" for="searchLN">
+                                <input type="text" name="searchLN" id="searchLN" class="table__search-lastName table__input" placeholder="Last name" maxlength="25">
+                            </label>
+                        </div>
+                    </div>
+                    <table class="table__data">
+                        <thead class="table__data-head thead">
+                            <tr class="thead__tr">
+                                <th class="thead__tr-th">First Name</th>
+                                <th class="thead__tr-th">Last name</th>
+                                <th class="thead__tr-th">Age</th>
+                                <th class="thead__tr-th">City</th>
+                                <th class="thead__tr-th">Phone number</th>
+                                <th class="thead__tr-th">Email</th>
+                                <th class="thead__tr-th">Company name</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table__data-body tbody">
+                            <tr class="tbody__tr">
+                                <td class="tbody__tr-td">Ivan</td>
+                                <td class="tbody__tr-td">Ivanov</td>
+                                <td class="tbody__tr-td">25</td>
+                                <td class="tbody__tr-td">Dnepr</td>
+                                <td class="tbody__tr-td">024 567 84 34</td>
+                                <td class="tbody__tr-td">ivanivanov@yahoo.com</td>
+                                <td class="tbody__tr-td">Google</td>
+                            </tr>
+                            <tr class="tbody__tr">
+                                <td class="tbody__tr-td">Ivan</td>
+                                <td class="tbody__tr-td">Ivanov</td>
+                                <td class="tbody__tr-td">25</td>
+                                <td class="tbody__tr-td">Dnepr</td>
+                                <td class="tbody__tr-td">024 567 84 34</td>
+                                <td class="tbody__tr-td">ivanivanov@yahoo.com</td>
+                                <td class="tbody__tr-td">Google</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
         <footer id="footer" class="footer">
@@ -43,7 +126,5 @@
             </div>
         </footer>        
     </div>
-    <!-- <h1>Main</h1>
-    <a href="index.html">index</a><br><a href="regpage.html">regpage</a> -->
 </body>
 </html>
