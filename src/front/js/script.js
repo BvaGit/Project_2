@@ -2,8 +2,20 @@ import '../scss/style.scss';
 
 import hello from '../modules/hello';
 import settingsPopup from '../modules/settingsPopup';
+import createPopup from '../modules/createPopup';
+import clearAllPopup from '../modules/clearAllPopup';
 
-window.addEventListener('DOMContentLoaded', ()=>{
+window.addEventListener('DOMContentLoaded', () => {
     hello();
-    settingsPopup();
-});
+    if (window.location.pathname === '/main.html') {
+        settingsPopup();
+        createPopup();
+        clearAllPopup();
+    }
+    else if (window.location.pathname === '/regpage.html') {
+        console.log('тут будут скрипты для страницы регистрации')
+    }
+    else if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
+        console.log('тут будут скрипты для страницы авторизации')
+    }
+  })

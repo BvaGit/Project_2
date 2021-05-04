@@ -146,10 +146,11 @@
             </div>
         </footer>        
     </div>
+    <!-- SETTINGS POPUP --> 
     <div id="settingsPopup" class="settingsPopup hideSettingsPopup">
         <div class="settingsPopup__container">
-            <div id="closePopUp" class="settingsPopup__button">
-                <button id="closePU" class="settingsPopup__button-close"></button>
+            <div id="closeSettingsPopUp" class="settingsPopup__button">
+                <button id="closeSettingsPU" class="settingsPopup__button-close"></button>
             </div>
                 <h1 class="settingsPopup__header">SETTINGS</h1>
                 <div class="settingsPopup__group">
@@ -160,6 +161,41 @@
                 <div class="settingsPopup__buttons">
                     <button id="settingsPopupConfirm" type="button" class="settingsPopup__buttons-confirm btn">CONFIRM</button>
                     <button id="settingsPopupCancel" type="button" class="settingsPopup__buttons-cancel btn">CANCEL</button>
+                </div>
+        </div>
+    </div>
+    <!-- CREATE POPUP -->
+    <div id="createPopup" class="createPopup hideCreatePopup">
+        <div class="createPopup__container">
+            <div id="closeCreatePopUp" class="createPopup__button">
+                <button id="closeCreatePU" class="createPopup__button-close"></button>
+            </div>
+                <h1 class="createPopup__header">CREATE</h1>
+                <div class="createPopup__group">
+                    <input type="text" name="createPopup-firstName" id="createPopupFirstname" class="createPopup__group-firstName createPopup__input" placeholder="First name" maxlength="17">
+                    <input type="text" name="createPopup-lastName" id="createPopupLastname" class="createPopup__group-lastName createPopup__input" placeholder="Last name" maxlength="17">
+                    <input type="number" name="age" id="ageInput" class="createPopup__group-age createPopup__input" placeholder="Age" min="0" max="200" maxlength="3">
+                    <input type="text" name="createPopup-city" id="createPopupCity" class="createPopup__group-city createPopup__input" placeholder="City" maxlength="17">
+                    <input type="tel" name="createPopup-phone" id="createPopupPhonenumber" class="createPopup__group-phone createPopup__input" placeholder="Phone number">
+                    <input type="email" name="createPopup-email" id="createPopupEmail" class="createPopup__group-email createPopup__input" placeholder="Email">
+                    <input type="text" name="createPopup-company" id="createPopupCompanyname" class="createPopup__group-company createPopup__input" placeholder="Company name" maxlength="17">
+                </div>
+                <div class="createPopup__buttons">
+                    <button id="createPopupConfirm" type="button" class="createPopup__buttons-confirm btn">CREATE</button>
+                    <button id="createPopupCancel" type="button" class="createPopup__buttons-cancel btn">CANCEL</button>
+                </div>
+        </div>
+    </div>
+    <!-- DELETE ALL POPUP -->
+    <div id="clearAllPopup" class="clearAllPopup hideClearAllPopup">
+        <div class="clearAllPopup__container">
+            <div id="closeClearAllPopUp" class="clearAllPopup__button">
+                <button id="closeClearAllPU" class="clearAllPopup__button-close"></button>
+            </div>
+                <h1 class="clearAllPopup__header">Delete all elements from the table?</h1>
+                <div class="clearAllPopup__buttons">
+                    <button id="clearAllPopupConfirm" type="button" class="clearAllPopup__buttons-confirm btn">DELETE</button>
+                    <button id="clearAllPopupCancel" type="button" class="clearAllPopup__buttons-cancel btn">CANCEL</button>
                 </div>
         </div>
     </div>
