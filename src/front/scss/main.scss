@@ -21,9 +21,19 @@
     background: transparent;
     color: $text-color;  
 }
-// .side-border {
-//     border-left: 1px solid $text-color;
-// }
+.side-border {
+    height: 30px;
+    position: relative;
+    left: 0;
+    top: 17px;
+    border-left: 1px solid white;
+}
+.side--border {
+    height: 25px;
+    position: relative;
+    left: 0px;
+    border-left: 1px solid $text-color;
+}
 .th {
     display: flex;
     align-items: center;
@@ -62,28 +72,25 @@
         width: 320px;
         height: 110px;
         color: $text-color; 
-        cursor: pointer;
         &-icon {
             color: #ccc;
             width: 105px;
             height: 105px;
-            border: 1px solid red;
         }
         &-logoname {
             font-size: 39px;
             letter-spacing: 2px;
+            cursor: default;
         }
     }
     &__nav {
+        position: relative;
         display: flex;
         justify-content: space-around;
         align-items: center;
         width: 430px;
         height: 110px;
-        &-language,
-        &-theme,
-        &-settings,
-        &-logout {
+        &-language {
             &:hover {
                 color: $hover-color;
             }
@@ -91,6 +98,30 @@
                 outline: none;
             }
         }
+        &-theme {
+            &:hover {
+                color: $hover-color;
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+        // &-settings {
+        //     &:hover {
+        //         color: $hover-color;
+        //     }
+        //     &:focus {
+        //         outline: none;
+        //     }
+        // }
+        // &-logout {
+        //     &:hover {
+        //         color: $hover-color;
+        //     }
+        //     &:focus {
+        //         outline: none;
+        //     }
+        // }
     }
 }
 .main {
@@ -204,6 +235,7 @@
             font-size: 28px;
             color: $text-color;
             text-decoration: none;
+            border-radius: 10px;
         }
         &-sort {
             display: flex;
@@ -216,6 +248,7 @@
             font-size: 28px;
             color: $text-color;
             text-decoration: none;
+            border-radius: 10px;
         }
         &-hover {
             font-size: 14px;
@@ -230,6 +263,7 @@
         }
     }
     &__search {
+        position: relative;
         display: flex;
         justify-content: space-between;
         &-labelFN{
@@ -250,6 +284,13 @@
         }
         &-lastName {
             padding: 15px;
+        }
+        &-icon {
+            position: absolute;
+            top: 15px;
+            left: -15px;
+            z-index: 100;
+            cursor: pointer;
         }
     }
     &__data {

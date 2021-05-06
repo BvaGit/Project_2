@@ -3,6 +3,7 @@ function settingsPopup () {
     const settingsPopup = document.getElementById('settingsPopup');
     const cancelBtn = document.getElementById('settingsPopupCancel');
     const crossBtn = document.getElementById('closeSettingsPopUp');
+    const settingsIcon = document.getElementById('settings-icon');
     const input = document.querySelectorAll('.settingsPopup__input');
     const eyes = document.querySelectorAll('.eye');
 
@@ -15,6 +16,13 @@ function settingsPopup () {
     settings.addEventListener('click', () => {
         openPopup(settingsPopup);
     })
+    settings.addEventListener('mouseenter', () => {
+        settingsIcon.src = '../img/shestir_yellow.png';
+    })
+    settings.addEventListener('mouseleave', () => {
+        settingsIcon.src = '../img/shestir_white.png';
+    })
+    
     cancelBtn.addEventListener('click', () => {
         closePopup(settingsPopup, clearInputs);
     });

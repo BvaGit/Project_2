@@ -11,7 +11,7 @@
         <header id="header" class="header">
             <div class="header__bar container">
                 <div class="header__logo">
-                    <div id="icon" class="header__logo-icon"></div>
+                    <image id="icon" class="header__logo-icon" src="../img/logo.png"/>
                     <div id="logo" class="header__logo-logoname">QWERTY</div>
                 </div>  
                 <div class="header__nav">
@@ -21,15 +21,21 @@
                             <option value="ua">Ua</option>
                         </select>
                     </label>
-                    <label id="theme" for="theme" class="side-border">
+                    <span class="side--border"></span>
+                    <label id="theme" for="theme">
                         <select name="theme" id="theme" class="header__nav-theme nav-input-styles">
                             <option value="light">Light</option>
                             <option value="dark">Dark</option>
                         </select>
                     </label>
-                    <button id="settings" class="header__nav-settings nav-input-styles side-border">&#x2699;</button>
-                    <a href="index.html">
-                        <button id="logout" class="header__nav-logout nav-input-styles">&#128682;</button>
+                    <span class="side--border"></span>
+                    <button id="settings" class="header__nav-settings nav-input-styles">
+                        <image id="settings-icon" src="../img/shestir_white.png"/>
+                    </button>
+                    <a id="logout" href="index.html">
+                        <button  class="header__nav-logout nav-input-styles">
+                            <image id="logout-icon" src="../img/exit_white.png"/>
+                        </button>
                     </a>
                 </div>
             </div>
@@ -39,31 +45,34 @@
                 <div id="panel" class="panel">
                     <div class="panel__inputs">
                         <label for="firstName" class="panel__label">First name
-                            <input type="text" name="firstName" id="firstnameInput" class="panel__inputs-firstName panel__input" placeholder="First name" maxlength="17">
+                            <input type="text" name="firstName" id="firstnameInput" class="panel__inputs-firstName panel__input" placeholder="First name" maxlength="21">
                         </label>
                         <label for="city" class="panel__label">City
-                            <input type="text" name="city" id="cityInput" class="panel__inputs-city panel__input" placeholder="City" maxlength="17">
+                            <input type="text" name="city" id="cityInput" class="panel__inputs-city panel__input" placeholder="City" maxlength="21">
                         </label>
                         <label for="email" class="panel__label">Email
-                            <input type="email" name="email" id="emailInput" class="panel__inputs-email panel__input" placeholder="Email">
+                            <input type="email" name="email" id="emailInput" class="panel__inputs-email panel__input" placeholder="Email" maxlength="21">
                         </label>
                         <label for="lastName" class="panel__label">Last name
-                            <input type="text" name="lastName" id="lastnameInput" class="panel__inputs-lastName panel__input" placeholder="Last name" maxlength="17">
+                            <input type="text" name="lastName" id="lastnameInput" class="panel__inputs-lastName panel__input" placeholder="Last name" maxlength="21">
                         </label>
                         <label for="phone" class="panel__label">Phone number
                             <input type="tel" name="phone" id="phonenumberInput" class="panel__inputs-phone panel__input" placeholder="Phone number">
                         </label>
                         <label for="company" class="panel__label">Company name
-                            <input type="text" name="company" id="companynameInput" class="panel__inputs-company panel__input" placeholder="Company name" maxlength="17">
+                            <input type="text" name="company" id="companynameInput" class="panel__inputs-company panel__input" placeholder="Company name" maxlength="21">
                         </label>
                         <label for="age" class="panel__label">Age
                             <input type="number" name="age" id="ageInput" class="panel__inputs-age panel__input" placeholder="Age" min="0" max="200" maxlength="3">
                         </label>
                         <div class="panel__control">
                             <button id="create" class="panel__control-create panel-control-style">Create</button>
-                            <button id="update" class="panel__control-update panel-control-style side-border">Update</button>
-                            <button id="delete" class="panel__control-delete panel-control-style side-border">Delete</button>
-                            <button id="clearAll" class="panel__control-clearAll panel-control-style side-border">Clear All</button>
+                            <span class="side-border"></span>
+                            <button id="update" class="panel__control-update panel-control-style">Update</button>
+                            <span class="side-border"></span>
+                            <button id="delete" class="panel__control-delete panel-control-style">Delete</button>
+                            <span class="side-border"></span>
+                            <button id="clearAll" class="panel__control-clearAll panel-control-style">Clear All</button>
                         </div>
                     </div>
                 </div>
@@ -94,6 +103,7 @@
                             </li>
                            </ul>
                         <div class="table__search">
+                            <image id="search-icon" src="../img/serch.png" class="table__search-icon"/>
                             <label class="table__search-labelFN" for="searchFN">
                                 <input type="text" name="searchFN" id="searchFirstname" class="table__search-firstName table__input" placeholder="First name" maxlength="22">
                             </label>
