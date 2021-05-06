@@ -13,3 +13,34 @@ $hover-color: #ff0;
 $table-nav: #5c5c0d;
 $table-td: #ffffb5;
 $modal-bg: rgba(26, 26, 26, 0.9);
+$fontLogo:29px;
+$whiteTextColor:#ffffff;
+$yellowTextColor:#ffff00;
+$largeFont:53px;
+$middleFont:28px;
+$smallText:18px;
+
+
+
+@mixin styleLargeText{
+    font-size:$largeFont;
+    text-transform: uppercase;
+}
+
+
+@mixin styleMiddleText{
+    font-size:$middleFont;
+    color:#5a5b0f;
+    font-weight: bold;
+}
+@mixin stylSmallText {
+    font-size:$smallText;
+    color:#626262;
+}
+
+@mixin  formLoginText {
+    font-size:24px;
+    color:$whiteTextColor ;
+    margin-bottom: 20px;
+}
+
