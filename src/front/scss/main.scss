@@ -1,8 +1,5 @@
 .general {
-    width: 100vw;
     background: $main-page-bg;
-    overflow: scroll;
-    min-height: 100vh;
 }
 .container {
     width: 999px;
@@ -24,8 +21,29 @@
     background: transparent;
     color: $text-color;  
 }
-.side-border {
-    border-left: 1px solid $text-color;
+// .side-border {
+//     border-left: 1px solid $text-color;
+// }
+.th {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 142px;
+    height: 43px;
+    border: 1px solid $main-page-bg;
+    background: $text-color;
+    font-weight: 400;
+}
+.td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 142px;
+    height: 43px;
+    border: 1px solid $main-page-bg;
+    background: $table-td;
+    font-weight: 400;
+    overflow-x: scroll;
 }
 .header {
     display: flex;
@@ -257,36 +275,33 @@
     &__tr {
         display: flex;
         align-items: center;
-        &-th {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 142px;
-            height: 43px;
-            border: 1px solid $main-page-bg;
-            background: $text-color;
-            font-weight: 400;
+        &-email {
+            width: 200px;;
+        }
+        &-age {
+            width: 84px;
         }
     }
 }
 .tbody {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: baseline;
     width: 100%;
+    margin-left: 2px;
     &__tr {
         display: flex;
         align-items: center;
-        &-td {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 142px;
-            height: 43px;
-            border: 1px solid $main-page-bg;
-            background: $table-td;
-            font-weight: 400;
-            overflow-x: scroll;
+        &-email {
+            width: 200px;;
+        }
+        &-age {
+            width: 84px;
+            &::-webkit-outer-spin-button, 
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
         }
     }
 }
@@ -308,6 +323,7 @@
         color: $footer-copyright-sign;
     }
 }
+
 /* SETTINGS POPUP */
 .settingsPopup {
     position: fixed;
@@ -317,7 +333,7 @@
     top: 0;
     left: 0;
     visibility: visible;
-    transition: .4s ease;
+    transition: transform .4s ease;
     &__container {
         width: 590px;
         height: 510px;
@@ -415,15 +431,6 @@
         width: 420px;
         height: 65px;
         font-size: 24px;
-        // &::before {
-        //     content: ();
-        //     position: absolute;
-        //     top: 50%;
-        //     right: 5px;
-        //     width: 5px;
-        //     height: 5px;
-        //     background: red;
-        // }
     }
     &.hideSettingsPopup {
         display: block;
@@ -431,6 +438,17 @@
         visibility: hidden;
         animation: none;
     }
+}
+.eye {
+    display: block;
+    position: relative;
+    top: -45px;
+    right: -175px;
+    width: 5px;
+    height: 5px;
+    // &.close {
+    //     display: none;
+    // }
 }
 /* CREATE POPUP */
 .createPopup {
@@ -501,10 +519,6 @@
         justify-content: space-between;
         align-items: center;
         margin: 0 auto;
-        // &-newPassword,
-        // &-repeatPassword {
-        //     margin-top: 10px;
-        // }
     }
     &__buttons {
         margin: 0 auto;

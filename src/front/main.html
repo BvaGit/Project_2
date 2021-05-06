@@ -27,7 +27,7 @@
                             <option value="dark">Dark</option>
                         </select>
                     </label>
-                    <button id="settings" class="header__nav-settings nav-input-styles side-border">Settings</button>
+                    <button id="settings" class="header__nav-settings nav-input-styles side-border">&#x2699;</button>
                     <a href="index.html">
                         <button id="logout" class="header__nav-logout nav-input-styles">Logout</button>
                     </a>
@@ -105,33 +105,33 @@
                     <table id="table" class="table__data">
                         <thead id="thead" class="table__data-head thead">
                             <tr id="tableHeader" class="thead__tr">
-                                <th class="thead__tr-th">First Name</th>
-                                <th class="thead__tr-th">Last name</th>
-                                <th class="thead__tr-th">Age</th>
-                                <th class="thead__tr-th">City</th>
-                                <th class="thead__tr-th">Phone number</th>
-                                <th class="thead__tr-th">Email</th>
-                                <th class="thead__tr-th">Company name</th>
+                                <th class="thead__tr th">First Name</th>
+                                <th class="thead__tr th">Last name</th>
+                                <th class="thead__tr-age th">Age</th>
+                                <th class="thead__tr th">City</th>
+                                <th class="thead__tr th">Phone number</th>
+                                <th class="thead__tr-email th">Email</th>
+                                <th class="thead__tr th">Company name</th>
                             </tr>
                         </thead>
                         <tbody class="table__data-body tbody">
                             <tr id="tableBody" class="tbody__tr">
-                                <td class="tbody__tr-td">Ivan</td>
-                                <td class="tbody__tr-td">Ivanov</td>
-                                <td class="tbody__tr-td">25</td>
-                                <td class="tbody__tr-td">Dnepr</td>
-                                <td class="tbody__tr-td">024 567 84 34</td>
-                                <td class="tbody__tr-td">ivanivanov@yahoo.com</td>
-                                <td class="tbody__tr-td">Google</td>
+                                <td class="tbody__tr td">Ivan</td>
+                                <td class="tbody__tr td">Ivanov</td>
+                                <td class="tbody__tr-age td">25</td>
+                                <td class="tbody__tr td">Dnepr</td>
+                                <td class="tbody__tr td">024 567 84 34</td>
+                                <td class="tbody__tr-email td">ivanivanov@yahoo.com</td>
+                                <td class="tbody__tr td">Google</td>
                             </tr>
                             <tr class="tbody__tr">
-                                <td class="tbody__tr-td">Ivan</td>
-                                <td class="tbody__tr-td">Ivanov</td>
-                                <td class="tbody__tr-td">25</td>
-                                <td class="tbody__tr-td">Dnepr</td>
-                                <td class="tbody__tr-td">024 567 84 34</td>
-                                <td class="tbody__tr-td">ivanivanov@yahoo.com</td>
-                                <td class="tbody__tr-td">Google</td>
+                                <td class="tbody__tr td">Ivan</td>
+                                <td class="tbody__tr td">Ivanov</td>
+                                <td class="tbody__tr-age td">25</td>
+                                <td class="tbody__tr td">Dnepr</td>
+                                <td class="tbody__tr td">024 567 84 34</td>
+                                <td class="tbody__tr-email td">ivanivanov@yahoo.com</td>
+                                <td class="tbody__tr td">Google</td>
                             </tr>
                         </tbody>
                     </table>
@@ -155,8 +155,12 @@
                 <h1 class="settingsPopup__header">SETTINGS</h1>
                 <div class="settingsPopup__group">
                     <input type="password" name="yourPassword" id="yourPassword" placeholder="Your password" class="settingsPopup__group-yourPassword settingsPopup__input">
+                    <span class="eye">&#128065;</span>
                     <input type="password" name="newPassword" id="newPassword" placeholder="New password" class="settingsPopup__group-newPassword settingsPopup__input">
+                    <span class="eye">&#128065;</span>
                     <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password" class="settingsPopup__group-repeatPassword settingsPopup__input">
+                    <span class="eye">&#128065;</span>
+                    
                 </div>
                 <div class="settingsPopup__buttons">
                     <button id="settingsPopupConfirm" type="button" class="settingsPopup__buttons-confirm btn">CONFIRM</button>
@@ -171,7 +175,7 @@
                 <button id="closeCreatePU" class="createPopup__button-close"></button>
             </div>
                 <h1 class="createPopup__header">CREATE</h1>
-                <div class="createPopup__group">
+                <div id="createPopupInputWrapper" class="createPopup__group">
                     <input type="text" name="createPopup-firstName" id="createPopupFirstname" class="createPopup__group-firstName createPopup__input" placeholder="First name" maxlength="17">
                     <input type="text" name="createPopup-lastName" id="createPopupLastname" class="createPopup__group-lastName createPopup__input" placeholder="Last name" maxlength="17">
                     <input type="number" name="age" id="ageInput" class="createPopup__group-age createPopup__input" placeholder="Age" min="0" max="200" maxlength="3">

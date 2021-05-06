@@ -3,18 +3,26 @@ function settingsPopup () {
     const settingsPopup = document.getElementById('settingsPopup');
     const cancelBtn = document.getElementById('settingsPopupCancel');
     const crossBtn = document.getElementById('closeSettingsPopUp');
+    const input = document.querySelectorAll('.settingsPopup__input');
+    const eyes = document.querySelectorAll('.eye');
+
+    eyes.forEach((eye) => {
+        eye.addEventListener('click', () => {
+            changeType(input);
+        })
+    })
 
     settings.addEventListener('click', () => {
         openPopup(settingsPopup);
     })
     cancelBtn.addEventListener('click', () => {
-        closePopup(settingsPopup);
+        closePopup(settingsPopup, clearInputs);
     });
     crossBtn.addEventListener('click', () => {
-        closePopup(settingsPopup);
+        closePopup(settingsPopup, clearInputs);
     });
     window.addEventListener('keyup', function (event) {
-        exitOnEscape(event, settingsPopup)
+        exitOnEscape(event, settingsPopup);
     })
     settingsPopup.addEventListener('click', function (event) {
         handlePopupClick(event, settingsPopup)
@@ -24,6 +32,7 @@ function settingsPopup () {
     }
     function closePopup(element) {
         element.classList.add('hideSettingsPopup');
+        clearInputs(input);
     }
     function exitOnEscape(event, element) {
         if (event.keyCode === 27) {
@@ -34,6 +43,24 @@ function settingsPopup () {
         if (event.target === element) {
           closePopup(element);
         }
+    }
+    function clearInputs (input) {
+        if (!input) {
+            return;
+        }
+        for (let i of input) {
+            i.value = '';
+            i.type = 'password';
+        }
+    }
+    function changeType (input) {
+        input.forEach((i) => {
+            if (i.type === 'password') {
+                i.type = 'text';
+            } else if (i.type = 'text') {
+                i.type = 'password';
+            }
+        })
     }
 }
 export default settingsPopup;
