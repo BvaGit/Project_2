@@ -1,7 +1,9 @@
 import express, { Router } from 'express'
+import cors from 'cors';
 import { logger } from './middleware/logger.js'
 import { ServerOptions } from './service/ServerOptions.js'
 import { MySQLConnector } from './connectors/MySQLConnector.js'
+import { CassandraConnector } from './connectors/CassandraConnector.js'
 import { BaseConnector } from './connectors/BaseConnector.js'
 
 class Server {
@@ -14,12 +16,15 @@ class Server {
     this.#app = express()
     this.#router = Router()
 
-    const mySqlConnector = new MySQLConnector()
+    const mySqlConnector = new MySQLConnector();
+    const cassandraConnector = new CassandraConnector();
     this.#enableMySQLUsers(mySqlConnector)
     this.#enableSQL(mySqlConnector, 'mysql')
+    this.#enableSQL(cassandraConnector, 'cassandra')
   }
 
   serve(func) {
+    this.#app.use(cors());
     this.#app.use(express.json())
     this.#app.use(express.urlencoded({ extended: true }))
     this.#app.use(logger)    
@@ -115,7 +120,7 @@ class Server {
       res.status(400).send('person update failed')
     })
 
-    this.addRoute(new ServerOptions('GET', `${dbms}/persons/:id`), (req, res) => {
+    this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/:id`), (req, res) => {
       connection.deletePersonById(req.params.id, err => {
         if (err) {
           return console.error(`Error:${err.message}`)
@@ -132,7 +137,7 @@ class Server {
         if (rows.hasOwnProperty('rows')){
           rows = rows.rows
         }
-        res.status(200).json(persons)
+        res.status(200).json(rows)
       })
     })
   }
