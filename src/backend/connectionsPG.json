@@ -1,0 +1,14 @@
+{
+    "pg_connect":{
+        "host": "localhost",
+        "user": "postgres",
+        "password": "1111",
+        "database": "basepg"
+    }
+
+}
+
+
+
+
+

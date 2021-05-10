@@ -2,6 +2,7 @@ import express, { Router } from 'express'
 import { logger } from './middleware/logger.js'
 import { ServerOptions } from './service/ServerOptions.js'
 import { MySQLConnector } from './connectors/MySQLConnector.js'
+import {PgConnect} from './connectors/PostgreSQLConnector.js';
 import { BaseConnector } from './connectors/BaseConnector.js'
 
 class Server {
@@ -17,6 +18,10 @@ class Server {
     const mySqlConnector = new MySQLConnector()
     this.#enableMySQLUsers(mySqlConnector)
     this.#enableSQL(mySqlConnector, 'mysql')
+
+    const pgConnect = new PgConnect();
+    this.#enableSQL(pgConnect, 'pg');
+
   }
 
   serve(func) {
@@ -115,7 +120,7 @@ class Server {
       res.status(400).send('person update failed')
     })
 
-    this.addRoute(new ServerOptions('GET', `${dbms}/persons/:id`), (req, res) => {
+    this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/:id`), (req, res) => {
       connection.deletePersonById(req.params.id, err => {
         if (err) {
           return console.error(`Error:${err.message}`)
