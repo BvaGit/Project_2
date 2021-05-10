@@ -8,19 +8,15 @@
 </head>
 <body>
     <div class="wrapper">
-        <header class = "header">
-            <div class="container header__wrap">
-                <div class="header__regLogo log__wrap">
-                    <div class="header__regLogo-img">
-                        <img class = "header__regLogo-png" src="./img/logo.png" alt="logo">
+        <header id="header" class="header">
+            <div class="header__bar container">
+                <div class="header__logo">
+                    <div id="icon" class="">
+                        <img src="./img/logo.png" alt="">
                     </div>
-                    <div class="header__text">
-                        <h2 class = "header__text-content">Qwerty</h2>
-                    </div>
+                    <div id="logo" class="header__logo-logoname">QWERTY</div>
                 </div>
-                <div class="header__img">
-                    <img src="./img/points.png" alt="">
-                </div>
+                <img src="./img/points.png" alt="">
             </div>
         </header>
         <main class = "main">
@@ -43,11 +39,11 @@
                     <div class="formsContent__wrap">
                         <form action="">
                             <p class = "formsContent__login formTitle">Login</p>
-                            <input type="text" class = "formsContent__fieldLogin formField" placeholder="Your login">
+                            <input type="text" class = "formsContent__fieldLogin formField" placeholder="Enter your login here">
                             <p class = "formsContent__password formTitle">Password</p>
-                            <input type="text" class = "formsContent__fieldPassword formField" placeholder="Your password">
+                            <input type="text" class = "formsContent__fieldPassword formField" placeholder="Enter your password here">
                             <p class = "formsContent__repPassword formTitle">Repeat password</p>
-                            <input type="text" class = "formsContent__repPassword formField" placeholder="Repeat password">
+                            <input type="text" class = "formsContent__repPassword formField" placeholder="Confirm password">
                         </form>
                         <div class="formsContent__wrapButton">
                             <button class = "formsContent__button">Sing up</button>
@@ -66,7 +62,7 @@
                         <p>&copy; 2021 QWERTY</p>
                     </div>
                     <div class="footer__logo">
-                        <img src="./img/points.png" alt="">
+                        <img  class = "footer__img" src="./img/points.png" alt="">
                     </div>
                 </div>
             </div>
