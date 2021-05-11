@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>    
-    <div class="general">
+    <div id="general" class="general">
         <header id="header" class="header">
             <div class="header__bar container">
                 <div class="header__logo">
@@ -16,16 +16,16 @@
                 </div>  
                 <div class="header__nav">
                     <label id="language" for="language">
-                        <select name="language" id="language" class="header__nav-language nav-input-styles">
+                        <select name="language" id="select-language" class="header__nav-language nav-input-styles">
                             <option value="en">En</option>
                             <option value="ua">Ua</option>
                         </select>
                     </label>
                     <span class="side--border"></span>
                     <label id="theme" for="theme">
-                        <select name="theme" id="theme" class="header__nav-theme nav-input-styles">
-                            <option value="light">Light</option>
-                            <option value="dark">Dark</option>
+                        <select name="theme" id="select-theme" class="header__nav-theme nav-input-styles">
+                            <option class="lang" value="light">Light</option>
+                            <option class="lang" value="dark">Dark</option>
                         </select>
                     </label>
                     <span class="side--border"></span>
@@ -44,35 +44,31 @@
             <div class="container">
                 <div id="panel" class="panel">
                     <div class="panel__inputs">
-                        <label for="firstName" class="panel__label">First name
+                        <label for="firstName" class="panel__label lang">First name
                             <input type="text" name="firstName" id="firstnameInput" class="panel__inputs-firstName panel__input" placeholder="First name" maxlength="21">
                         </label>
-                        <label for="city" class="panel__label">City
+                        <label for="city" class="panel__label lang">City
                             <input type="text" name="city" id="cityInput" class="panel__inputs-city panel__input" placeholder="City" maxlength="21">
                         </label>
-                        <label for="email" class="panel__label">Email
+                        <label for="email" class="panel__label lang">Email
                             <input type="email" name="email" id="emailInput" class="panel__inputs-email panel__input" placeholder="Email" maxlength="21">
                         </label>
-                        <label for="lastName" class="panel__label">Last name
+                        <label for="lastName" class="panel__label lang">Last name
                             <input type="text" name="lastName" id="lastnameInput" class="panel__inputs-lastName panel__input" placeholder="Last name" maxlength="21">
                         </label>
-                        <label for="phone" class="panel__label">Phone number
+                        <label for="phone" class="panel__label lang">Phone number
                             <input type="tel" name="phone" id="phonenumberInput" class="panel__inputs-phone panel__input" placeholder="Phone number">
                         </label>
-                        <label for="company" class="panel__label">Company name
+                        <label for="company" class="panel__label lang">Company name
                             <input type="text" name="company" id="companynameInput" class="panel__inputs-company panel__input" placeholder="Company name" maxlength="21">
                         </label>
-                        <label for="age" class="panel__label">Age
+                        <label for="age" class="panel__label lang">Age
                             <input type="number" name="age" id="ageInput" class="panel__inputs-age panel__input" placeholder="Age" min="0" max="200" maxlength="3">
                         </label>
                         <div class="panel__control">
-                            <button id="create" class="panel__control-create panel-control-style">Create</button>
+                            <button id="create" class="panel__control-create panel-control-style lang">Create</button>
                             <span class="side-border"></span>
-                            <button id="update" class="panel__control-update panel-control-style">Update</button>
-                            <span class="side-border"></span>
-                            <button id="delete" class="panel__control-delete panel-control-style">Delete</button>
-                            <span class="side-border"></span>
-                            <button id="clearAll" class="panel__control-clearAll panel-control-style">Clear All</button>
+                            <button id="update" class="panel__control-update panel-control-style lang">Update</button>
                         </div>
                     </div>
                 </div>
@@ -90,15 +86,15 @@
                                 <li><a href="#" class="table__nav-hover" id="GraphDB">GraphDB</a></li>
                               </ul>
                             </li>
-                            <li><a href="#" id="sort" class="table__nav-sort">Sort</a>
+                            <li><a href="#" id="sort" class="table__nav-sort lang">Sort</a>
                               <ul class="table__sortDropdown">
-                                <li><a href="#" class="table__nav-hover" id="firstNameSort">First name</a></li>
-                                <li><a href="#" class="table__nav-hover" id="lastnameSort">Last name</a></li>
-                                <li><a href="#" class="table__nav-hover" id="ageSort">Age</a></li>
-                                <li><a href="#" class="table__nav-hover" id="citySort">City</a></li>
-                                <li><a href="#" class="table__nav-hover" id="phonenumberSort">Phone number</a></li>
-                                <li><a href="#" class="table__nav-hover" id="emailSort">Email</a></li>
-                                <li><a href="#" class="table__nav-hover" id="companynameSort">Company name</a></li>
+                                <li><a href="#" class="table__nav-hover lang" id="firstNameSort">First name</a></li>
+                                <li><a href="#" class="table__nav-hover lang" id="lastnameSort">Last name</a></li>
+                                <li><a href="#" class="table__nav-hover lang" id="ageSort">Age</a></li>
+                                <li><a href="#" class="table__nav-hover lang" id="citySort">City</a></li>
+                                <li><a href="#" class="table__nav-hover lang" id="phonenumberSort">Phone number</a></li>
+                                <li><a href="#" class="table__nav-hover lang" id="emailSort">Email</a></li>
+                                <li><a href="#" class="table__nav-hover lang" id="companynameSort">Company name</a></li>
                               </ul>
                             </li>
                            </ul>
@@ -114,38 +110,41 @@
                     </div>
                     <table id="table" class="table__data">
                         <thead id="thead" class="table__data-head thead">
-                            <tr id="tableHeader" class="thead__tr">
-                                <th class="thead__tr th">First Name</th>
-                                <th class="thead__tr th">Last name</th>
-                                <th class="thead__tr-age th">Age</th>
-                                <th class="thead__tr th">City</th>
-                                <th class="thead__tr th">Phone number</th>
-                                <th class="thead__tr-email th">Email</th>
-                                <th class="thead__tr th">Company name</th>
+                            <tr class="thead__tr">
+                                <th class="tr__th lang">First Name</th>
+                                <th class="tr__th lang">Last name</th>
+                                <th class="tr__th lang">Age</th>
+                                <th class="tr__th lang">City</th>
+                                <th class="tr__th lang">Phone number</th>
+                                <th class="tr__th lang">Email</th>
+                                <th class="tr__th lang">Company name</th>
                             </tr>
                         </thead>
-                        <tbody class="table__data-body tbody">
-                            <tr id="tableBody" class="tbody__tr">
-                                <td class="tbody__tr td">Ivan</td>
-                                <td class="tbody__tr td">Ivanov</td>
-                                <td class="tbody__tr-age td">25</td>
-                                <td class="tbody__tr td">Dnepr</td>
-                                <td class="tbody__tr td">024 567 84 34</td>
-                                <td class="tbody__tr-email td">ivanivanov@yahoo.com</td>
-                                <td class="tbody__tr td">Google</td>
+                        <tbody id="tbody" class="table__data-body tbody">
+                            <tr class="tbody__tr">
+                                <td class="tr__td td-firstName">Ivan</td>
+                                <td class="tr__td td-lastName">Ivanov</td>
+                                <td class="tr__td td-age">25</td>
+                                <td class="tr__td td-city">Dnepr</td>
+                                <td class="tr__td td-phoneNumber">024 567 84 34</td>
+                                <td class="tr__td td-email">ivanivanov@yahoo.com</td>
+                                <td class="tr__td td-companyName">Google</td>
+                                <td class="tr__button"><button class="panel__control-delete panel-control-style delete-person">&#128465;</button></td>
                             </tr>
                             <tr class="tbody__tr">
-                                <td class="tbody__tr td">Ivan</td>
-                                <td class="tbody__tr td">Ivanov</td>
-                                <td class="tbody__tr-age td">25</td>
-                                <td class="tbody__tr td">Dnepr</td>
-                                <td class="tbody__tr td">024 567 84 34</td>
-                                <td class="tbody__tr-email td">ivanivanov@yahoo.com</td>
-                                <td class="tbody__tr td">Google</td>
+                                <td class="tr__td td-firstName">Petya</td>
+                                <td class="tr__td td-lastName">Petrov</td>
+                                <td class="tr__td td-age">24</td>
+                                <td class="tr__td td-city">Zhovti Vody</td>
+                                <td class="tr__td td-phoneNumber">0245678434</td>
+                                <td class="tr__td td-email">petyapetrow@yahoo.com</td>
+                                <td class="tr__td td-companyName">Yahoo</td>
+                                <td class="tr__button"><button class="panel__control-delete panel-control-style delete-person">&#128465;</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <button id="clearAll" class="panel__control-clearAll panel-control-style lang">Clear All</button>
             </div>
         </main>
         <footer id="footer" class="footer">
@@ -156,13 +155,14 @@
             </div>
         </footer>        
     </div>
+    
     <!-- SETTINGS POPUP --> 
     <div id="settingsPopup" class="settingsPopup hideSettingsPopup">
         <div class="settingsPopup__container">
             <div id="closeSettingsPopUp" class="settingsPopup__button">
                 <button id="closeSettingsPU" class="settingsPopup__button-close"></button>
             </div>
-                <h1 class="settingsPopup__header">SETTINGS</h1>
+                <h1 class="settingsPopup__header lang">SETTINGS</h1>
                 <div class="settingsPopup__group">
                     <input type="password" name="yourPassword" id="yourPassword" placeholder="Your password" class="settingsPopup__group-yourPassword settingsPopup__input">
                     <span class="eye">&#128065;</span>
@@ -173,30 +173,8 @@
                     
                 </div>
                 <div class="settingsPopup__buttons">
-                    <button id="settingsPopupConfirm" type="button" class="settingsPopup__buttons-confirm btn">CONFIRM</button>
-                    <button id="settingsPopupCancel" type="button" class="settingsPopup__buttons-cancel btn">CANCEL</button>
-                </div>
-        </div>
-    </div>
-    <!-- CREATE POPUP -->
-    <div id="createPopup" class="createPopup hideCreatePopup">
-        <div class="createPopup__container">
-            <div id="closeCreatePopUp" class="createPopup__button">
-                <button id="closeCreatePU" class="createPopup__button-close"></button>
-            </div>
-                <h1 class="createPopup__header">CREATE</h1>
-                <div id="createPopupInputWrapper" class="createPopup__group">
-                    <input type="text" name="createPopup-firstName" id="createPopupFirstname" class="createPopup__group-firstName createPopup__input" placeholder="First name" maxlength="17">
-                    <input type="text" name="createPopup-lastName" id="createPopupLastname" class="createPopup__group-lastName createPopup__input" placeholder="Last name" maxlength="17">
-                    <input type="number" name="age" id="ageInput" class="createPopup__group-age createPopup__input" placeholder="Age" min="0" max="200" maxlength="3">
-                    <input type="text" name="createPopup-city" id="createPopupCity" class="createPopup__group-city createPopup__input" placeholder="City" maxlength="17">
-                    <input type="tel" name="createPopup-phone" id="createPopupPhonenumber" class="createPopup__group-phone createPopup__input" placeholder="Phone number">
-                    <input type="email" name="createPopup-email" id="createPopupEmail" class="createPopup__group-email createPopup__input" placeholder="Email">
-                    <input type="text" name="createPopup-company" id="createPopupCompanyname" class="createPopup__group-company createPopup__input" placeholder="Company name" maxlength="17">
-                </div>
-                <div class="createPopup__buttons">
-                    <button id="createPopupConfirm" type="button" class="createPopup__buttons-confirm btn">CREATE</button>
-                    <button id="createPopupCancel" type="button" class="createPopup__buttons-cancel btn">CANCEL</button>
+                    <button id="settingsPopupConfirm" type="button" class="settingsPopup__buttons-confirm btn lang">CONFIRM</button>
+                    <button id="settingsPopupCancel" type="button" class="settingsPopup__buttons-cancel btn lang">CANCEL</button>
                 </div>
         </div>
     </div>
