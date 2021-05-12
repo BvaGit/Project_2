@@ -28,6 +28,8 @@ function deletePerson () {
                     if (trElement.classList.contains(selectedClass)) {
                         trElement.classList.remove(selectedClass);
                         selectedTR = null;
+                        createData.disabled = false;
+                        updateData.disabled = true;                    
                         clearInputs({
                             firstName: firstnameInput,
                             lastName: lastnameInput,

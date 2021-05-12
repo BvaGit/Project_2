@@ -1,5 +1,5 @@
 .general {
-    background: $main-page-bg;
+    background: $d-main-page-bg;
 }
 .container {
     width: 999px;
@@ -11,7 +11,7 @@
     letter-spacing: 1px;
     border: none;
     background: transparent;
-    color: $text-color;
+    color: $d-text-color;
     cursor: pointer;
 }
 .panel-control-style {
@@ -19,7 +19,7 @@
     font-size: 24px;
     border: none;
     background: transparent;
-    color: $text-color;  
+    color: $d-text-color;  
 }
 .side-border {
     height: 30px;
@@ -32,7 +32,7 @@
     height: 25px;
     position: relative;
     left: 0px;
-    border-left: 1px solid $text-color;
+    border-left: 1px solid $d-text-color;
 }
 .tr {
     &__th {
@@ -41,8 +41,8 @@
         justify-content: center;
         width: 142px;
         height: 43px;
-        border: 1px solid $main-page-bg;
-        background: $text-color;
+        border: 1px solid $d-border-color;
+        background: $d-text-color;
         font-weight: 400;
         &:nth-child(3) {
             width: 84px;
@@ -57,8 +57,8 @@
         justify-content: center;
         width: 142px;
         height: 43px;
-        border: 1px solid $main-page-bg;
-        background: $hover-color;
+        border: 1px solid $d-border-color;
+        background: $d-hover-color;
         font-weight: 400;
         &:nth-child(3) {
             width: 84px;
@@ -79,8 +79,8 @@
     justify-content: center;
     width: 142px;
     height: 43px;
-    border: 1px solid $main-page-bg;
-    background: $table-td;
+    border: 1px solid $d-border-color;
+    background: $d-table-td;
     font-weight: 400;
     overflow-x: scroll;
 }
@@ -100,7 +100,7 @@
         align-items: center;
         width: 320px;
         height: 110px;
-        color: $text-color; 
+        color: $d-text-color; 
         &-icon {
             color: #ccc;
             width: 105px;
@@ -121,7 +121,7 @@
         height: 110px;
         &-language {
             &:hover {
-                color: $hover-color;
+                color: $d-hover-color;
             }
             &:focus {
                 outline: none;
@@ -129,7 +129,7 @@
         }
         &-theme {
             &:hover {
-                color: $hover-color;
+                color: $d-hover-color;
             }
             &:focus {
                 outline: none;
@@ -146,7 +146,7 @@
     &__label {
         display: flex;
         flex-direction: column;
-        color: $text-color;
+        color: $d-text-color;
         font-size: 26px;
         margin: 0 0 10px;
     }
@@ -154,7 +154,7 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        color: $text-color;
+        color: $d-text-color;
         &-age {
             &::-webkit-outer-spin-button, 
             &::-webkit-inner-spin-button {
@@ -168,10 +168,10 @@
         height: 61px;
         margin: 10px 0 0;
         padding: 25px;
-        color: $main-page-bg;
+        color: $d-main-page-bg;
         font-size: 26px;
         &:focus {
-            outline: 1px solid $hover-color;
+            outline: 1px solid $d-hover-color;
         }
     }
     &__control {
@@ -184,21 +184,21 @@
         &-create {
             cursor: pointer;
             &:hover {
-                color: $hover-color;
+                color: $d-hover-color;
             }
             &:disabled {
                 cursor: default;
-                color: $placeholder-color;
+                color: $d-placeholder-color;
             }
         }
         &-update {
             cursor: pointer;
             &:hover {
-                color: $hover-color;
+                color: $d-hover-color;
             }
             &:disabled {
                 cursor: default;
-                color: $placeholder-color;
+                color: $d-placeholder-color;
             }
         }
         &-delete {
@@ -214,14 +214,14 @@
             margin-top: 20px;
             width: 177px;
             height: 65px;
-            background: $clearAll;
+            background: $d-clearAll;
             font-size: 28px;
             color: white;
             text-decoration: none;
             border-radius: 10px;
             cursor: pointer;
             &:hover {
-                color: $hover-color;
+                color: $d-hover-color;
             }
         }
     }
@@ -231,6 +231,7 @@
     flex-direction: column;
     width: 999px;
     margin: 60px 0 0 0;
+    
     &__panel {
         display: flex;
         justify-content: space-between;
@@ -246,9 +247,9 @@
             display: none;
             position: absolute;
             top:100%;
-            background: $table-nav;
+            background: $d-table-nav;
             padding: 0;
-            border-top: 5px solid $main-page-bg;
+            border-top: 5px solid $d-main-page-bg;
         }
         & ul li:hover > ul {
             display:block
@@ -275,7 +276,7 @@
     &__nav {
         display: flex;
         justify-content: space-between;
-        color: $text-color;
+        color: $d-text-color;
         font-size: 28px;
         &-dms {     
             display: flex;
@@ -283,9 +284,9 @@
             align-items: center;   
             width: 177px;
             height: 65px;
-            background: $table-nav;
+            background: $d-table-nav;
             font-size: 28px;
-            color: $text-color;
+            color: $d-text-color;
             text-decoration: none;
             border-radius: 10px;
         }
@@ -296,19 +297,19 @@
             margin: 0 0 0 10px;
             width: 133px;
             height: 65px;
-            background: $table-nav;
+            background: $d-table-nav;
             font-size: 28px;
-            color: $text-color;
+            color: $d-text-color;
             text-decoration: none;
             border-radius: 10px;
         }
         &-hover {
             font-size: 14px;
-            color: $text-color;
+            color: $d-text-color;
             text-decoration: none;
             padding: 10px 15px;
             &:hover {
-                color: $hover-color;
+                color: $d-hover-color;
                 text-decoration: underline;
                 font-size: 14px;
             }
@@ -328,11 +329,13 @@
                 width: 64px;
                 height: 64px;
                 border-radius: 50%;
-                background: $hover-color;
+                background: $d-hover-color;
             }
         }
         &-firstName {
             padding: 15px 15px 15px 45px;
+            border-top-left-radius: 5%;
+            border-bottom-left-radius: 5%;
         }
         &-lastName {
             padding: 15px;
@@ -351,15 +354,17 @@
         min-height: 315px;
         height: auto;
         overflow-y: auto;
-        background: $text-color;
+        background: $d-text-color;
+        border: 1px solid $d-border-color;
     }
     &__input {
         width: 299px;
         height: 65px;
         font-size: 18px;
-        color: $main-page-bg;
+        color: $d-main-page-bg;
         &:focus {
-            outline: 1px solid $hover-color;
+            outline: none;
+            border: 1px solid $d-hover-color;
         }
     }
 }
@@ -396,7 +401,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: $footer-copyright-sign;
+        color: $d-footer-copyright-sign;
     }
 }
 /* SETTINGS POPUP */
@@ -404,7 +409,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: $modal-bg;
+    background-color: $d-modal-bg;
     top: 0;
     left: 0;
     visibility: visible;
@@ -417,8 +422,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        border: 2px solid $table-nav;
-        background: $main-page-bg;
+        border: 2px solid $d-table-nav;
+        background: $d-main-page-bg;
         opacity: 1;
     }
     &__button {
@@ -441,7 +446,7 @@
                 top: 50%;
                 left: 0;
                 margin-top: -2px;
-                background: $table-nav;
+                background: $d-table-nav;
             }
             &::after {
                 content: '';
@@ -451,14 +456,14 @@
                 top: 0;
                 left: 50%;
                 margin-left: -2px;
-                background: $table-nav;
+                background: $d-table-nav;
             }
         }
     }
     &__header {
         width: 100%;
         text-align: center;
-        color: $text-color;
+        color: $d-text-color;
         font-size: 55px;
         padding: 50px 0;
         cursor: default;
@@ -486,15 +491,15 @@
             width: 200px;
             height: 60px;
             text-align: center;
-            background: $table-nav;
+            background: $d-table-nav;
             transition: .3s ease;
-            color: $text-color;
+            color: $d-text-color;
             cursor: pointer;
             font-size: 24px;
             &:hover,
             &:hover {
-                background: $hover-color;
-                color: $main-page-bg;
+                background: $d-hover-color;
+                color: $d-main-page-bg;
             }
         }
     }
@@ -528,7 +533,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: $modal-bg;
+    background-color: $d-modal-bg;
     top: 0;
     left: 0;
     visibility: visible;
@@ -540,8 +545,8 @@
         top: 50%; 
         left: 50%; 
         transform: translate(-50%, -50%); 
-        border: 2px solid $table-nav; 
-        background: $main-page-bg; 
+        border: 2px solid $d-table-nav; 
+        background: $d-main-page-bg; 
         opacity: 1;
         line-height: 1.5;
     }
@@ -565,7 +570,7 @@
                 top: 50%;
                 left: 0;
                 margin-top: -2px;
-                background: $table-nav;
+                background: $d-table-nav;
             }
             &::after {
                 content: '';
@@ -575,7 +580,7 @@
                 top: 0;
                 left: 50%;
                 margin-left: -2px;
-                background: $table-nav;
+                background: $d-table-nav;
             }
         }
     }
@@ -600,15 +605,15 @@
             width: 200px;
             height: 60px;
             text-align: center;
-            background: $table-nav;
+            background: $d-table-nav;
             transition: .3s ease;
-            color: $text-color;
+            color: $d-text-color;
             cursor: pointer;
             font-size: 24px;
             &:hover,
             &:hover {
-                background: $hover-color;
-                color: $main-page-bg;
+                background: $d-hover-color;
+                color: $d-main-page-bg;
             }
         }
     }
@@ -624,4 +629,81 @@
 // }
 .hide {
     display: none;
+}
+
+/* LIGHT THEME */
+.theme-light {
+    &.general {
+        background: $l-main-page-bg;
+    }
+    .nav-input-styles {
+        color: $l-text-color;
+    }
+    .panel-control-style {
+        color: $l-text-color;  
+    }
+    .side--border {
+        border-left: 1px solid $l-text-color;
+    }
+    // .tr {
+    //     &__th {
+    //         border: 1px solid $d-border-color;
+    //         background: $d-text-color;
+    //     }
+    //     &__td {
+    //         border: 1px solid $d-border-color;
+    //         background: $d-hover-color;
+    //     }
+    // }
+    // .td {
+    //     border: 1px solid $d-border-color;
+    //     background: $d-table-td;
+    // }
+    .header {
+        background: $l-header-bg;
+        &__logo {
+            color: $l-text-color; 
+            // &-icon {
+            //     color: $d-table-nav;
+            // }
+        }
+    }
+    .panel {
+        &__label {
+            color: $l-text-color;
+        }
+        &__control {
+            &-create {
+                &:hover {
+                    color: $d-hover-color;
+                }
+                &:disabled {
+                    color: $d-placeholder-color;
+                }
+            }
+            &-update {
+                &:hover {
+                    color: $d-hover-color;
+                }
+                &:disabled {
+                    color: $d-placeholder-color;
+                }
+            }
+            &-clearAll {
+                background: $d-clearAll;
+                color: $d-text-color;
+                &:hover {
+                    color: $d-hover-color;
+                }
+            }
+        }
+    }
+    .table {
+        &__input {
+            &:focus {
+                outline: none;
+                border: 1px solid $l-text-color;
+            }
+        }
+    }
 }
