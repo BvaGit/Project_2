@@ -1,4 +1,4 @@
-function handleLanguage () {
+export default function handleLanguage () {
     let selectedLanguage = document.getElementById('select-language');
     const translateElements = document.querySelectorAll('[data-translate]');
     const placeholderElements = document.querySelectorAll('[data-placeholder]');
@@ -87,4 +87,3 @@ function handleLanguage () {
         }
     }
 }
-export default handleLanguage;

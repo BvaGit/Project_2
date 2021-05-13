@@ -1,4 +1,4 @@
-function deletePerson () {
+export default function deletePerson () {
     const firstnameInput = document.getElementById('firstnameInput');
     const lastnameInput = document.getElementById('lastnameInput');
     const ageInput = document.getElementById('ageInput');
@@ -80,5 +80,3 @@ function deletePerson () {
         phoneNumber.value = '';
     }
 }
-
-export default deletePerson;

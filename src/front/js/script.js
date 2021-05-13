@@ -1,12 +1,7 @@
 import '../scss/style.scss';
 
 import hello from '../modules/hello';
-import settingsPopup from '../modules/settingsPopup';
-import clearAllPopup from '../modules/clearAllPopup';
-import logout from '../modules/logout';
-import themeHandler from '../modules/themeHandler';
-import deletePerson from '../modules/deletePerson';
-import handleLanguage from '../modules/handleLanguage';
+import { clearAllPopup, deletePerson, handleLanguage, logout, settingsPopup, supportMain, themeHandler } from '../modules/main-page/index'
 
 window.addEventListener('DOMContentLoaded', () => {
     hello();

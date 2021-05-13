@@ -1,4 +1,4 @@
-function logout () {
+export default function logout () {
     const logout = document.getElementById('logout');
     const logoutIcon = document.getElementById('logout-icon');
     
@@ -9,4 +9,3 @@ function logout () {
         logoutIcon.src = '../img/exit_white.png';
     })
 }
-export default logout;

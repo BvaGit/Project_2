@@ -1,4 +1,4 @@
-function themeHandler () {
+export default function themeHandler () {
     const general = document.getElementById('general');
     const selectedTheme = document.getElementById('select-theme');
     const darkThemeClass = 'theme-dark';
@@ -25,5 +25,3 @@ function themeHandler () {
         }
     }
 }
-
-export default themeHandler;
