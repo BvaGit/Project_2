@@ -6,6 +6,7 @@ import clearAllPopup from '../modules/clearAllPopup';
 import logout from '../modules/logout';
 import themeHandler from '../modules/themeHandler';
 import deletePerson from '../modules/deletePerson';
+import handleLanguage from '../modules/handleLanguage';
 
 window.addEventListener('DOMContentLoaded', () => {
     hello();
@@ -15,6 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
         logout();
         themeHandler();
         deletePerson();
+        handleLanguage();
     }
     else if (window.location.pathname === '/regpage.html') {
         console.log('тут будут скрипты для страницы регистрации')

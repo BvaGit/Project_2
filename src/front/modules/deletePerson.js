@@ -11,12 +11,8 @@ function deletePerson () {
     createData.disabled = false;
     updateData.disabled = true;
 
-
-    // const tbody = document.getElementById('tbody');
     const table = document.getElementById('table');
     const tbodytr = document.querySelectorAll('.tbody__tr');
-    // const bins = document.querySelectorAll('.panel__control-delete');
-    // const theadtr = document.getElementById('thead-tr');
     let selectedTR = null;
     const selectedClass = 'selected';
 

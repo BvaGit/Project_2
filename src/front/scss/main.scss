@@ -15,7 +15,7 @@
     cursor: pointer;
 }
 .panel-control-style {
-    padding: 0 30px;
+    // padding: 0 30px;
     font-size: 24px;
     border: none;
     background: transparent;
@@ -26,7 +26,7 @@
     position: relative;
     left: 0;
     top: 17px;
-    border-left: 1px solid white;
+    border-left: 1px solid $d-text-color;
 }
 .side--border {
     height: 25px;
@@ -58,7 +58,7 @@
         width: 142px;
         height: 43px;
         border: 1px solid $d-border-color;
-        background: $d-hover-color;
+        background: $d-table-td;
         font-weight: 400;
         &:nth-child(3) {
             width: 84px;
@@ -179,10 +179,11 @@
         display: flex;
         justify-content: space-between;
         margin-top: 40px;
-        width: 240px;
+        width: auto;
         height: 61px;
         &-create {
             cursor: pointer;
+            padding-right: 30px;
             &:hover {
                 color: $d-hover-color;
             }
@@ -192,6 +193,7 @@
             }
         }
         &-update {
+            padding-left: 30px;
             cursor: pointer;
             &:hover {
                 color: $d-hover-color;
@@ -206,17 +208,19 @@
             position: relative;
             top: 0px;
             right: -985px;
+            padding: 0 30px;
         }
         &-clearAll {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 20px;
-            width: 177px;
+            width: auto;
+            padding: 0 20px;
             height: 65px;
             background: $d-clearAll;
             font-size: 28px;
-            color: white;
+            color: $d-text-color;
             text-decoration: none;
             border-radius: 10px;
             cursor: pointer;
@@ -231,7 +235,6 @@
     flex-direction: column;
     width: 999px;
     margin: 60px 0 0 0;
-    
     &__panel {
         display: flex;
         justify-content: space-between;
@@ -259,7 +262,7 @@
         position: absolute;
         top:100%;
         left:0;
-        width: 177px;
+        width: 157px;
         height: auto; 
         border-top-left-radius: 5%;
         border-top-right-radius: 5%;
@@ -282,7 +285,7 @@
             display: flex;
             justify-content: center;
             align-items: center;   
-            width: 177px;
+            width: 157px;
             height: 65px;
             background: $d-table-nav;
             font-size: 28px;
@@ -295,7 +298,8 @@
             justify-content: center;
             align-items: center;  
             margin: 0 0 0 10px;
-            width: 133px;
+            width: auto;
+            padding: 0 20px;
             height: 65px;
             background: $d-table-nav;
             font-size: 28px;
@@ -394,7 +398,7 @@
     bottom: 0;
     font-size: 19px;
     &__copyrightSign {
-        width: 15%;
+        width: 12%;
         display: flex;
         justify-content: space-between;
         position: absolute;
@@ -417,7 +421,7 @@
     z-index: 10;
     &__container {
         width: 590px;
-        height: 510px;
+        height: auto;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -465,8 +469,15 @@
         text-align: center;
         color: $d-text-color;
         font-size: 55px;
-        padding: 50px 0;
+        padding: 50px 0 10px;
         cursor: default;
+        &-help {
+            color: $d-placeholder-color;
+            display: block;
+            text-align: center;
+            padding: 0 0 50px;
+            font-size: 22px;
+        }
     }
     &__group {
         display: flex;
@@ -474,6 +485,17 @@
         justify-content: space-between;
         align-items: center;
         margin: 0 auto;
+        &-newlogin {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 25px;
+            width: 420px;
+            height: 65px;
+            font-size: 24px;
+        }
+        &-yourPassword,
         &-newPassword,
         &-repeatPassword {
             margin-top: 10px;
@@ -538,6 +560,7 @@
     left: 0;
     visibility: visible;
     transition: transform .4s ease;
+    z-index: 10;
     &__container {
         width: 600px; 
         height: auto; 
@@ -588,10 +611,11 @@
     margin: 35px auto 15px;
     width: 70%;
     text-align: center;
-    color: white;
+    color: $d-text-color;
     font-size: 35px;
     cursor: default;
     word-break: break-word;
+    font-weight: 300;
     }
     &__buttons {
         margin: 45px auto 40px; 
@@ -624,13 +648,6 @@
         animation: none;
     }
 }
-// .delete-person {
-//     display: none;
-// }
-.hide {
-    display: none;
-}
-
 /* LIGHT THEME */
 .theme-light {
     &.general {
@@ -645,27 +662,28 @@
     .side--border {
         border-left: 1px solid $l-text-color;
     }
-    // .tr {
-    //     &__th {
-    //         border: 1px solid $d-border-color;
-    //         background: $d-text-color;
-    //     }
-    //     &__td {
-    //         border: 1px solid $d-border-color;
-    //         background: $d-hover-color;
-    //     }
-    // }
-    // .td {
-    //     border: 1px solid $d-border-color;
-    //     background: $d-table-td;
-    // }
     .header {
         background: $l-header-bg;
         &__logo {
             color: $l-text-color; 
-            // &-icon {
-            //     color: $d-table-nav;
-            // }
+        }
+        &__nav {
+            &-language {
+                &:hover {
+                    color: $l-hover-color;
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
+            &-theme {
+                &:hover {
+                    color: $l-hover-color;
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
         }
     }
     .panel {
@@ -675,7 +693,7 @@
         &__control {
             &-create {
                 &:hover {
-                    color: $d-hover-color;
+                    color: $l-hover-color;
                 }
                 &:disabled {
                     color: $d-placeholder-color;
@@ -683,26 +701,142 @@
             }
             &-update {
                 &:hover {
-                    color: $d-hover-color;
+                    color: $l-hover-color;
                 }
                 &:disabled {
                     color: $d-placeholder-color;
                 }
             }
             &-clearAll {
-                background: $d-clearAll;
+                background: $l-clearAll;
                 color: $d-text-color;
                 &:hover {
-                    color: $d-hover-color;
+                    color: $l-hover-color;
                 }
+            }
+        }
+        &__input {
+            &:focus {
+                outline: none;
+                border: 2px solid $l-hover-color;
             }
         }
     }
     .table {
+        &__panel {
+            & ul ul {
+                background: $l-table-nav;
+                border-top: 5px solid $l-main-page-bg;
+            }
+        }
+        &__nav {
+            &-sort {
+                background: $l-table-nav;
+            }
+            &-dms {
+                background: $l-table-nav;
+            }
+        }
         &__input {
             &:focus {
-                outline: none;
-                border: 1px solid $l-text-color;
+                outline: 2px solid $l-hover-color;
+            }
+        }
+    }
+    .side-border {
+        border-left: 3px solid $l-text-color;
+    }
+    // settings popup
+    .settingsPopup {
+        background-color: $l-modal-bg;
+        &__container {
+            border: 2px solid $l-table-nav;
+            background: $l-main-page-bg;
+        }
+        &__button {
+            &-close {
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 3px;
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    margin-top: -2px;
+                    background: $l-table-nav;
+                }
+                &::after {
+                    content: '';
+                    width: 3px;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    margin-left: -2px;
+                    background: $l-table-nav;
+                }
+            }
+        }
+        &__header {
+            color: $l-text-color;
+        }
+        &__buttons {
+            &-confirm,
+            &-cancel {
+                background: $l-table-nav;
+                color: $l-text-color;
+                &:hover,
+                &:hover {
+                    background: $l-hover-color;
+                    color: $l-main-page-bg;
+                }
+            }
+        }
+    }
+    // clear all popup
+    .clearAllPopup {
+        background-color: $l-modal-bg;
+        &__container {
+            border: 2px solid $l-table-nav; 
+            background: $l-main-page-bg; 
+        }
+        &__button {
+            &-close {
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 3px;
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    margin-top: -2px;
+                    background: $l-table-nav;
+                }
+                &::after {
+                    content: '';
+                    width: 3px;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    margin-left: -2px;
+                    background: $l-table-nav;
+                }
+            }
+        }
+        &__header {
+        color: $l-text-color;
+        }
+        &__buttons {
+            &-confirm,
+            &-cancel {
+                background: $l-table-nav;
+                color: $l-text-color;
+                &:hover,
+                &:hover {
+                    background: $l-hover-color;
+                    color: $l-main-page-bg;
+                }
             }
         }
     }

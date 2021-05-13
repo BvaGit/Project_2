@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>    
-    <div id="general" class="general">
+    <div id="general" class="general theme-light">
         <header id="header" class="header">
             <div class="header__bar container">
                 <div class="header__logo">
@@ -17,15 +17,15 @@
                 <div class="header__nav">
                     <label id="language" for="language">
                         <select name="language" id="select-language" class="header__nav-language nav-input-styles">
-                            <option value="en">En</option>
-                            <option value="ua">Ua</option>
+                            <option value="en" data-translate="en" selected>En</option>
+                            <option value="ua" data-translate="ua">Ua</option>
                         </select>
                     </label>
                     <span class="side--border"></span>
                     <label id="theme" for="theme">
                         <select name="theme" id="select-theme" class="header__nav-theme nav-input-styles">
-                            <option class="lang" value="light">Light</option>
-                            <option class="lang" value="dark">Dark</option>
+                            <option value="light" data-translate="light">Light</option>
+                            <option value="dark" data-translate="dark">Dark</option>
                         </select>
                     </label>
                     <span class="side--border"></span>
@@ -44,31 +44,38 @@
             <div class="container">
                 <div id="panel" class="panel">
                     <div class="panel__inputs">
-                        <label for="firstName" class="panel__label lang">First name
-                            <input type="text" name="firstName" id="firstnameInput" class="panel__inputs-firstName panel__input" placeholder="First name" maxlength="21">
+                        <label for="firstName" class="panel__label">
+                            <span data-translate="firstName">First name</span>
+                            <input type="text" name="firstName" id="firstnameInput" class="panel__inputs-firstName panel__input" data-placeholder="firstName" placeholder="First name" maxlength="21">
                         </label>
-                        <label for="city" class="panel__label lang">City
-                            <input type="text" name="city" id="cityInput" class="panel__inputs-city panel__input" placeholder="City" maxlength="21">
+                        <label for="city" class="panel__label">
+                            <span data-translate="city">City</span>
+                            <input type="text" name="city" id="cityInput" class="panel__inputs-city panel__input" data-placeholder="city" placeholder="City" maxlength="21">
                         </label>
-                        <label for="email" class="panel__label lang">Email
-                            <input type="email" name="email" id="emailInput" class="panel__inputs-email panel__input" placeholder="Email" maxlength="21">
+                        <label for="email" class="panel__label">
+                            <span data-translate="email">Email</span>
+                            <input type="email" name="email" id="emailInput" class="panel__inputs-email panel__input" data-placeholder="email" placeholder="Email" maxlength="21">
                         </label>
-                        <label for="lastName" class="panel__label lang">Last name
-                            <input type="text" name="lastName" id="lastnameInput" class="panel__inputs-lastName panel__input" placeholder="Last name" maxlength="21">
+                        <label for="lastName" class="panel__label">
+                            <span data-translate="lastName">Last name</span>
+                            <input type="text" name="lastName" id="lastnameInput" class="panel__inputs-lastName panel__input" data-placeholder="lastName" placeholder="Last name" maxlength="21">
                         </label>
-                        <label for="phone" class="panel__label lang">Phone number
-                            <input type="tel" name="phone" id="phonenumberInput" class="panel__inputs-phone panel__input" placeholder="Phone number">
+                        <label for="phone" class="panel__label">
+                            <span data-translate="phone">Phone number</span>
+                            <input type="tel" name="phone" id="phonenumberInput" class="panel__inputs-phone panel__input" data-placeholder="phone" placeholder="Phone number">
                         </label>
-                        <label for="company" class="panel__label lang">Company name
-                            <input type="text" name="company" id="companynameInput" class="panel__inputs-company panel__input" placeholder="Company name" maxlength="21">
+                        <label for="company" class="panel__label">
+                            <span data-translate="company">Company name</span>
+                            <input type="text" name="company" id="companynameInput" class="panel__inputs-company panel__input" data-placeholder="company" placeholder="Company name" maxlength="21">
                         </label>
-                        <label for="age" class="panel__label lang">Age
-                            <input type="number" name="age" id="ageInput" class="panel__inputs-age panel__input" placeholder="Age" min="0" max="200" maxlength="3">
+                        <label for="age" class="panel__label">
+                            <span data-translate="age">Age</span>
+                            <input type="number" name="age" id="ageInput" class="panel__inputs-age panel__input" data-placeholder="age" placeholder="Age" min="0" max="200" maxlength="3">
                         </label>
                         <div class="panel__control">
-                            <button id="create" class="panel__control-create panel-control-style lang">Create</button>
+                            <button id="create" class="panel__control-create panel-control-style"><span data-translate="create">Create</span></button>
                             <span class="side-border"></span>
-                            <button id="update" class="panel__control-update panel-control-style lang">Update</button>
+                            <button id="update" class="panel__control-update panel-control-style"><span data-translate="update">Update</span></button>
                         </div>
                     </div>
                 </div>
@@ -86,38 +93,38 @@
                                 <li><a href="#" class="table__nav-hover" id="GraphDB">GraphDB</a></li>
                               </ul>
                             </li>
-                            <li><a href="#" id="sort" class="table__nav-sort lang">Sort</a>
+                            <li><a href="#" id="sort" class="table__nav-sort"><span data-translate="sort">Sort</span></a>
                               <ul class="table__sortDropdown">
-                                <li><a href="#" class="table__nav-hover lang" id="firstNameSort">First name</a></li>
-                                <li><a href="#" class="table__nav-hover lang" id="lastnameSort">Last name</a></li>
-                                <li><a href="#" class="table__nav-hover lang" id="ageSort">Age</a></li>
-                                <li><a href="#" class="table__nav-hover lang" id="citySort">City</a></li>
-                                <li><a href="#" class="table__nav-hover lang" id="phonenumberSort">Phone number</a></li>
-                                <li><a href="#" class="table__nav-hover lang" id="emailSort">Email</a></li>
-                                <li><a href="#" class="table__nav-hover lang" id="companynameSort">Company name</a></li>
+                                <li><a href="#" class="table__nav-hover" id="firstNameSort"><span data-translate="firstName">First name</span></a></li>
+                                <li><a href="#" class="table__nav-hover" id="lastnameSort"><span data-translate="lastName">Last name</span></a></li>
+                                <li><a href="#" class="table__nav-hover" id="ageSort"><span data-translate="age">Age</span></a></li>
+                                <li><a href="#" class="table__nav-hover" id="citySort"><span data-translate="city">City</span></a></li>
+                                <li><a href="#" class="table__nav-hover" id="phonenumberSort"><span data-translate="phone">Phone number</span></a></li>
+                                <li><a href="#" class="table__nav-hover" id="emailSort"><span data-translate="email">Email</span></a></li>
+                                <li><a href="#" class="table__nav-hover" id="companynameSort"><span data-translate="company">Company name</span></a></li>
                               </ul>
                             </li>
                            </ul>
                         <div class="table__search">
                             <image id="search-icon" src="../img/serch.png" class="table__search-icon"/>
                             <label class="table__search-labelFN" for="searchFN">
-                                <input type="text" name="searchFN" id="searchFirstname" class="table__search-firstName table__input" placeholder="First name" maxlength="22">
+                                <input type="text" name="searchFN" id="searchFirstname" class="table__search-firstName table__input" data-placeholder="firstName" placeholder="First name" maxlength="22">
                             </label>
                             <label class="table__search-labelLN" for="searchLN">
-                                <input type="text" name="searchLN" id="searchLastname" class="table__search-lastName table__input" placeholder="Last name" maxlength="25">
+                                <input type="text" name="searchLN" id="searchLastname" class="table__search-lastName table__input" data-placeholder="lastName" placeholder="Last name" maxlength="25">
                             </label>
                         </div>
                     </div>
                     <table id="table" class="table__data">
                         <thead id="thead" class="table__data-head thead">
                             <tr class="thead__tr">
-                                <th class="tr__th lang">First Name</th>
-                                <th class="tr__th lang">Last name</th>
-                                <th class="tr__th lang">Age</th>
-                                <th class="tr__th lang">City</th>
-                                <th class="tr__th lang">Phone number</th>
-                                <th class="tr__th lang">Email</th>
-                                <th class="tr__th lang">Company name</th>
+                                <th class="tr__th"><span data-translate="firstName">First name</span></th>
+                                <th class="tr__th"><span data-translate="lastName">Last name</span></th>
+                                <th class="tr__th"><span data-translate="age">Age</span></th>
+                                <th class="tr__th"><span data-translate="city">City</span></th>
+                                <th class="tr__th"><span data-translate="phone">Phone number</span></th>
+                                <th class="tr__th"><span data-translate="email">Email</span></th>
+                                <th class="tr__th"><span data-translate="company">Company name</span></th>
                             </tr>
                         </thead>
                         <tbody id="tbody" class="table__data-body tbody">
@@ -144,7 +151,7 @@
                         </tbody>
                     </table>
                 </div>
-                <button id="clearAll" class="panel__control-clearAll panel-control-style lang">Clear All</button>
+                <button id="clearAll" class="panel__control-clearAll panel-control-style"><span data-translate="clearAll">Clear All</span></button>
             </div>
         </main>
         <footer id="footer" class="footer">
@@ -154,7 +161,7 @@
                 <span>QWERTY</span>
             </div>
         </footer>        
-    </div>
+
     
     <!-- SETTINGS POPUP --> 
     <div id="settingsPopup" class="settingsPopup hideSettingsPopup">
@@ -162,19 +169,21 @@
             <div id="closeSettingsPopUp" class="settingsPopup__button">
                 <button id="closeSettingsPU" class="settingsPopup__button-close"></button>
             </div>
-                <h1 class="settingsPopup__header lang">SETTINGS</h1>
+                <h1 class="settingsPopup__header"><span data-translate="settings">SETTINGS</span></h1>
+                <span class="settingsPopup__header-help" data-translate="help">you can change your password and login</span>
                 <div class="settingsPopup__group">
-                    <input type="password" name="yourPassword" id="yourPassword" placeholder="Your password" class="settingsPopup__group-yourPassword settingsPopup__input">
+                    <input type="text" name="newLogin" id="newLogin" data-placeholder="newLogin" placeholder="New login" class="settingsPopup__group-newlogin">
+                    <input type="password" name="yourPassword" id="yourPassword" data-placeholder="yourPassword" placeholder="Your password" class="settingsPopup__group-yourPassword settingsPopup__input">
                     <span class="eye">&#128065;</span>
-                    <input type="password" name="newPassword" id="newPassword" placeholder="New password" class="settingsPopup__group-newPassword settingsPopup__input">
+                    <input type="password" name="newPassword" id="newPassword" data-placeholder="newPassword" placeholder="New password" class="settingsPopup__group-newPassword settingsPopup__input">
                     <span class="eye">&#128065;</span>
-                    <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password" class="settingsPopup__group-repeatPassword settingsPopup__input">
+                    <input type="password" name="repeatPassword" id="repeatPassword" data-placeholder="repeatPassword" placeholder="Repeat password" class="settingsPopup__group-repeatPassword settingsPopup__input">
                     <span class="eye">&#128065;</span>
                     
                 </div>
                 <div class="settingsPopup__buttons">
-                    <button id="settingsPopupConfirm" type="button" class="settingsPopup__buttons-confirm btn lang">CONFIRM</button>
-                    <button id="settingsPopupCancel" type="button" class="settingsPopup__buttons-cancel btn lang">CANCEL</button>
+                    <button id="settingsPopupConfirm" type="button" class="settingsPopup__buttons-confirm btn"><span data-translate="confirm">CONFIRM</span></button>
+                    <button id="settingsPopupCancel" type="button" class="settingsPopup__buttons-cancel btn"><span data-translate="cancel">CANCEL</span></button>
                 </div>
         </div>
     </div>
@@ -184,12 +193,13 @@
             <div id="closeClearAllPopUp" class="clearAllPopup__button">
                 <button id="closeClearAllPU" class="clearAllPopup__button-close"></button>
             </div>
-                <h1 class="clearAllPopup__header">Delete all elements from the table?</h1>
+                <h1 class="clearAllPopup__header"><span data-translate="clarification">Delete all elements from the table?</span></h1>
                 <div class="clearAllPopup__buttons">
-                    <button id="clearAllPopupConfirm" type="button" class="clearAllPopup__buttons-confirm btn">DELETE</button>
-                    <button id="clearAllPopupCancel" type="button" class="clearAllPopup__buttons-cancel btn">CANCEL</button>
+                    <button id="clearAllPopupConfirm" type="button" class="clearAllPopup__buttons-confirm btn"><span data-translate="delete">DELETE</span></button>
+                    <button id="clearAllPopupCancel" type="button" class="clearAllPopup__buttons-cancel btn"><span data-translate="cancel">CANCEL</span></button>
                 </div>
         </div>
     </div>
+</div>
 </body>
 </html>
