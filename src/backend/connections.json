@@ -4,6 +4,10 @@
     "user": "root",
     "password": "root",
     "database": "crud_project"
-
+  },
+  "cassandra_connection": {
+    "contactPoints": ["127.0.0.1:9042"],
+    "localDataCenter": "datacenter1",
+    "keyspace": "qwerty"
   }
 }
