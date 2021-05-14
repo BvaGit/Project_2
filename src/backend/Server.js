@@ -5,14 +5,14 @@ import { ServerOptions } from './service/ServerOptions.js'
 import { MySQLConnector } from './connectors/MySQLConnector.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
 import { BaseConnector } from './connectors/BaseConnector.js'
+import { JwtService } from './service/JwtService.js';
 
 class Server {
   #app
   #PORT
   #router
 
-  constructor(PORT) {
-    this.#PORT = PORT || 8080
+  constructor() {
     this.#app = express()
     this.#router = Router()
 
@@ -27,10 +27,11 @@ class Server {
     this.#app.use(cors());
     this.#app.use(express.json())
     this.#app.use(express.urlencoded({ extended: true }))
-    this.#app.use(logger)    
+    this.#app.use(logger)
+    this.#app.use(JwtService.authenticateToken)
     this.#app.use(this.#router)
 
-    this.#app.listen(this.#PORT, func)
+    this.#app.listen(process.env.PORT, func)
   }
 
   addRoute(options, func) {
@@ -188,6 +189,25 @@ class Server {
         }
         res.status(200).send(`user with id: ${req.params.id} successfully deleted`)
       })
+    })
+
+    this.addRoute(new ServerOptions('POST','mysql/auth'), (req, res) => {
+      const body = req.body
+      if (typeof body.login === 'string' && typeof body.password === 'string') {
+        connection.getUserByLoginAndPassword(body, (err, rows)=>{
+          if(err) {
+            return console.error(`Error:${err.message}`);
+          }
+          if(rows.length > 0){
+            const userLogin = rows[0].login
+
+            const token = JwtService.generateAccessToken(userLogin)
+            res.status(200).json({id: rows[0].id ,token})
+          }
+          else 
+          res.status(401).json({message: "Unauthorized"})
+        })
+      }
     })
   }
 }
