@@ -5,11 +5,22 @@
     font-family: sans-serif;
 }
 
-$main-page-bg: rgb(26, 26, 26);
-$footer-copyright-sign: rgb(92, 92, 92);
-$text-color: rgb(255,255,255);
-$placeholder-color: #aaa;
-$hover-color: #ff0;
-$table-nav: #5c5c0d;
-$table-td: #ffffb5;
-$modal-bg: rgba(26, 26, 26, 0.9);
+$d-main-page-bg: rgb(26, 26, 26);
+$d-border-color: rgb(26, 26, 26);
+$d-footer-copyright-sign: rgb(92, 92, 92);
+$d-text-color: rgb(255,255,255);
+$d-placeholder-color: #aaa;
+$d-hover-color: #ff0;
+$d-table-nav: #5c5c0d;
+$d-table-td: #ffffb5;
+$d-modal-bg: rgba(26, 26, 26, 0.9);
+$d-clearAll: rgb(255, 0, 0);
+
+$l-main-page-bg: rgb(255, 255, 235);
+$l-header-bg: #ffb179;
+$l-footer-copyright-sign: rgb(92, 92, 92);
+$l-text-color: #333;
+$l-modal-bg: rgba(255, 253, 225, 0.9);
+$l-table-nav: #8a8a08;
+$l-hover-color: rgb(255, 208, 0);
+$l-clearAll: rgb(255, 80, 80);

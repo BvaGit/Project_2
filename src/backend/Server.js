@@ -1,11 +1,17 @@
 import express, { Router } from 'express'
+import cors from 'cors';
 import { logger } from './middleware/logger.js'
 import { ServerOptions } from './service/ServerOptions.js'
 import { MySQLConnector } from './connectors/MySQLConnector.js'
+
 import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { JwtService } from './service/JwtService.js'
 import cors from 'cors'
+
+import { CassandraConnector } from './connectors/CassandraConnector.js'
+import { BaseConnector } from './connectors/BaseConnector.js'
+
 
 class Server {
   #app
@@ -16,21 +22,28 @@ class Server {
   
     this.#app = express()
     this.#router = Router()
+
     
     
     
     const mySqlConnector = new MySQLConnector()
     const redisConnector = new RedisConnector()
     const mongoDbConnector = new MongoDBConnector()
+    const cassandraConnector = new CassandraConnector();
 
     this.#enableMySQLUsers(mySqlConnector)
     this.#enableConnector(mySqlConnector, 'mysql')
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
+    this.#enableSQL(cassandraConnector, 'cassandra')
+
     
+  
+
   }
 
   serve(func) {
+    this.#app.use(cors());
     this.#app.use(express.json())
     this.#app.use(express.urlencoded({ extended: true }))
     this.#app.use(cors())
@@ -129,8 +142,9 @@ class Server {
       res.status(400).json({message:'person update failed'})
     })
 
-    this.addRoute(new ServerOptions('GET', `${dbms}/persons/:id`), (req, res) => {
-      connector.deletePersonById(req.params.id, err => {
+
+    this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/:id`), (req, res) => {
+      connection.deletePersonById(req.params.id, err => {
         if (err) {
           return console.error(`Error:${err.message}`)
         }
@@ -146,7 +160,7 @@ class Server {
         if (rows.hasOwnProperty('rows')){
           rows = rows.rows
         }
-        res.status(200).json(persons)
+        res.status(200).json(rows)
       })
     })
   }
