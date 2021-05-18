@@ -24,6 +24,7 @@ class Server {
     const mongoDbConnector = new MongoDBConnector()
 
     this.#enableMySQLUsers(mySqlConnector)
+    
     this.#enableConnector(mySqlConnector, 'mysql')
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
