@@ -3,34 +3,56 @@ import cors from 'cors';
 import { logger } from './middleware/logger.js'
 import { ServerOptions } from './service/ServerOptions.js'
 import { MySQLConnector } from './connectors/MySQLConnector.js'
+
+import { RedisConnector } from './connectors/RedisConnector.js'
+import { MongoDBConnector } from './connectors/MongoDBConnector.js'
+import { JwtService } from './service/JwtService.js'
+import cors from 'cors'
+
 import { CassandraConnector } from './connectors/CassandraConnector.js'
 import { BaseConnector } from './connectors/BaseConnector.js'
 
+
 class Server {
   #app
-  #PORT
   #router
+  
 
-  constructor(PORT) {
-    this.#PORT = PORT || 8080
+  constructor() {
+  
     this.#app = express()
     this.#router = Router()
 
-    const mySqlConnector = new MySQLConnector();
+    
+    
+    
+    const mySqlConnector = new MySQLConnector()
+    const redisConnector = new RedisConnector()
+    const mongoDbConnector = new MongoDBConnector()
     const cassandraConnector = new CassandraConnector();
+
     this.#enableMySQLUsers(mySqlConnector)
-    this.#enableSQL(mySqlConnector, 'mysql')
+    this.#enableConnector(mySqlConnector, 'mysql')
+    this.#enableConnector(redisConnector,'redis')
+    this.#enableConnector(mongoDbConnector, 'mongodb')
     this.#enableSQL(cassandraConnector, 'cassandra')
+
+    
+  
+
   }
 
   serve(func) {
     this.#app.use(cors());
     this.#app.use(express.json())
     this.#app.use(express.urlencoded({ extended: true }))
-    this.#app.use(logger)    
+    this.#app.use(cors())
+    this.#app.use(logger)  
+    this.#app.use(JwtService.authenticateToken)
+  
     this.#app.use(this.#router)
-
-    this.#app.listen(this.#PORT, func)
+    
+    this.#app.listen(process.env.PORT, func)
   }
 
   addRoute(options, func) {
@@ -50,9 +72,9 @@ class Server {
     }
   }
 
-  #enableSQL(connection, dbms) {
+  #enableConnector(connector, dbms) {
     this.addRoute(new ServerOptions('GET', `${dbms}/persons`), (req, res) => {
-      connection.getPersons((err, rows) => {
+      connector.getPersons((err, rows) => {
         if (err){
           return console.error(`Error: ${err.message}`);
         }
@@ -64,7 +86,7 @@ class Server {
     })
 
     this.addRoute(new ServerOptions('GET', `${dbms}/persons/all`), (req, res) => {
-      connection.getAllPersons((err, rows) => {
+      connector.getAllPersons((err, rows) => {
         if (err) {
           return console.error(`Error: ${err.message}`);
         }
@@ -76,7 +98,7 @@ class Server {
     })
 
     this.addRoute(new ServerOptions('GET', `${dbms}/persons/:id`), (req, res) => {
-      connection.getAllPersonsByUserId(req.params.id, (err, rows) =>{
+      connector.getPersonsByUserId(req.params.id, (err, rows) => {
         if (err) {
           return console.error(`Error:${err.message}`)
         }
@@ -97,11 +119,11 @@ class Server {
           && typeof body.email === 'string'
           && typeof body.companyName === 'string'
           && typeof body.user_id === 'number' && body.user_id > 0) {
-        connection.postPerson(body)
-        res.status(201).send('person creation is succeeded')
+        connector.postPerson(body)
+        res.status(201).json({message:'person creation is succeeded'})
         return
       }
-      res.status(400).send('person creation failed')
+      res.status(400).json({message:'person creation failed'})
     })
     
     this.addRoute(new ServerOptions('PUT', `${dbms}/persons/:id`), (req, res) => {
@@ -113,24 +135,25 @@ class Server {
           && typeof body.phoneNumber === 'string'
           && typeof body.email === 'string'
           && typeof body.companyName === 'string') {
-        connection.putPerson({id: req.params.id, ...body})
-        res.status(200).send('person update is succeeded')
+        connector.putPerson({id: req.params.id, ...body})
+        res.status(200).json({message:'person update is succeeded'})
         return
       }
-      res.status(400).send('person update failed')
+      res.status(400).json({message:'person update failed'})
     })
+
 
     this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/:id`), (req, res) => {
       connection.deletePersonById(req.params.id, err => {
         if (err) {
           return console.error(`Error:${err.message}`)
         }
-        res.status(200).send(`person with id: ${req.params.id} successfully deleted`)
+        res.status(200).json({message:`person with id: ${req.params.id} successfully deleted`})
       })
     })
 
     this.addRoute(new ServerOptions('GET',`${dbms}/persons/:id/deleted`), (req, res) => {
-      connection.getDeletedPersonsByUserId(Number(req.params.id),(err, rows) =>{
+      connector.getDeletedPersonsByUserId(Number(req.params.id),(err, rows) =>{
         if (err) {
           return console.error(`Error: ${err.message}`)
         }
@@ -165,20 +188,20 @@ class Server {
       const body = req.body
       if (typeof body.login === 'string' && typeof body.password === 'string') {
         connection.postUser(body)
-        res.status(201).send('user creation is succeeded')
+        res.status(201).json({message:'user creation succeeded'})
         return
       }
-      res.status(400).send('user creation failed')
+      res.status(400).json({message:'user creation failed'})
     })
     
     this.addRoute(new ServerOptions('PUT','mysql/users/:id'), (req, res) => {
       const body = req.body
       if (typeof body.login === 'string' && typeof body.password === 'string') {
         connection.putUser({id:req.params.id, ...body})
-        res.status(200).send('user update is succeeded')
+        res.status(200).json({message:'user update is succeeded'})
         return
       }
-      res.status(400).send('user update failed')
+      res.status(400).json({message:'user update failed'})
     })
 
     this.addRoute(new ServerOptions('DELETE','mysql/users/:id'), (req, res) => {
@@ -186,9 +209,30 @@ class Server {
         if (err) {
           return console.error(`Error:${err.message}`)
         }
-        res.status(200).send(`user with id: ${req.params.id} successfully deleted`)
+        res.status(200).json({message:`user with id: ${req.params.id} successfully deleted`})
       })
     })
+    
+    this.addRoute(new ServerOptions('POST','mysql/auth'), (req, res) => {
+      const body = req.body
+      if (typeof body.login === 'string' && typeof body.password === 'string') {
+        connection.getUserByLoginAndPassword(body, (err, rows) => {
+          if (err) {
+            return console.error(`Error: ${err.message}`)
+          }
+          if (rows.length > 0) {
+            const userLogin = rows[0].login
+            const token = JwtService.generateAccessToken({login: userLogin})
+            res.status(200).json({id: rows[0].id, token})
+          } else {
+            res.status(401).json({message: "Unauthorized"})
+          }
+        })
+
+      }
+    })
+
+    
   }
 }
 
