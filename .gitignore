@@ -1,4 +1,5 @@
 node_modules/
 dist/
-.idea/
-package-lock.json
+src/backend/.idea/
+src/backend/package-lock.json
+package-lock.json/
