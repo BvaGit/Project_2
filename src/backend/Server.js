@@ -3,11 +3,14 @@ import cors from 'cors';
 import { logger } from './middleware/logger.js'
 
 import { ServerOptions } from './service/ServerOptions.js'
+
 import { MySQLConnector } from './connectors/MySQLConnector.js'
+import {PgConnect} from './connectors/PostgreSQLConnector.js';
 import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { JwtService } from './service/JwtService.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
+
 
 
 class Server {
@@ -24,12 +27,15 @@ class Server {
     const redisConnector = new RedisConnector()
     const mongoDbConnector = new MongoDBConnector()
     const cassandraConnector = new CassandraConnector();
-
+    const pgConnect = new PgConnect();
     this.#enableMySQLUsers(mySqlConnector)
+
+    this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(mySqlConnector, 'mysql')
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
     this.#enableConnector(cassandraConnector, 'cassandra')
+
 
   }
 
@@ -132,7 +138,6 @@ class Server {
       }
       res.status(400).json({message:'person update failed'})
     })
-
 
     this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/:id`), (req, res) => {
       connection.deletePersonById(req.params.id, err => {
