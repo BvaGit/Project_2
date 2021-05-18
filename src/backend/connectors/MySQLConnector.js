@@ -1,7 +1,7 @@
 import mysql  from 'mysql'
 import { BaseConnector }  from './BaseConnector.js'
-import fs from 'fs'
-import path from 'path'
+import { JsonReader } from '../service/JsonReader.js'
+
 
 class MySQLConnector extends BaseConnector{
   #connection
@@ -9,10 +9,10 @@ class MySQLConnector extends BaseConnector{
   constructor(){
     super()
 
-    const __dirname = path.resolve()
-    const connections = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'connections.json')))
+    const connection = new JsonReader().read('connections.json').mysql_connection
+
     this.#connection = mysql.createConnection({
-      ...connections.mysql_connection
+      ...connection
     })
     this.#open()
   }
@@ -57,13 +57,13 @@ class MySQLConnector extends BaseConnector{
     this.#query('SELECT * FROM users', func)
   }
   
-  getAllPersonsByUserId(user_id, func) {
-    super.getAllPersonsByUserId(user_id, func)
+  getPersonsByUserId(user_id, func) {
+    super.getPersonsByUserId(user_id, func)
     this.#query(`SELECT * FROM persons WHERE user_id =${user_id} AND deleted=0`, func)
   }
 
   getDeletedPersonsByUserId(user_id, func) {
-    super.getAllPersonsByUserId(user_id, func)
+    super.getDeletedPersonsByUserId(user_id, func)
     this.#query(`SELECT * FROM persons WHERE user_id =${user_id} AND deleted=1`, func)
   }
 
@@ -94,6 +94,10 @@ class MySQLConnector extends BaseConnector{
 
   putUser(user, func) {
     this.#query(`UPDATE users SET login='${user.login}', password='${user.password}' WHERE id=${user.id}`, func)
+  }
+
+  getUserByLoginAndPassword(user, func) {
+    this.#query(`SELECT * FROM users WHERE login='${user.login}' AND password='${user.password}'`, func)
   }
 }
   
