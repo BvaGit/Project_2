@@ -57,13 +57,13 @@ class MySQLConnector extends BaseConnector{
     this.#query('SELECT * FROM users', func)
   }
   
-  getAllPersonsByUserId(user_id, func) {
-    super.getAllPersonsByUserId(user_id, func)
+  getPersonsByUserId(user_id, func) {
+    super.getPersonsByUserId(user_id, func)
     this.#query(`SELECT * FROM persons WHERE user_id =${user_id} AND deleted=0`, func)
   }
 
   getDeletedPersonsByUserId(user_id, func) {
-    super.getAllPersonsByUserId(user_id, func)
+    super.getDeletedPersonsByUserId(user_id, func)
     this.#query(`SELECT * FROM persons WHERE user_id =${user_id} AND deleted=1`, func)
   }
 
@@ -94,6 +94,10 @@ class MySQLConnector extends BaseConnector{
 
   putUser(user, func) {
     this.#query(`UPDATE users SET login='${user.login}', password='${user.password}' WHERE id=${user.id}`, func)
+  }
+
+  getUserByLoginAndPassword(user, func) {
+    this.#query(`SELECT * FROM users WHERE login='${user.login}' AND password='${user.password}'`, func)
   }
 }
   

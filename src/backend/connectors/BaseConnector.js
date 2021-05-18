@@ -2,7 +2,7 @@
 class BaseConnector {
   getAllPersons(func) {};
   getPersons(func) {}
-  getAllPersonsByUserId(userId, func) {};
+  getPersonsByUserId(userId, func) {};
   postPerson(person, funс) {};
   putPerson(person, func) {};
   deletePersonById(personId, func) {}
