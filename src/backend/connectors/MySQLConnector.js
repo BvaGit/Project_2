@@ -1,7 +1,7 @@
 import mysql  from 'mysql'
 import { BaseConnector }  from './BaseConnector.js'
-import fs from 'fs'
-import path from 'path'
+import { JsonReader } from '../service/JsonReader.js'
+
 
 class MySQLConnector extends BaseConnector{
   #connection
@@ -9,10 +9,10 @@ class MySQLConnector extends BaseConnector{
   constructor(){
     super()
 
-    const __dirname = path.resolve()
-    const connections = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'connections.json')))
+    const connection = new JsonReader().read('connections.json').mysql_connection
+
     this.#connection = mysql.createConnection({
-      ...connections.mysql_connection
+      ...connection
     })
     this.#open()
   }
