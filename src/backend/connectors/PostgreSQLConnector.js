@@ -4,20 +4,29 @@ import path from 'path';
 import fs from 'fs';
 
 class PgConnect extends BaseConnector{
-    connection
+    #connection
     constructor(){
        super();
 
        const __dirname = path.resolve()
-       const connections = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'connectionsPG.json')));
-       this.connection = new pg.Pool({
+       const connections = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'connections.json')));
+       this.#connection = new pg.Pool({
          ...connections.pg_connect
        });
-       console.log(this.connection);
+       this.#open();
+    }
+
+    #open() {
+      this.#connection.connect(err =>{
+        if (err) {
+          return console.error(`Error: ${err.message}`)
+        }
+        console.log('Connection to PostgreSQL successfully opened');
+      });
     }
 
     #query(query, func) {
-        this.connection.query(query, func)
+        this.#connection.query(query, func)
       }
 
     getAllPersons(func){
