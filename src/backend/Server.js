@@ -5,11 +5,12 @@ import { logger } from './middleware/logger.js'
 import { ServerOptions } from './service/ServerOptions.js'
 
 import { MySQLConnector } from './connectors/MySQLConnector.js'
-import {PgConnect} from './connectors/PostgreSQLConnector.js';
+import { PgConnect } from './connectors/PostgreSQLConnector.js';
 import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { JwtService } from './service/JwtService.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
+import { Neo4jConnector } from './connectors/Neo4jConnector.js'
 
 
 
@@ -23,18 +24,20 @@ class Server {
     this.#app = express()
     this.#router = Router()
          
-    const mySqlConnector = new MySQLConnector()
-    const redisConnector = new RedisConnector()
-    const mongoDbConnector = new MongoDBConnector()
-    const cassandraConnector = new CassandraConnector();
-    const pgConnect = new PgConnect();
-    this.#enableMySQLUsers(mySqlConnector)
+    // const mySqlConnector = new MySQLConnector()
+    // const redisConnector = new RedisConnector()
+    // const mongoDbConnector = new MongoDBConnector()
+    // const cassandraConnector = new CassandraConnector();
+    // const pgConnect = new PgConnect();
+    const neo4jConnector = new Neo4jConnector();
+    // this.#enableMySQLUsers(mySqlConnector)
 
-    this.#enableConnector(pgConnect, 'pg');
-    this.#enableConnector(mySqlConnector, 'mysql')
-    this.#enableConnector(redisConnector,'redis')
-    this.#enableConnector(mongoDbConnector, 'mongodb')
-    this.#enableConnector(cassandraConnector, 'cassandra')
+    // this.#enableConnector(pgConnect, 'pg');
+    // this.#enableConnector(mySqlConnector, 'mysql')
+    // this.#enableConnector(redisConnector,'redis')
+    // this.#enableConnector(mongoDbConnector, 'mongodb')
+    // this.#enableConnector(cassandraConnector, 'cassandra')
+    this.#enableConnector(neo4jConnector, 'neo4j')
 
 
   }
@@ -45,7 +48,7 @@ class Server {
     this.#app.use(express.urlencoded({ extended: true }))
     this.#app.use(cors())
     this.#app.use(logger)  
-    this.#app.use(JwtService.authenticateToken)
+    // this.#app.use(JwtService.authenticateToken)
   
     this.#app.use(this.#router)
     
