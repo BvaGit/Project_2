@@ -1,16 +1,13 @@
 import express, { Router } from 'express'
 import cors from 'cors';
 import { logger } from './middleware/logger.js'
+
 import { ServerOptions } from './service/ServerOptions.js'
 import { MySQLConnector } from './connectors/MySQLConnector.js'
-
 import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { JwtService } from './service/JwtService.js'
-import cors from 'cors'
-
 import { CassandraConnector } from './connectors/CassandraConnector.js'
-import { BaseConnector } from './connectors/BaseConnector.js'
 
 
 class Server {
@@ -22,10 +19,7 @@ class Server {
   
     this.#app = express()
     this.#router = Router()
-
-    
-    
-    
+         
     const mySqlConnector = new MySQLConnector()
     const redisConnector = new RedisConnector()
     const mongoDbConnector = new MongoDBConnector()
@@ -35,10 +29,7 @@ class Server {
     this.#enableConnector(mySqlConnector, 'mysql')
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
-    this.#enableSQL(cassandraConnector, 'cassandra')
-
-    
-  
+    this.#enableConnector(cassandraConnector, 'cassandra')
 
   }
 
