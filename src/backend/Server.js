@@ -130,7 +130,7 @@ class Server {
       res.status(400).json({message:'person update failed'})
     })
 
-    this.addRoute(new ServerOptions('GET', `${dbms}/persons/:id`), (req, res) => {
+    this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/:id`), (req, res) => {
       connector.deletePersonById(req.params.id, err => {
         if (err) {
           return console.error(`Error:${err.message}`)
