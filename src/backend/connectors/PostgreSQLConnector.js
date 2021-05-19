@@ -1,17 +1,16 @@
 import pg from 'pg';
 import { BaseConnector } from './BaseConnector.js';
-import path from 'path';
-import fs from 'fs';
+import { JsonReader } from '../service/JsonReader.js';
 
 class PgConnect extends BaseConnector{
     #connection
     constructor(){
        super();
 
-       const __dirname = path.resolve()
-       const connections = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'connections.json')));
+       
+       const connections = new JsonReader().read('connections.json').pg_connect;
        this.#connection = new pg.Pool({
-         ...connections.pg_connect
+         ...connections
        });
        this.#open();
     }

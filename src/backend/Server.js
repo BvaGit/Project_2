@@ -24,17 +24,17 @@ class Server {
     this.#router = Router()
          
     const mySqlConnector = new MySQLConnector()
-    const redisConnector = new RedisConnector()
-    const mongoDbConnector = new MongoDBConnector()
-    const cassandraConnector = new CassandraConnector();
+   // const redisConnector = new RedisConnector()
+   // const mongoDbConnector = new MongoDBConnector()
+    //const cassandraConnector = new CassandraConnector();
     const pgConnect = new PgConnect();
     this.#enableMySQLUsers(mySqlConnector)
 
     this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(mySqlConnector, 'mysql')
-    this.#enableConnector(redisConnector,'redis')
-    this.#enableConnector(mongoDbConnector, 'mongodb')
-    this.#enableConnector(cassandraConnector, 'cassandra')
+   // this.#enableConnector(redisConnector,'redis')
+   // this.#enableConnector(mongoDbConnector, 'mongodb')
+   // this.#enableConnector(cassandraConnector, 'cassandra')
 
 
   }
