@@ -9,10 +9,10 @@ class MySQLConnector extends BaseConnector{
   constructor(){
     super()
 
-    const connection = new JsonReader().read('connections.json').mysql_connection
-
+    const connections = new JsonReader().read('connections.json').mysql_connection
     this.#connection = mysql.createConnection({
-      ...connection
+      ...connections
+
     })
     this.#open()
   }
