@@ -5,14 +5,29 @@
     "password": "root",
     "database": "crud_project"
     },
-
-    "redis_connection": {
+  
+  "pg_connect":{
+    "host": "localhost",
+    "user": "postgres",
+    "password": "1111",
+    "database": "basepg"
+    },
+  
+   "redis_connection": {
       "host": "localhost",
       "port": "6379"
     },
-    "mongodb_connection": {
+  
+   "mongodb_connection": {
       "url": "mongodb://localhost:27017/crud-project"
+    },
+  
+   "cassandra_connection": {
+    "contactPoints": ["127.0.0.1:9042"],
+    "localDataCenter": "datacenter1",
+    "keyspace": "qwerty"
     }
-
-
 }
+
+
+
