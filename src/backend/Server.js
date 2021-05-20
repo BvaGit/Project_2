@@ -5,7 +5,7 @@ import { logger } from './middleware/logger.js'
 import { ServerOptions } from './service/ServerOptions.js'
 
 import { MySQLConnector } from './connectors/MySQLConnector.js'
-import {PgConnect} from './connectors/PostgreSQLConnector.js';
+// import { PgConnect } from './connectors/PostgreSQLConnector.js';
 import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { JwtService } from './service/JwtService.js'
@@ -27,10 +27,10 @@ class Server {
     const redisConnector = new RedisConnector()
     const mongoDbConnector = new MongoDBConnector()
     const cassandraConnector = new CassandraConnector();
-    const pgConnect = new PgConnect();
+    // const pgConnect = new PgConnect();
     
     this.#enableMySQLUsers(mySqlConnector)
-    this.#enableConnector(pgConnect, 'pg');
+    // this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(mySqlConnector, 'mysql')
    this.#enableConnector(redisConnector,'redis')
    this.#enableConnector(mongoDbConnector, 'mongodb')
@@ -143,7 +143,7 @@ class Server {
 
       connector.deletePersonById(req.params.id, err => {
         if (err) {
-          return console.error(`Error:${err.message}`)
+          return res.status(400).json({message:`person with id: ${req.params.id} does not exists`})
         }
         res.status(200).json({message:`person with id: ${req.params.id} successfully deleted`})
       })
@@ -183,33 +183,45 @@ class Server {
 
     this.addRoute(new ServerOptions('POST','mysql/users'), (req, res) => {
       const body = req.body
-      if (typeof body.login === 'string' && typeof body.password === 'string') {
-        connection.postUser(body)
-        res.status(201).json({message:'user creation succeeded'})
-        return
-      }
-      res.status(400).json({message:'user creation failed'})
+      connection.getUserByLogin(body,(err,rows) => {
+        if (rows.length > 0) {
+          return res.status(400).json({message:'user is already exists'})
+        } 
+        if (typeof body.login === 'string' && typeof body.password === 'string') {
+          connection.postUser(body)
+          res.status(201).json({message:'user creation succeeded'})
+          return
+        }
+        res.status(400).json({message:'user creation failed'})
+      })
+
     })
     
     this.addRoute(new ServerOptions('PUT','mysql/users/:id'), (req, res) => {
       const body = req.body
-      if (typeof body.login === 'string' && typeof body.password === 'string') {
-        connection.putUser({id:req.params.id, ...body})
-        res.status(200).json({message:'user update is succeeded'})
-        return
-      }
-      res.status(400).json({message:'user update failed'})
+      connection.getUserByLogin(body,(err,rows) => {
+        if (rows.length > 0) {
+          return res.status(400).json({message:'login is already exists'})
+        } 
+        if (typeof body.login === 'string' && typeof body.password === 'string') {
+          connection.putUser({id:req.params.id, ...body})
+          res.status(201).json({message:'user update is succeeded'})
+          return
+        }
+        res.status(400).json({message:'user update failed'})
+      })
     })
 
     this.addRoute(new ServerOptions('DELETE','mysql/users/:id'), (req, res) => {
       connection.deleteUserById(req.params.id,(err,row) =>{
         if (err) {
-          return console.error(`Error:${err.message}`)
+          return  res.status(400).json({message:`user with id: ${req.params.id} does not exists`})
         }
         res.status(200).json({message:`user with id: ${req.params.id} successfully deleted`})
       })
     })
     
+   
     this.addRoute(new ServerOptions('POST','mysql/auth'), (req, res) => {
       const body = req.body
       if (typeof body.login === 'string' && typeof body.password === 'string') {
