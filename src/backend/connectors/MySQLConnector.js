@@ -80,7 +80,7 @@ class MySQLConnector extends BaseConnector{
     super.deletePersonById(personId, func)
 
     this.#query(`UPDATE persons SET deleted=1 WHERE id=${personId}`, (err,rows) => {
-      this.#query(`SELECT * FROM persons WHERE id=${personId}`, (err1,rows1) =>{
+      this.#query(`SELECT * FROM persons WHERE id=${personId} AND deleted=0`, (err1,rows1) =>{
         if (rows1.length === 0) {
           func(new Error(), null)
         } else {
@@ -103,7 +103,6 @@ class MySQLConnector extends BaseConnector{
       } )
     })
   }
-
 
   putPerson(person, func) {
     super.putPerson(person, func)
