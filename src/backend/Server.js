@@ -5,7 +5,7 @@ import { logger } from './middleware/logger.js'
 import { ServerOptions } from './service/ServerOptions.js'
 
 import { MySQLConnector } from './connectors/MySQLConnector.js'
-import {PgConnect} from './connectors/PostgreSQLConnector.js';
+import { PgConnect } from './connectors/PostgreSQLConnector.js';
 import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { JwtService } from './service/JwtService.js'
@@ -26,17 +26,15 @@ class Server {
     const mySqlConnector = new MySQLConnector()
     const redisConnector = new RedisConnector()
     const mongoDbConnector = new MongoDBConnector()
-    const cassandraConnector = new CassandraConnector();
     const pgConnect = new PgConnect();
+    const cassandraConnector = new CassandraConnector();
     this.#enableMySQLUsers(mySqlConnector)
 
-    this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(mySqlConnector, 'mysql')
+    this.#enableConnector(cassandraConnector, 'cassandra')
+    this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
-    this.#enableConnector(cassandraConnector, 'cassandra')
-
-
   }
 
   serve(func) {
@@ -140,7 +138,7 @@ class Server {
     })
 
     this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/:id`), (req, res) => {
-      connection.deletePersonById(req.params.id, err => {
+      connector.deletePersonById(req.params.id, err => {
         if (err) {
           return console.error(`Error:${err.message}`)
         }
