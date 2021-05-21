@@ -29,10 +29,11 @@ class Server {
     this.#router = Router()
          
     const mySqlConnector = new MySQLConnector()
-    const redisConnector = new RedisConnector()
-    const mongoDbConnector = new MongoDBConnector()
+    // const redisConnector = new RedisConnector()
+    // const mongoDbConnector = new MongoDBConnector()
 
     const pgConnect = new PgConnect();
+
     const cassandraConnector = new CassandraConnector();
     const pgConnect = new PgConnect();
     
@@ -50,7 +51,7 @@ class Server {
     this.#app.use(express.urlencoded({ extended: true }))
     this.#app.use(cors())
     this.#app.use(logger)  
-    this.#app.use(JwtService.authenticateToken)
+   // this.#app.use(JwtService.authenticateToken)
   
     this.#app.use(this.#router)
     
