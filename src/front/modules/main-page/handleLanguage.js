@@ -57,11 +57,11 @@ export default function handleLanguage () {
         newPassword: 'New password',
         repeatPassword: 'Confirm password',
     };
-    const localStorageLanguage = localStorage.getItem('selected-language');
+    const localStorageLanguage = localStorage.getItem('selected-language') || 'en';
     selectedLanguage.value = localStorageLanguage;
     setLanguage(localStorageLanguage);
 
-    selectedLanguage.addEventListener('change', () => {
+    selectedLanguage.addEventListener('change', (event) => {
         setLanguage(selectedLanguage.value);
     })
     function setLanguage (lang) {
@@ -81,8 +81,9 @@ export default function handleLanguage () {
         switch (lang) {
             case 'ua':
                 return uaTranslations;
-    
             case 'en':
+                return enTranslations;
+            default: 
                 return enTranslations;
         }
     }
