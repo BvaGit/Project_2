@@ -10,7 +10,7 @@ import { ServerValidator } from './service/ServerValidator.js'
 import { ServerOptions } from './service/ServerOptions.js'
 
 import { MySQLConnector } from './connectors/MySQLConnector.js'
-// import { PgConnect } from './connectors/PostgreSQLConnector.js';
+import { PgConnect } from './connectors/PostgreSQLConnector.js';
 import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
@@ -31,6 +31,8 @@ class Server {
     const mySqlConnector = new MySQLConnector()
     const redisConnector = new RedisConnector()
     const mongoDbConnector = new MongoDBConnector()
+
+    const pgConnect = new PgConnect();
     const cassandraConnector = new CassandraConnector();
     const pgConnect = new PgConnect();
     
@@ -148,7 +150,8 @@ class Server {
     })
 
     this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/:id`), (req, res) => {
-    connector.deletePersonById(req.params.id, err => {
+
+      connector.deletePersonById(req.params.id, err => {
         if (err) {
           return res.status(400).json({message:`person with id: ${req.params.id} does not exists`})
         }
