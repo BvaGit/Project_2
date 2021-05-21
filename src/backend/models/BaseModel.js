@@ -3,7 +3,5 @@ class BaseModel {
     this.id = id
     this.deleted = deleted
   }
-
 }
-
 export { BaseModel }

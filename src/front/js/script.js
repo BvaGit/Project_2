@@ -21,4 +21,4 @@ window.addEventListener('DOMContentLoaded', () => {
     else if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
         console.log('тут будут скрипты для страницы авторизации')
     }
-  })
+})

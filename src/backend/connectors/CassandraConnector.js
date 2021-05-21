@@ -91,5 +91,4 @@ class CassandraConnector extends BaseConnector {
     this.#query(query, func, [ fname, lname, age, city, phoneNumber, email, companyName, user_id, id ]);
   }
 }
-  
 export { CassandraConnector }

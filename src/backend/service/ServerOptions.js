@@ -6,4 +6,3 @@ class ServerOptions{
 
 }
 export { ServerOptions }
-

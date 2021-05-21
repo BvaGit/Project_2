@@ -15,14 +15,10 @@ import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
 
-
-
-
 class Server {
   #app
   #router
   
-
   constructor() {
   
     this.#app = express()
@@ -42,7 +38,6 @@ class Server {
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
   }
-
   serve(func) {
     this.#app.use(cors());
     this.#app.use(express.json())
@@ -254,5 +249,4 @@ class Server {
     })
   }
 }
-
 export { Server }

@@ -11,5 +11,4 @@ CREATE TABLE persons (
     deleted BOOLEAN
 );
 
-
 INSERT INTO persons (fname, lname, age, city, phoneNumber, email, companyName, user_id, deleted) VALUES ('Ivan', 'Ivanov', 25, 'Dnepr', '12345678', 'ivan@gmail.com', 'WoW', 1, FALSE);

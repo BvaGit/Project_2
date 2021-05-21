@@ -13,5 +13,4 @@ class Person extends BaseModel {
     this.user_id = user_id
   }
 }
-
 export { Person }

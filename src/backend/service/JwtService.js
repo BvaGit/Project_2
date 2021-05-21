@@ -25,7 +25,5 @@ class JwtService {
       next()
     })
   }
-
 }
-
 export { JwtService }

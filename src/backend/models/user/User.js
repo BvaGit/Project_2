@@ -9,5 +9,4 @@ class User extends BaseModel {
     this.password = password
   }
 }
-
 export { User }

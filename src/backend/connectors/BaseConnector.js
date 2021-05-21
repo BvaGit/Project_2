@@ -1,4 +1,3 @@
-
 class BaseConnector {
   getAllPersons(func) {};
   getPersons(func) {}
@@ -7,7 +6,5 @@ class BaseConnector {
   putPerson(person, func) {};
   deletePersonById(personId, func) {}
   getDeletedPersonsByUserId(userId, func) {};
-
 }
-
 export { BaseConnector } 

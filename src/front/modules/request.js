@@ -7,7 +7,5 @@ function postRequest(url, obj){
         },
         body: JSON.stringify(obj)
     }));
- 
 }
-
 export default postRequest;

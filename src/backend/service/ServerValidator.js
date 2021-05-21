@@ -13,4 +13,3 @@ class ServerValidator {
 }
 
 export { ServerValidator }
-

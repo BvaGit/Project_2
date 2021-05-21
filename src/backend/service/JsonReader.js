@@ -7,10 +7,8 @@ class JsonReader {
   constructor() {
     this.#__dirname = path.resolve()
   }
-
   read(fileName) {
     return JSON.parse(fs.readFileSync(path.resolve(this.#__dirname, fileName)))
   }
 }
-
 export { JsonReader }
