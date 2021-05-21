@@ -1,15 +1,20 @@
 import express, { Router } from 'express'
 import cors from 'cors';
-import { logger } from './middleware/logger.js'
 
+import { Person } from './models/person/Person.js'
+import { User } from './models/user/User.js'
+
+import { logger } from './middleware/logger.js'
+import { JwtService } from './service/JwtService.js'
+import { ServerValidator } from './service/ServerValidator.js'
 import { ServerOptions } from './service/ServerOptions.js'
 
 import { MySQLConnector } from './connectors/MySQLConnector.js'
 import { PgConnect } from './connectors/PostgreSQLConnector.js';
 import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
-import { JwtService } from './service/JwtService.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
+
 
 
 
@@ -26,6 +31,7 @@ class Server {
     const mySqlConnector = new MySQLConnector()
     const redisConnector = new RedisConnector()
     const mongoDbConnector = new MongoDBConnector()
+
     const pgConnect = new PgConnect();
     const cassandraConnector = new CassandraConnector();
     this.#enableMySQLUsers(mySqlConnector)
@@ -76,7 +82,8 @@ class Server {
         if (rows.hasOwnProperty('rows')) {
           rows = rows.rows;
         }
-        res.status(200).json(rows)
+        const persons = rows.map(row => new Person(row.id, row.fname, row.lname, row.age, row.city, row.phoneNumber, row.email, row.companyName, row.user_id, row.deleted))
+        res.status(200).json(persons)
       })
     })
 
@@ -88,7 +95,8 @@ class Server {
         if (rows.hasOwnProperty('rows')) {
           rows = rows.rows;
         }
-        res.status(200).json(rows)
+        const persons = rows.map(row => new Person(row.id, row.fname, row.lname, row.age, row.city, row.phoneNumber, row.email, row.companyName, row.user_id, row.deleted))
+        res.status(200).json(persons)
       })
     })
 
@@ -100,20 +108,22 @@ class Server {
         if (rows.hasOwnProperty('rows')) {
           rows = rows.rows;
         }
-        res.status(200).json(rows)
+        const persons = rows.map(row => new Person(row.id, row.fname, row.lname, row.age, row.city, row.phoneNumber, row.email, row.companyName, row.user_id, row.deleted))
+        res.status(200).json(persons)
       })
     })
 
     this.addRoute(new ServerOptions('POST', `${dbms}/persons`), (req, res) => {
       const body = req.body;
-      if (typeof body.fname === 'string'
-          && typeof body.lname === 'string'
-          && typeof body.age === 'number' && body.age % 1 === 0 && body.age > 0
+
+      if (ServerValidator.validateStr(body.fname, ServerValidator.namePattern)
+          && ServerValidator.validateStr(body.lname, ServerValidator.namePattern)
+          && ServerValidator.validateNumber(body.age, n => n > 0 && n <= 123 && n % 1 === 0)
           && typeof body.city === 'string'
-          && typeof body.phoneNumber === 'string'
-          && typeof body.email === 'string'
+          && ServerValidator.validateStr(body.phoneNumber, ServerValidator.phonePattern)
+          && ServerValidator.validateStr(body.email, ServerValidator.emailPattern)
           && typeof body.companyName === 'string'
-          && typeof body.user_id === 'number' && body.user_id > 0) {
+          && ServerValidator.validateNumber(body.user_id, n => n > 0 && n % 1 === 0)) {
         connector.postPerson(body)
         res.status(201).json({message:'person creation is succeeded'})
         return
@@ -123,13 +133,14 @@ class Server {
     
     this.addRoute(new ServerOptions('PUT', `${dbms}/persons/:id`), (req, res) => {
       const body = req.body;
-      if (typeof body.fname === 'string'
-          && typeof body.lname === 'string'
-          && typeof body.age === 'number' && body.age % 1 === 0 && body.age > 0
+      if (ServerValidator.validateStr(body.fname, ServerValidator.namePattern)
+          && ServerValidator.validateStr(body.lname, ServerValidator.namePattern)
+          && ServerValidator.validateNumber(body.age, n => n > 0 && n <= 123 && n % 1 === 0)
           && typeof body.city === 'string'
-          && typeof body.phoneNumber === 'string'
-          && typeof body.email === 'string'
-          && typeof body.companyName === 'string') {
+          && ServerValidator.validateStr(body.phoneNumber, ServerValidator.phonePattern)
+          && ServerValidator.validateStr(body.email, ServerValidator.emailPattern)
+          && typeof body.companyName === 'string'
+          && ServerValidator.validateNumber(body.user_id, n => n > 0 && n % 1 === 0)) {
         connector.putPerson({id: req.params.id, ...body})
         res.status(200).json({message:'person update is succeeded'})
         return
@@ -138,9 +149,10 @@ class Server {
     })
 
     this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/:id`), (req, res) => {
+
       connector.deletePersonById(req.params.id, err => {
         if (err) {
-          return console.error(`Error:${err.message}`)
+          return res.status(400).json({message:`person with id: ${req.params.id} does not exists`})
         }
         res.status(200).json({message:`person with id: ${req.params.id} successfully deleted`})
       })
@@ -165,7 +177,8 @@ class Server {
         if (err) {
           return console.error(`Error: ${err.message}`);
         }
-        res.status(200).json(rows)
+        const users = rows.map(row => new User(row.id, row.login, row.password, row.deleted))
+        res.status(200).json(users)
       })
     })
 
@@ -174,42 +187,57 @@ class Server {
         if (err) {
           return console.error(`Error: ${err.message}`);
         }
-        res.status(200).json(rows)
+        const users = rows.map(row => new User(row.id, row.login, row.password, row.deleted))
+        res.status(200).json(users)
       })
     })
 
     this.addRoute(new ServerOptions('POST','mysql/users'), (req, res) => {
       const body = req.body
-      if (typeof body.login === 'string' && typeof body.password === 'string') {
-        connection.postUser(body)
-        res.status(201).json({message:'user creation succeeded'})
-        return
-      }
-      res.status(400).json({message:'user creation failed'})
+      connection.getUserByLogin(body,(err,rows) => {
+        if (rows.length > 0) {
+          return res.status(400).json({message:'user is already exists'})
+        } 
+        if (ServerValidator.validateStr(body.login, ServerValidator.regAuthPattern) 
+          && ServerValidator.validateStr(body.password, ServerValidator.regAuthPattern)) {
+          connection.postUser(body)
+          res.status(201).json({message:'user creation succeeded'})
+          return
+        }
+        res.status(400).json({message:'user creation failed'})
+      })
     })
     
     this.addRoute(new ServerOptions('PUT','mysql/users/:id'), (req, res) => {
       const body = req.body
-      if (typeof body.login === 'string' && typeof body.password === 'string') {
-        connection.putUser({id:req.params.id, ...body})
-        res.status(200).json({message:'user update is succeeded'})
-        return
-      }
-      res.status(400).json({message:'user update failed'})
+      connection.getUserByLogin(body,(err,rows) => {
+        if (rows.length > 0) {
+          return res.status(400).json({message:'login is already exists'})
+        } 
+        if (ServerValidator.validateStr(body.login, ServerValidator.regAuthPattern) 
+          && ServerValidator.validateStr(body.password, ServerValidator.regAuthPattern)) {
+          connection.putUser({id:req.params.id, ...body})
+          res.status(201).json({message:'user update is succeeded'})
+          return
+        }
+        res.status(400).json({message:'user update failed'})
+      })
     })
 
     this.addRoute(new ServerOptions('DELETE','mysql/users/:id'), (req, res) => {
       connection.deleteUserById(req.params.id,(err,row) =>{
         if (err) {
-          return console.error(`Error:${err.message}`)
+          return  res.status(400).json({message:`user with id: ${req.params.id} does not exists`})
         }
         res.status(200).json({message:`user with id: ${req.params.id} successfully deleted`})
       })
     })
     
+   
     this.addRoute(new ServerOptions('POST','mysql/auth'), (req, res) => {
       const body = req.body
-      if (typeof body.login === 'string' && typeof body.password === 'string') {
+      if (ServerValidator.validateStr(body.login, ServerValidator.regAuthPattern) 
+      && ServerValidator.validateStr(body.password, ServerValidator.regAuthPattern)) {
         connection.getUserByLoginAndPassword(body, (err, rows) => {
           if (err) {
             return console.error(`Error: ${err.message}`)
@@ -222,11 +250,8 @@ class Server {
             res.status(401).json({message: "Unauthorized"})
           }
         })
-
       }
     })
-
-    
   }
 }
 
