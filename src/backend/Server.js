@@ -33,14 +33,16 @@ class Server {
     // const mongoDbConnector = new MongoDBConnector()
 
     const pgConnect = new PgConnect();
-    // const cassandraConnector = new CassandraConnector();
-    this.#enableMySQLUsers(mySqlConnector)
 
-    this.#enableConnector(mySqlConnector, 'mysql')
-    // this.#enableConnector(cassandraConnector, 'cassandra')
+    const cassandraConnector = new CassandraConnector();
+    const pgConnect = new PgConnect();
+    
+    this.#enableMySQLUsers(mySqlConnector)
     this.#enableConnector(pgConnect, 'pg');
-    // this.#enableConnector(redisConnector,'redis')
-    // this.#enableConnector(mongoDbConnector, 'mongodb')
+    this.#enableConnector(mySqlConnector, 'mysql')
+    this.#enableConnector(redisConnector,'redis')
+    this.#enableConnector(mongoDbConnector, 'mongodb')
+    this.#enableConnector(cassandraConnector, 'cassandra')
   }
 
   serve(func) {

@@ -4,7 +4,7 @@ export default function themeHandler () {
     const darkThemeClass = 'theme-dark';
     const lightThemeClass = 'theme-light';
 
-    const localStorageTheme = localStorage.getItem('selected-theme');
+    const localStorageTheme = localStorage.getItem('selected-theme')|| 'dark';
     selectedTheme.value = localStorageTheme;
     setTheme(general, localStorageTheme);
     
