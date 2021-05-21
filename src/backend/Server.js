@@ -10,7 +10,7 @@ import { ServerValidator } from './service/ServerValidator.js'
 import { ServerOptions } from './service/ServerOptions.js'
 
 import { MySQLConnector } from './connectors/MySQLConnector.js'
-// import { PgConnect } from './connectors/PostgreSQLConnector.js';
+import { PgConnect } from './connectors/PostgreSQLConnector.js';
 import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
@@ -31,16 +31,16 @@ class Server {
     const mySqlConnector = new MySQLConnector()
     const redisConnector = new RedisConnector()
     const mongoDbConnector = new MongoDBConnector()
-    const cassandraConnector = new CassandraConnector();
-    // const pgConnect = new PgConnect();
-    
-    this.#enableMySQLUsers(mySqlConnector)
-    // this.#enableConnector(pgConnect, 'pg');
-    this.#enableConnector(mySqlConnector, 'mysql')
-   this.#enableConnector(redisConnector,'redis')
-   this.#enableConnector(mongoDbConnector, 'mongodb')
-   this.#enableConnector(cassandraConnector, 'cassandra')
 
+    const pgConnect = new PgConnect();
+    const cassandraConnector = new CassandraConnector();
+    this.#enableMySQLUsers(mySqlConnector)
+
+    this.#enableConnector(mySqlConnector, 'mysql')
+    this.#enableConnector(cassandraConnector, 'cassandra')
+    this.#enableConnector(pgConnect, 'pg');
+    this.#enableConnector(redisConnector,'redis')
+    this.#enableConnector(mongoDbConnector, 'mongodb')
   }
 
   serve(func) {

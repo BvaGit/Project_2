@@ -7,36 +7,44 @@ export default function settingsPopup () {
     const crossBtn = document.getElementById('closeSettingsPopUp');
     const settingsIcon = document.getElementById('settings-icon');
     const clear = document.querySelectorAll('[data-clear]');
-    const input = document.querySelectorAll('.settingsPopup__input');
+    const show = document.querySelectorAll('[data-show]');
     const eyes = document.querySelectorAll('.eye');
+    const popupClass = 'hideSettingsPopup';
 
-    eyes.forEach((eye) => {
-        eye.addEventListener('click', () => {
-            supportMain.changeType(input);
-        })
-    })
-    settings.addEventListener('click', () => {
-        supportMain.openPopup(settingsPopup, 'hideSettingsPopup');
-    });
+    const closePopup = () => {
+        supportMain.closePopup(settingsPopup, popupClass);
+        supportMain.clearInputs(clear);
+        supportMain.resetPasswordType(show);
+    };
+
     settings.addEventListener('mouseenter', () => {
         settingsIcon.src = '../img/shestir_yellow.png';
     })
     settings.addEventListener('mouseleave', () => {
         settingsIcon.src = '../img/shestir_white.png';
     })
-    
+    settings.addEventListener('click', () => {
+        supportMain.openPopup(settingsPopup, popupClass);
+    })
     cancelBtn.addEventListener('click', () => {
-        supportMain.closePopup(settingsPopup, 'hideSettingsPopup');
-        supportMain.clearInputs(clear);
-    });
+        closePopup();
+    })
     crossBtn.addEventListener('click', () => {
-        supportMain.closePopup(settingsPopup, 'hideSettingsPopup');
-        supportMain.clearInputs(clear);
-    });
+        closePopup();
+    })
     window.addEventListener('keyup', function (event) {
-        supportMain.exitOnEscape(event, settingsPopup, 'hideSettingsPopup');
+        if (supportMain.isEscapeKey(event)) {
+            closePopup();
+        }
     })
     settingsPopup.addEventListener('click', function (event) {
-        supportMain.handlePopupClick(event, settingsPopup, 'hideSettingsPopup')
+        if (event.target === settingsPopup) {
+            closePopup();
+        }
+    })
+    eyes.forEach((eye) => {
+        eye.addEventListener('click', () => {
+            supportMain.changeType(show);
+        })
     })
 }
