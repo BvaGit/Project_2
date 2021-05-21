@@ -15,33 +15,28 @@ import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
 
-
-
-
 class Server {
   #app
   #router
   
-
   constructor() {
   
     this.#app = express()
     this.#router = Router()
          
     const mySqlConnector = new MySQLConnector()
-    // const redisConnector = new RedisConnector()
-    // const mongoDbConnector = new MongoDBConnector()
-
-    // const pgConnect = new PgConnect();
+    const redisConnector = new RedisConnector()
+    const mongoDbConnector = new MongoDBConnector()
+    const pgConnect = new PgConnect();
 
     const cassandraConnector = new CassandraConnector();
-    // const pgConnect = new PgConnect();
+    const pgConnect = new PgConnect();
     
     this.#enableMySQLUsers(mySqlConnector)
-    // this.#enableConnector(pgConnect, 'pg');
+    this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(mySqlConnector, 'mysql')
-    // this.#enableConnector(redisConnector,'redis')
-    // this.#enableConnector(mongoDbConnector, 'mongodb')
+    this.#enableConnector(redisConnector,'redis')
+    this.#enableConnector(mongoDbConnector, 'mongodb')
     this.#enableConnector(cassandraConnector, 'cassandra')
   }
 
@@ -51,7 +46,7 @@ class Server {
     this.#app.use(express.urlencoded({ extended: true }))
     this.#app.use(cors())
     this.#app.use(logger)  
-   // this.#app.use(JwtService.authenticateToken)
+   this.#app.use(JwtService.authenticateToken)
   
     this.#app.use(this.#router)
     
