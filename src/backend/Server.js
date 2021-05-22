@@ -15,9 +15,6 @@ import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
 
-
-
-
 class Server {
   #app
   #router
@@ -29,12 +26,11 @@ class Server {
     this.#router = Router()
          
     const mySqlConnector = new MySQLConnector()
-
     const redisConnector = new RedisConnector()
     const mongoDbConnector = new MongoDBConnector()
-
     const pgConnect = new PgConnect();
     const cassandraConnector = new CassandraConnector();
+    
     this.#enableMySQLUsers(mySqlConnector)
 
     this.#enableConnector(mySqlConnector, 'mysql')
@@ -43,14 +39,13 @@ class Server {
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
 
-
   serve(func) {
     this.#app.use(cors());
     this.#app.use(express.json())
     this.#app.use(express.urlencoded({ extended: true }))
     this.#app.use(cors())
     this.#app.use(logger)  
-   // this.#app.use(JwtService.authenticateToken)
+    this.#app.use(JwtService.authenticateToken)
   
     this.#app.use(this.#router)
     
