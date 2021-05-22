@@ -24,22 +24,20 @@ class Server {
     this.#app = express()
     this.#router = Router()
          
-    // const mySqlConnector = new MySQLConnector()
-    // const redisConnector = new RedisConnector()
-    // const mongoDbConnector = new MongoDBConnector()
-    // const cassandraConnector = new CassandraConnector();
-    // const pgConnect = new PgConnect();
+    const mySqlConnector = new MySQLConnector()
+    const redisConnector = new RedisConnector()
+    const mongoDbConnector = new MongoDBConnector()
+    const cassandraConnector = new CassandraConnector();
+    const pgConnect = new PgConnect();
     const neo4jConnector = new Neo4jConnector();
-    // this.#enableMySQLUsers(mySqlConnector)
+    this.#enableMySQLUsers(mySqlConnector)
 
-    // this.#enableConnector(pgConnect, 'pg');
-    // this.#enableConnector(mySqlConnector, 'mysql')
-    // this.#enableConnector(redisConnector,'redis')
-    // this.#enableConnector(mongoDbConnector, 'mongodb')
-    // this.#enableConnector(cassandraConnector, 'cassandra')
+    this.#enableConnector(pgConnect, 'pg');
+    this.#enableConnector(mySqlConnector, 'mysql')
+    this.#enableConnector(redisConnector,'redis')
+    this.#enableConnector(mongoDbConnector, 'mongodb')
+    this.#enableConnector(cassandraConnector, 'cassandra')
     this.#enableConnector(neo4jConnector, 'neo4j')
-
-
   }
 
   serve(func) {
@@ -47,7 +45,7 @@ class Server {
     this.#app.use(express.json())
     this.#app.use(express.urlencoded({ extended: true }))
     this.#app.use(cors())
-    this.#app.use(logger)  
+    this.#app.use(logger)
     // this.#app.use(JwtService.authenticateToken)
   
     this.#app.use(this.#router)
