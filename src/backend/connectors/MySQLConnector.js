@@ -116,9 +116,15 @@ class MySQLConnector extends BaseConnector {
   getUserByLoginAndPassword(user, func) {
     this.#query(`SELECT * FROM users WHERE login='${user.login}' AND password='${user.password}'`, func)
   }
+
   getUserByLogin(user, func) {
     this.#query(`SELECT * FROM users WHERE login='${user.login}'`, func)
   }
+
+  putUserBack(userId, func) {
+    this.#query(`UPDATE users SET deleted=0 WHERE id=${userId}`, func)
+  }
+
 }
   
 export { MySQLConnector }
