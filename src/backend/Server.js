@@ -30,6 +30,7 @@ class Server {
     const cassandraConnector = new CassandraConnector();
     const pgConnect = new PgConnect();
     const neo4jConnector = new Neo4jConnector();
+    
     this.#enableMySQLUsers(mySqlConnector)
 
     this.#enableConnector(pgConnect, 'pg');
@@ -46,7 +47,7 @@ class Server {
     this.#app.use(express.urlencoded({ extended: true }))
     this.#app.use(cors())
     this.#app.use(logger)
-    // this.#app.use(JwtService.authenticateToken)
+    this.#app.use(JwtService.authenticateToken)
   
     this.#app.use(this.#router)
     
