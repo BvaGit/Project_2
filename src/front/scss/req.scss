@@ -108,6 +108,13 @@ body{
         background-color: #ffff00;
         border: none;
         padding: 28px 0;
+        cursor: pointer;
+        transition: all .3s;
+
+        &:hover{
+            background-color: #5c5c0d;
+            color: $d-text-color;
+        }
     }
 
 

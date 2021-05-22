@@ -1,24 +1,25 @@
 import  supportMain  from '../main-page/supportMain';
 
-export default function clearAllPopup () {
+export default function clearAllPopup() {
     const clearAll = document.getElementById('clearAll');
     const clearAllPopup = document.getElementById('clearAllPopup');
     const cancelBtn = document.getElementById('clearAllPopupCancel');
     const crossBtn = document.getElementById('closeClearAllPopUp');
+    const popupClass = 'hideClearAllPopup';
 
     clearAll.addEventListener('click', () => {
-        supportMain.openPopup(clearAllPopup, 'hideClearAllPopup');
+        supportMain.openPopup(clearAllPopup, popupClass);
     })
     cancelBtn.addEventListener('click', () => {
-        supportMain.closePopup(clearAllPopup, 'hideClearAllPopup', );
+        supportMain.closePopup(clearAllPopup, popupClass);
     });
     crossBtn.addEventListener('click', () => {
-        supportMain.closePopup(clearAllPopup, 'hideClearAllPopup');
+        supportMain.closePopup(clearAllPopup, popupClass);
     });
     window.addEventListener('keyup', function (event) {
-        supportMain.exitOnEscape(event, clearAllPopup, 'hideClearAllPopup')
+        supportMain.exitOnEscape(event, clearAllPopup, popupClass);
     })
     clearAllPopup.addEventListener('click', function (event) {
-        supportMain.handlePopupClick(event, clearAllPopup, 'hideClearAllPopup')
+        supportMain.handlePopupClick(event, clearAllPopup, popupClass);
     })
 }

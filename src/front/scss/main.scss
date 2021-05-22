@@ -36,14 +36,13 @@
 }
 .tr {
     &__th {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         width: 142px;
         height: 43px;
         border: 1px solid $d-border-color;
         background: $d-text-color;
         font-weight: 400;
+        padding: 12px 7px;
+        text-align: center;
         &:nth-child(3) {
             width: 84px;
         }
@@ -52,14 +51,14 @@
         }
     }
     &__td {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         width: 142px;
         height: 43px;
-        border: 1px solid $d-border-color;
+        border: 1px solid #1a1a1a;
         background: $d-table-td;
         font-weight: 400;
+        overflow: auto;
+        text-align: center;
+        padding: 12px 7px;
         &:nth-child(3) {
             width: 84px;
         }
@@ -231,7 +230,7 @@
     }
 }
 .table {
-    display: flex;
+    display: table;
     flex-direction: column;
     width: 999px;
     margin: 60px 0 0 0;

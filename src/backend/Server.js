@@ -29,6 +29,7 @@ class Server {
     this.#router = Router()
          
     const mySqlConnector = new MySQLConnector()
+
     const redisConnector = new RedisConnector()
     const mongoDbConnector = new MongoDBConnector()
 
@@ -41,7 +42,7 @@ class Server {
     this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
-  }
+
 
   serve(func) {
     this.#app.use(cors());
@@ -49,7 +50,7 @@ class Server {
     this.#app.use(express.urlencoded({ extended: true }))
     this.#app.use(cors())
     this.#app.use(logger)  
-    this.#app.use(JwtService.authenticateToken)
+   // this.#app.use(JwtService.authenticateToken)
   
     this.#app.use(this.#router)
     

@@ -3,7 +3,7 @@ import { BaseConnector }  from './BaseConnector.js'
 import { JsonReader } from '../service/JsonReader.js'
 
 
-class MySQLConnector extends BaseConnector{
+class MySQLConnector extends BaseConnector {
   #connection
   
   constructor(){
