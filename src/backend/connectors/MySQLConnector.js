@@ -3,16 +3,16 @@ import { BaseConnector }  from './BaseConnector.js'
 import { JsonReader } from '../service/JsonReader.js'
 
 
-class MySQLConnector extends BaseConnector{
+class MySQLConnector extends BaseConnector {
   #connection
   
   constructor(){
     super()
 
-    const connection = new JsonReader().read('connections.json').mysql_connection
-
+    const connections = new JsonReader().read('connections.json').mysql_connection
     this.#connection = mysql.createConnection({
-      ...connection
+      ...connections
+
     })
     this.#open()
   }
@@ -78,14 +78,31 @@ class MySQLConnector extends BaseConnector{
 
   deletePersonById (personId, func) {
     super.deletePersonById(personId, func)
-    this.#query(`UPDATE persons SET deleted=1 WHERE id=${personId}`, func)
+
+    this.#query(`UPDATE persons SET deleted=1 WHERE id=${personId}`, (err,rows) => {
+      this.#query(`SELECT * FROM persons WHERE id=${personId} AND deleted=0`, (err1,rows1) =>{
+        if (rows1.length === 0) {
+          func(new Error(), null)
+        } else {
+          func(null,rows)
+        }
+      })
+    })
   }
 
   deleteUserById (userId, func) {
-    this.#query(`UPDATE persons SET deleted=1 WHERE user_id=${userId}`, () => {})
-    this.#query(`UPDATE users SET deleted=1 WHERE id=${userId}`, func)
-  }
 
+    this.#query(`UPDATE persons SET deleted=1 WHERE user_id=${userId}`, () => {})
+    this.#query(`UPDATE users SET deleted=1 WHERE id=${userId}`, (err,rows) => {
+      this.#query(`SELECT * FROM users WHERE id=${userId} AND deleted=0` , (err1,rows1) =>{
+        if (rows1.length === 0) {
+          func(new Error(), null)
+        } else {
+          func(null,rows)
+        }
+      } )
+    })
+  }
 
   putPerson(person, func) {
     super.putPerson(person, func)
@@ -99,6 +116,15 @@ class MySQLConnector extends BaseConnector{
   getUserByLoginAndPassword(user, func) {
     this.#query(`SELECT * FROM users WHERE login='${user.login}' AND password='${user.password}'`, func)
   }
+
+  getUserByLogin(user, func) {
+    this.#query(`SELECT * FROM users WHERE login='${user.login}'`, func)
+  }
+
+  putUserBack(userId, func) {
+    this.#query(`UPDATE users SET deleted=0 WHERE id=${userId}`, func)
+  }
+
 }
   
 export { MySQLConnector }

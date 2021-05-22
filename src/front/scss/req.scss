@@ -1,3 +1,162 @@
+body{
+    background-color: $d-main-page-bg;
+    
+}
+
+
+
+.reg{
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+    &__points{
+        width: 275px;
+        height: 148px;
+        background-image: url(http://localhost:8080/../img/points.png);
+        position: absolute;
+        top: 15px;
+        right: 0;
+       
+    }
+
+    &__header{
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-top: 37px;
+        
+    }
+    &__logo{
+        width: 106px;
+        &-img{
+            width: 100%;
+        }
+
+        &-name{
+            color: $d-text-color;
+            font-size: 38px;
+            font-weight: bold;
+            margin-left: 26px;
+        }
+    }
+
+    &__body{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 85px;
+        border-left: 17px solid #fff;
+    }
+
+    &__info{
+        margin-left: 32px;
+    }
+
+    &__title{
+        font-size: 62px;
+        font-weight: bold;
+        color: $d-text-color;
+        text-transform: uppercase;
+        line-height: 73px;
+
+        &-color{
+            color: #ffff00;
+        }
+    }
+
+    &__db{
+        margin-top: 80px;
+        opacity: .3;
+    }
+
+    &__sqlnosql{
+        font-size: 38px;
+        font-weight: bold;
+        color: #ffff00;
+    }
+
+    &__descr{
+        font-size: 24px;
+        font-weight: bold;
+        color: $d-text-color;
+        margin-left: 42px;
+    }
+
+    &__reg{
+        width: 430px;
+    }
+
+    &__label{
+        font-size: 29px;
+        font-weight: bold;
+        color: $d-text-color;
+        text-transform: uppercase;
+
+    }
+    &__input{
+        width: 100%;
+        padding: 28px 24px;
+        margin-top: 20px;
+        font-size: 29px;
+        margin-bottom: 35px;
+    }
+
+    &__btn{
+        width: 100%;
+        font-size: 29px;
+        font-weight: bold;
+        text-align: center;
+        color: $d-main-page-bg;
+        background-color: #ffff00;
+        border: none;
+        padding: 28px 0;
+        cursor: pointer;
+        transition: all .3s;
+
+        &:hover{
+            background-color: #5c5c0d;
+            color: $d-text-color;
+        }
+    }
+
+
+    &__descrlink{
+        font-size: 14px;
+        color: $d-text-color;
+        text-align: right;
+        margin-top: 25px;
+    }
+
+    &__link{
+        display: block;
+        font-size: 15px;
+        color: $d-text-color;
+        text-decoration: underline;
+        text-align: right;
+        margin: 5px;
+        transition: all .3s; 
+
+        &:hover{
+            color: #ffff00;
+        }
+    }
+
+    &__footer{
+        height: 85px;
+        overflow: hidden;
+        position: relative;
+        &-points{
+            width: 275px;
+            height: 148px;
+            background-image: url(http://localhost:8080/../img/points.png);
+            position: absolute;
+            bottom: -100px;
+            right: 0;
+        }
+    }
+
+
+
+
+}
 
 
 

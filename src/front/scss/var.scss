@@ -5,6 +5,11 @@
     font-family: sans-serif;
 }
 
+.container {
+    width: 999px;
+    margin: 0 auto;
+}
+
 $d-main-page-bg: rgb(26, 26, 26);
 $d-border-color: rgb(26, 26, 26);
 $d-footer-copyright-sign: rgb(92, 92, 92);
@@ -23,4 +28,5 @@ $l-text-color: #333;
 $l-modal-bg: rgba(255, 253, 225, 0.9);
 $l-table-nav: #8a8a08;
 $l-hover-color: rgb(255, 208, 0);
+$l-header-hover-color: rgb(255, 246, 206);
 $l-clearAll: rgb(255, 80, 80);

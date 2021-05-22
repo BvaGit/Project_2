@@ -15,7 +15,6 @@
     cursor: pointer;
 }
 .panel-control-style {
-    // padding: 0 30px;
     font-size: 24px;
     border: none;
     background: transparent;
@@ -36,14 +35,13 @@
 }
 .tr {
     &__th {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         width: 142px;
         height: 43px;
         border: 1px solid $d-border-color;
         background: $d-text-color;
         font-weight: 400;
+        padding: 12px 7px;
+        text-align: center;
         &:nth-child(3) {
             width: 84px;
         }
@@ -53,13 +51,16 @@
     }
     &__td {
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
         width: 142px;
         height: 43px;
-        border: 1px solid $d-border-color;
+        border: 1px solid #1a1a1a;
         background: $d-table-td;
         font-weight: 400;
+        overflow: auto;
+        text-align: center;
+        // padding: 12px 7px;
         &:nth-child(3) {
             width: 84px;
         }
@@ -231,7 +232,7 @@
     }
 }
 .table {
-    display: flex;
+    display: table;
     flex-direction: column;
     width: 999px;
     margin: 60px 0 0 0;
@@ -271,7 +272,7 @@
         position: absolute;
         top:100%;
         left: 10px;
-        width: 133px;
+        width: 180px;
         height: auto;
         border-top-left-radius: 5%;
         border-top-right-radius: 5%;
@@ -298,13 +299,15 @@
             justify-content: center;
             align-items: center;  
             margin: 0 0 0 10px;
-            width: auto;
+            // width: auto;
+            width: 180px;
             padding: 0 20px;
             height: 65px;
             background: $d-table-nav;
             font-size: 28px;
             color: $d-text-color;
             text-decoration: none;
+            text-align: center;
             border-radius: 10px;
         }
         &-hover {
@@ -312,6 +315,7 @@
             color: $d-text-color;
             text-decoration: none;
             padding: 10px 15px;
+            cursor: pointer;
             &:hover {
                 color: $d-hover-color;
                 text-decoration: underline;
@@ -357,7 +361,7 @@
         width: 999px;
         min-height: 315px;
         height: auto;
-        overflow-y: auto;
+        // overflow-y: auto;
         background: $d-text-color;
         border: 1px solid $d-border-color;
     }
@@ -670,7 +674,7 @@
         &__nav {
             &-language {
                 &:hover {
-                    color: $l-hover-color;
+                    color: $l-header-hover-color;
                 }
                 &:focus {
                     outline: none;
@@ -678,7 +682,7 @@
             }
             &-theme {
                 &:hover {
-                    color: $l-hover-color;
+                    color: $l-header-hover-color;
                 }
                 &:focus {
                     outline: none;
