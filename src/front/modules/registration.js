@@ -1,5 +1,6 @@
-import  postRequest  from "./request";
+import {postRequest, getRequest } from '../modules/request';
 import valid from "./valid";
+
 function registration(){
     const url = "http://localhost:2020/api/mysql/users";
     const regLogin = document.querySelector("#reglogin");

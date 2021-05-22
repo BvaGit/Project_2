@@ -1,4 +1,4 @@
-import postRequest from '../modules/request';
+import {postRequest, getRequest } from '../modules/request';
 
 
 function authorization(){
@@ -13,8 +13,13 @@ function authorization(){
             password: authpass.value
         };
 
-        postRequest(url, auth).then((data)=>{
-            
+        postRequest(url, auth).then(async (data)=>{
+            const token = await (data.json());
+
+            localStorage.setItem('id_user', token.id);
+            localStorage.setItem('token', token.token);
+            document.cookie = `token=${token.token}; path=/`;
+
             if(data.ok){
                 document.location.href = "/main.html";
             } else {
