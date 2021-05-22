@@ -19,7 +19,6 @@ class Server {
   #app
   #router
   
-
   constructor() {
   
     this.#app = express()
@@ -38,6 +37,7 @@ class Server {
     this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
+  }
 
   serve(func) {
     this.#app.use(cors());

@@ -3,6 +3,7 @@ import '../scss/style.scss';
 import hello from '../modules/hello';
 import { clearAllPopup, deletePerson, handleLanguage, logout, settingsPopup, supportMain, themeHandler } from '../modules/main-page/index'
 import  registration  from '../modules/registration';
+import sortData from '../modules/main-page/sortData'
 import authorization from '../modules/auth';
 import main from '../modules/main';
 
@@ -15,6 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
         themeHandler();
         deletePerson();
         handleLanguage();
+        sortData();
         main();
     }
     else if (window.location.pathname === '/regpage.html') {

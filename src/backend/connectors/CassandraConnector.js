@@ -23,7 +23,7 @@ class CassandraConnector extends BaseConnector {
   #open() {
     const createKsQuery = `CREATE KEYSPACE IF NOT EXISTS ${this.config.keyspace} WITH REPLICATION = { 'class': 'SimpleStrategy', 'replication_factor': 1 }`;
     const createPersonTableQuery = `CREATE TABLE IF NOT EXISTS
-     ${this.tableName} (id UUID PRIMARY KEY, first_name varchar, last_name varchar, age int, city varchar, phone_number varchar, email text, company_name varchar, deleted boolean, user_id int);`;
+     ${this.tableName} (id UUID PRIMARY KEY, fname varchar, lname varchar, age int, city varchar, phoneNumber varchar, email text, companyName varchar, deleted boolean, user_id int);`;
 
     this.#connection
         .connect()
@@ -69,7 +69,7 @@ class CassandraConnector extends BaseConnector {
   postPerson(person, func) {
     super.postPerson(person, func);
     const { fname, lname, age, city, phoneNumber, email, companyName, user_id } = person;
-    const query = `INSERT INTO ${this.tableName} (id, first_name, last_name, age, city, phone_number, email, company_name, user_id, deleted) 
+    const query = `INSERT INTO ${this.tableName} (id, fname, lname, age, city, phoneNumber, email, companyName, user_id, deleted) 
       VALUES (uuid(), ?, ?, ?, ?, ?, ?, ?, ?, ?);`
 
     this.#query(
@@ -87,7 +87,7 @@ class CassandraConnector extends BaseConnector {
   putPerson(person, func) {
     super.putPerson(person, func);
     const { id, fname, lname, age, city, phoneNumber, email, companyName, user_id } = person;
-    const query = `UPDATE ${this.tableName} SET first_name = ?, last_name = ?, age = ?, city = ?, phone_number = ?, email = ?, company_name = ?, user_id = ? WHERE id = ?`;
+    const query = `UPDATE ${this.tableName} SET fname = ?, lname = ?, age = ?, city = ?, phoneNumber = ?, email = ?, companyName = ?, user_id = ? WHERE id = ?`;
     this.#query(query, func, [ fname, lname, age, city, phoneNumber, email, companyName, user_id, id ]);
   }
 }
