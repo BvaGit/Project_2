@@ -61,15 +61,6 @@ class Neo4jConnector extends BaseConnector{
 
     deletePersonById (personId, func) {
         super.deletePersonById(personId)
-        // this.#query(`MATCH (n) WHERE id(n) = ${personId} SET n.deleted = 1`, (err, persons)=>{
-        //     this.#query(`MATCH (n) WHERE id(n) = ${personId} AND n.deleted = 0 RETURN n`, (err1, persons1)=>{
-        //         if(persons1.length === 0){
-        //             func(new Error(), null)
-        //         } else {
-        //             func(null, persons)
-        //         }
-        //     })
-        // })
         this.#query(`MATCH (n) WHERE id(n) = ${personId} SET n.deleted = 1`, func)
     }
 
