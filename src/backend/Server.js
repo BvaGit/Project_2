@@ -14,6 +14,7 @@ import { PgConnect } from './connectors/PostgreSQLConnector.js';
 import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
+import { SqliteConnector } from './connectors/SQLIteConnector.js'
 
 class Server {
   #app
@@ -29,6 +30,7 @@ class Server {
     const mongoDbConnector = new MongoDBConnector()
     const pgConnect = new PgConnect();
     const cassandraConnector = new CassandraConnector();
+    const sqliteConnector = new SqliteConnector();
     
     this.#enableMySQLUsers(mySqlConnector)
 
@@ -37,6 +39,7 @@ class Server {
     this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
+    this.#enableConnector(sqliteConnector, 'sqlite')
   }
 
   serve(func) {
