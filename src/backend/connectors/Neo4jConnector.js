@@ -59,14 +59,23 @@ class Neo4jConnector extends BaseConnector{
         this.#query(`CREATE (n:Person {fname: '${person.fname}',lname: '${person.lname}', age: ${person.age}, city: '${person.city}', phoneNumber: '${person.phoneNumber}', email: '${person.email}', companyName: '${person.companyName}', user_id: ${person.user_id}, deleted: 0})`, ()=>{})
     }
 
-    deletePersonById (personId) {
-        super.deletePersonById(personId, func)
-        this.session.run(`MATCH (n:Person WHERE ID(n) = ${personId}}) SET n.deleted = 1`, ()=>{})
+    deletePersonById (personId, func) {
+        super.deletePersonById(personId)
+        // this.#query(`MATCH (n) WHERE id(n) = ${personId} SET n.deleted = 1`, (err, persons)=>{
+        //     this.#query(`MATCH (n) WHERE id(n) = ${personId} AND n.deleted = 0 RETURN n`, (err1, persons1)=>{
+        //         if(persons1.length === 0){
+        //             func(new Error(), null)
+        //         } else {
+        //             func(null, persons)
+        //         }
+        //     })
+        // })
+        this.#query(`MATCH (n) WHERE id(n) = ${personId} SET n.deleted = 1`, func)
     }
 
     putPerson(person) {
         super.putPerson(person)
-        this.session.run(`MATCH (n) WHERE ID(n) = ${person.id} SET n.fname='${person.fname}', n.lname='${person.lname}', n.age=${person.age}, n.city='${person.city}', n.phoneNumber='${person.phoneNumber}', n.email='${person.email}', n.companyName='${person.companyName}'`, ()=>{})
+        this.#query(`MATCH (n) WHERE ID(n) = ${person.id} SET n.fname='${person.fname}', n.lname='${person.lname}', n.age=${person.age}, n.city='${person.city}', n.phoneNumber='${person.phoneNumber}', n.email='${person.email}', n.companyName='${person.companyName}'`, ()=>{})
     }
 
     getDeletedPersonsByUserId(user_id, func) {
