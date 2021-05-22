@@ -26,6 +26,12 @@
     "contactPoints": ["127.0.0.1:9042"],
     "localDataCenter": "datacenter1",
     "keyspace": "qwerty"
+    },
+
+    "neo4j_connection": {
+      "url": "bolt://localhost",
+      "user": "neo4j",
+      "password": "neo4j"
     }
 }
 
