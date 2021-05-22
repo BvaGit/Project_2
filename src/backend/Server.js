@@ -14,6 +14,8 @@ import { PgConnect } from './connectors/PostgreSQLConnector.js';
 import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
+import { Neo4jConnector } from './connectors/Neo4jConnector.js'
+import { SqliteConnector } from './connectors/SQLIteConnector.js'
 
 class Server {
   #app
@@ -28,7 +30,9 @@ class Server {
     const redisConnector = new RedisConnector()
     const mongoDbConnector = new MongoDBConnector()
     const pgConnect = new PgConnect();
+    const neo4jConnector = new Neo4jConnector();
     const cassandraConnector = new CassandraConnector();
+    const sqliteConnector = new SqliteConnector();
     
     this.#enableMySQLUsers(mySqlConnector)
 
@@ -37,6 +41,9 @@ class Server {
     this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
+    this.#enableConnector(cassandraConnector, 'cassandra')
+    this.#enableConnector(neo4jConnector, 'neo4j')
+    this.#enableConnector(sqliteConnector, 'sqlite')
   }
 
   serve(func) {
@@ -44,7 +51,7 @@ class Server {
     this.#app.use(express.json())
     this.#app.use(express.urlencoded({ extended: true }))
     this.#app.use(cors())
-    this.#app.use(logger)  
+    this.#app.use(logger)
     this.#app.use(JwtService.authenticateToken)
   
     this.#app.use(this.#router)
