@@ -72,7 +72,24 @@ class Neo4jConnector extends BaseConnector{
     getDeletedPersonsByUserId(user_id, func) {
         super.getDeletedPersonsByUserId(user_id, func)
         this.#query(`MATCH (n) WHERE n.user_id = ${user_id} AND n.deleted = 1 RETURN n`, func)
-      }
+    }
+
+    putPersonBack(personId, func) {
+        super.putPersonBack(personId, func)
+        this.#query(`MATCH (n) WHERE id(n) = ${person.id} SET n.deleted = 0`, ()=>{})
+    }
+
+    deletePersonsByUserId(user_id, func) {
+        super.deletePersonsByUserId(user_id, func)
+        this.#query(`MATCH (n) WHERE n.user_id = ${user_id} SET n.deleted = 1`, ()=>{})
+    }
+
+
+    putPersonsBackByUserId(user_id, func) {
+        super.putPersonsBackByUserId(user_id, func)
+        this.#query(`MATCH (n) WHERE n.user_id = ${user_id} SET n.deleted = 0`, ()=>{})
+    }
+    
 }
 
 export { Neo4jConnector }
