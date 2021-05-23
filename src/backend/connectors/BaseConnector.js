@@ -7,6 +7,7 @@ class BaseConnector {
   putPerson(person, func) {};
   deletePersonById(personId, func) {}
   getDeletedPersonsByUserId(userId, func) {};
+  putPersonBack(personId,func) {}
 
 }
 

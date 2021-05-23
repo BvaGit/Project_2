@@ -15,9 +15,6 @@ import { RedisConnector } from './connectors/RedisConnector.js'
 import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
 
-
-
-
 class Server {
   #app
   #router
@@ -42,7 +39,7 @@ class Server {
     this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
-
+  }
 
   serve(func) {
     this.#app.use(cors());
@@ -150,12 +147,20 @@ class Server {
     })
 
     this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/:id`), (req, res) => {
-
       connector.deletePersonById(req.params.id, err => {
         if (err) {
           return res.status(400).json({message:`person with id: ${req.params.id} does not exists`})
         }
         res.status(200).json({message:`person with id: ${req.params.id} successfully deleted`})
+      })
+    })
+
+    this.addRoute(new ServerOptions('PUT', `${dbms}/persons/restore/:id`), (req, res) => {
+      connector.putPersonBack(req.params.id, err => {
+        if (err) {
+          return res.status(400).json({message:`person with id: ${req.params.id} does not exists or already restored`})
+        }
+        res.status(200).json({message:`person with id: ${req.params.id} successfully restored`})
       })
     })
 
@@ -237,13 +242,12 @@ class Server {
     this.addRoute(new ServerOptions('PUT','mysql/users/restore/:id'), (req, res) => {
       connection.putUserBack(req.params.id,(err,row) =>{
         if (err) {
-          return  res.status(400).json({message:`user with id: ${req.params.id} does not exists`})
+          return  res.status(400).json({message:`user with id: ${req.params.id} does not exists or already restored`})
         }
         res.status(200).json({message:`user with id: ${req.params.id} successfully restored`})
       })
     })
     
-   
     this.addRoute(new ServerOptions('POST','mysql/auth'), (req, res) => {
       const body = req.body
       if (ServerValidator.validateStr(body.login, ServerValidator.REG_AUTH_PATTERN) 
