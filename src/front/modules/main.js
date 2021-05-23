@@ -50,12 +50,12 @@ getRequest("http://localhost:2020/api/"+"mysql"+"/persons/"+localStorage.getItem
 const personsDB = {
     fname: "qwerty",
     lname: "asdf",
-    age: "23",
+    age: 23,
     city: "Dnepr",
     phoneNumber: "(000)-000-0000",
     email: "afsdf@sdfds.com",
     companyName: "WoW",
-    user_id: localStorage.getItem("id_user")
+    user_id: +localStorage.getItem("id_user")
 };
 
 dmsDropdown.addEventListener("click", (e)=>{

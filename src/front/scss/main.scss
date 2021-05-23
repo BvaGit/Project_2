@@ -51,7 +51,7 @@
     }
     &__td {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         width: 142px;
         height: 43px;
@@ -60,7 +60,7 @@
         font-weight: 400;
         overflow: auto;
         text-align: center;
-        // padding: 12px 7px;
+        padding: 0 10px;
         &:nth-child(3) {
             width: 84px;
         }
@@ -286,7 +286,7 @@
             display: flex;
             justify-content: center;
             align-items: center;   
-            width: 157px;
+            width: 172px;
             height: 65px;
             background: $d-table-nav;
             font-size: 28px;

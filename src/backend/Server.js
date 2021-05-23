@@ -10,12 +10,12 @@ import { ServerValidator } from './service/ServerValidator.js'
 import { ServerOptions } from './service/ServerOptions.js'
 
 import { MySQLConnector } from './connectors/MySQLConnector.js'
-import { PgConnect } from './connectors/PostgreSQLConnector.js';
-import { RedisConnector } from './connectors/RedisConnector.js'
-import { MongoDBConnector } from './connectors/MongoDBConnector.js'
+// import { PgConnect } from './connectors/PostgreSQLConnector.js';
+// import { RedisConnector } from './connectors/RedisConnector.js'
+// import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
-import { Neo4jConnector } from './connectors/Neo4jConnector.js'
-import { SqliteConnector } from './connectors/SQLIteConnector.js'
+// import { Neo4jConnector } from './connectors/Neo4jConnector.js'
+// import { SqliteConnector } from './connectors/SQLIteConnector.js'
 
 class Server {
   #app
@@ -27,23 +27,23 @@ class Server {
     this.#router = Router()
          
     const mySqlConnector = new MySQLConnector()
-    const redisConnector = new RedisConnector()
-    const mongoDbConnector = new MongoDBConnector()
-    const pgConnect = new PgConnect();
-    const neo4jConnector = new Neo4jConnector();
+    // const redisConnector = new RedisConnector()
+    // const mongoDbConnector = new MongoDBConnector()
+    // const pgConnect = new PgConnect();
+    // const neo4jConnector = new Neo4jConnector();
     const cassandraConnector = new CassandraConnector();
-    const sqliteConnector = new SqliteConnector();
+    // const sqliteConnector = new SqliteConnector();
     
     this.#enableMySQLUsers(mySqlConnector)
 
     this.#enableConnector(mySqlConnector, 'mysql')
     this.#enableConnector(cassandraConnector, 'cassandra')
-    this.#enableConnector(pgConnect, 'pg');
-    this.#enableConnector(redisConnector,'redis')
-    this.#enableConnector(mongoDbConnector, 'mongodb')
-    this.#enableConnector(cassandraConnector, 'cassandra')
-    this.#enableConnector(neo4jConnector, 'neo4j')
-    this.#enableConnector(sqliteConnector, 'sqlite')
+    // this.#enableConnector(pgConnect, 'pg');
+    // this.#enableConnector(redisConnector,'redis')
+    // this.#enableConnector(mongoDbConnector, 'mongodb')
+    // this.#enableConnector(cassandraConnector, 'cassandra')
+    // this.#enableConnector(neo4jConnector, 'neo4j')
+    // this.#enableConnector(sqliteConnector, 'sqlite')
   }
 
   serve(func) {
