@@ -263,7 +263,7 @@
         position: absolute;
         top:100%;
         left:0;
-        width: 157px;
+        width: 200px;
         height: auto; 
         border-top-left-radius: 5%;
         border-top-right-radius: 5%;
@@ -272,21 +272,23 @@
         position: absolute;
         top:100%;
         left: 10px;
-        width: 180px;
+        width: 240px;
         height: auto;
         border-top-left-radius: 5%;
         border-top-right-radius: 5%;
     }
     &__nav {
+        position: relative;
         display: flex;
         justify-content: space-between;
         color: $d-text-color;
         font-size: 28px;
         &-dms {     
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;   
-            width: 172px;
+            padding: 0 15px;
+            width: 200px;
             height: 65px;
             background: $d-table-nav;
             font-size: 28px;
@@ -296,12 +298,11 @@
         }
         &-sort {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;  
             margin: 0 0 0 10px;
-            // width: auto;
-            width: 180px;
-            padding: 0 20px;
+            width: 245px;
+            padding: 0 15px;
             height: 65px;
             background: $d-table-nav;
             font-size: 28px;
@@ -321,6 +322,22 @@
                 text-decoration: underline;
                 font-size: 14px;
             }
+        }
+        &-triangleBD {
+            position: absolute;
+            color: $d-text-color;
+            left: 175px;
+            top: 23px;
+            font-size: 18px;
+            z-index: 1000;
+        }
+        &-triangleSort {
+            position: absolute;
+            color: $d-text-color;
+            right: 7px;
+            top: 23px;
+            z-index: 1000;
+            font-size: 18px;
         }
     }
     &__search {
@@ -366,7 +383,7 @@
         border: 1px solid $d-border-color;
     }
     &__input {
-        width: 299px;
+        width: 240px;
         height: 65px;
         font-size: 18px;
         color: $d-main-page-bg;

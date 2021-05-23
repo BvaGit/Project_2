@@ -1,7 +1,14 @@
 export default function sortData () {
     const thead = document.getElementById('thead');
     const thTd = Array.from(thead.querySelectorAll('th')); 
-
+    const sortTextContent = document.getElementById('sort');
+    const sortDropdown = document.querySelector('.table__sortDropdown');
+    sortDropdown.addEventListener('click', (e) => {
+        e.preventDefault();
+        let tempTextContent = e.target.textContent
+        sortTextContent.textContent = tempTextContent;
+    })
+    sortTableByColumn(1, !(thTd[0].classList.contains('th-sort-asc')))
     const fnamesort = document.getElementById('firstNameSort');
     const lnameSort = document.getElementById('lastnameSort');
     const ageSort = document.getElementById('ageSort');
