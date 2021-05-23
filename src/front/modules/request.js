@@ -1,13 +1,35 @@
-function postRequest(url, obj){
-  
-   return (fetch (url, {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json; charset=utf-8"
-        },
-        body: JSON.stringify(obj)
-    }));
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
+
+export function postRequest(url, obj){
+    const token = getCookie("token");
+    return (fetch (url, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json; charset=utf-8",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(obj)
+        }));
  
 }
 
-export default postRequest;
+
+export function getRequest(url){
+    const token = getCookie("token");
+    return (fetch (url, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }));
+ 
+}
+
+// export function getRequest(url){
+//     return (fetch(url));
+// }

@@ -82,26 +82,26 @@
                 <div id="table" class="table">
                     <div class="table__panel">
                         <ul class="table__nav">
-                            <li><a href="#" class="table__nav-dms" id="dms">MySQL</a>
+                            <li><a class="table__nav-dms" id="dms">MySQL</a>
                               <ul class="table__dmsDropdown">
-                                <li><a href="#" class="table__nav-hover" id="MySQL">MySQL</a></li>
-                                <li><a href="#" class="table__nav-hover" id="PostgreSQL">PostgreSQL</a></li>
-                                <li><a href="#" class="table__nav-hover" id="H2">H2</a></li>
-                                <li><a href="#" class="table__nav-hover" id="MongoDB">MongoDB</a>
-                                <li><a href="#" class="table__nav-hover" id="Redis">Redis</a></li>
-                                <li><a href="#" class="table__nav-hover" id="Cassandra">Cassandra</a></li>
-                                <li><a href="#" class="table__nav-hover" id="GraphDB">GraphDB</a></li>
+                                <li><a class="table__nav-hover" id="MySQL">MySQL</a></li>
+                                <li><a class="table__nav-hover" id="PostgreSQL">PostgreSQL</a></li>
+                                <li><a class="table__nav-hover" id="SQLite">SQLite</a></li>
+                                <li><a class="table__nav-hover" id="MongoDB">MongoDB</a>
+                                <li><a class="table__nav-hover" id="Redis">Redis</a></li>
+                                <li><a class="table__nav-hover" id="Cassandra">Cassandra</a></li>
+                                <li><a class="table__nav-hover" id="Neo4j">Neo4j</a></li>
                               </ul>
                             </li>
-                            <li><a href="#" id="sort" class="table__nav-sort"><span data-translate="sort">Sort</span></a>
+                            <li><a id="sort" class="table__nav-sort"><span data-translate="sort">Sort</span></a>
                               <ul class="table__sortDropdown">
-                                <li><a href="#" class="table__nav-hover" id="firstNameSort"><span data-translate="firstName">First name</span></a></li>
-                                <li><a href="#" class="table__nav-hover" id="lastnameSort"><span data-translate="lastName">Last name</span></a></li>
-                                <li><a href="#" class="table__nav-hover" id="ageSort"><span data-translate="age">Age</span></a></li>
-                                <li><a href="#" class="table__nav-hover" id="citySort"><span data-translate="city">City</span></a></li>
-                                <li><a href="#" class="table__nav-hover" id="phonenumberSort"><span data-translate="phone">Phone number</span></a></li>
-                                <li><a href="#" class="table__nav-hover" id="emailSort"><span data-translate="email">Email</span></a></li>
-                                <li><a href="#" class="table__nav-hover" id="companynameSort"><span data-translate="company">Company name</span></a></li>
+                                <li><a class="table__nav-hover" id="firstNameSort"><span data-translate="firstName">First name</span></a></li>
+                                <li><a class="table__nav-hover" id="lastnameSort"><span data-translate="lastName">Last name</span></a></li>
+                                <li><a class="table__nav-hover" id="ageSort"><span data-translate="age">Age</span></a></li>
+                                <li><a class="table__nav-hover" id="citySort"><span data-translate="city">City</span></a></li>
+                                <li><a class="table__nav-hover" id="phonenumberSort"><span data-translate="phone">Phone number</span></a></li>
+                                <li><a class="table__nav-hover" id="emailSort"><span data-translate="email">Email</span></a></li>
+                                <li><a class="table__nav-hover" id="companynameSort"><span data-translate="company">Company name</span></a></li>
                               </ul>
                             </li>
                            </ul>
@@ -128,81 +128,81 @@
                             </tr>
                         </thead>
                         <tbody id="tbody" class="table__data-body tbody">
-                            <tr class="tbody__tr">
+                            <tr class="tbody__tr" onselectstart="return false">
                                 <td class="tr__td td-firstName">Ivan</td>
                                 <td class="tr__td td-lastName">Ivanov</td>
-                                <td class="tr__td td-age">25</td>
+                                <td class="tr__td td-age">42</td>
                                 <td class="tr__td td-city">Dnepr</td>
                                 <td class="tr__td td-phoneNumber">024 567 84 34</td>
                                 <td class="tr__td td-email">ivanivanov@yahoo.com</td>
-                                <td class="tr__td td-companyName">Google</td>
+                                <td class="tr__td td-companyName">Aoogle</td>
                                 <td class="tr__button"><button class="panel__control-delete panel-control-style delete-person">&#128465;</button></td>
                             </tr>
-                            <tr class="tbody__tr">
+                            <tr class="tbody__tr" onselectstart="return false">
                                 <td class="tr__td td-firstName">Petya</td>
                                 <td class="tr__td td-lastName">Petrov</td>
-                                <td class="tr__td td-age">24</td>
+                                <td class="tr__td td-age">9</td>
                                 <td class="tr__td td-city">Zhovti Vody</td>
                                 <td class="tr__td td-phoneNumber">0245678434</td>
                                 <td class="tr__td td-email">petyapetrow@yahoo.com</td>
-                                <td class="tr__td td-companyName">Yahoo</td>
+                                <td class="tr__td td-companyName">Bahoo</td>
                                 <td class="tr__button"><button class="panel__control-delete panel-control-style delete-person">&#128465;</button></td>
                             </tr>
-                            <tr class="tbody__tr">
-                                <td class="tr__td td-firstName">Ivan</td>
-                                <td class="tr__td td-lastName">Ivanov</td>
-                                <td class="tr__td td-age">25</td>
-                                <td class="tr__td td-city">Dnepr</td>
+                            <tr class="tbody__tr" onselectstart="return false">
+                                <td class="tr__td td-firstName">Dima</td>
+                                <td class="tr__td td-lastName">Dimov</td>
+                                <td class="tr__td td-age">35</td>
+                                <td class="tr__td td-city">Yalta</td>
                                 <td class="tr__td td-phoneNumber">024 567 84 34</td>
                                 <td class="tr__td td-email">ivanivanov@yahoo.com</td>
-                                <td class="tr__td td-companyName">Google</td>
+                                <td class="tr__td td-companyName">Coogle</td>
                                 <td class="tr__button"><button class="panel__control-delete panel-control-style delete-person">&#128465;</button></td>
                             </tr>
-                            <tr class="tbody__tr">
-                                <td class="tr__td td-firstName">Petya</td>
-                                <td class="tr__td td-lastName">Petrov</td>
-                                <td class="tr__td td-age">24</td>
-                                <td class="tr__td td-city">Zhovti Vody</td>
+                            <tr class="tbody__tr" onselectstart="return false">
+                                <td class="tr__td td-firstName">Ruslan</td>
+                                <td class="tr__td td-lastName">Ruslanov</td>
+                                <td class="tr__td td-age">45</td>
+                                <td class="tr__td td-city">Alushta</td>
                                 <td class="tr__td td-phoneNumber">0245678434</td>
                                 <td class="tr__td td-email">petyapetrow@yahoo.com</td>
-                                <td class="tr__td td-companyName">Yahoo</td>
+                                <td class="tr__td td-companyName">Dahoo</td>
                                 <td class="tr__button"><button class="panel__control-delete panel-control-style delete-person">&#128465;</button></td>
                             </tr>
-                            <tr class="tbody__tr">
-                                <td class="tr__td td-firstName">Ivan</td>
-                                <td class="tr__td td-lastName">Ivanov</td>
-                                <td class="tr__td td-age">25</td>
-                                <td class="tr__td td-city">Dnepr</td>
+                            <tr class="tbody__tr" onselectstart="return false">
+                                <td class="tr__td td-firstName">Kirill</td>
+                                <td class="tr__td td-lastName">Kirillov</td>
+                                <td class="tr__td td-age">67</td>
+                                <td class="tr__td td-city">Kiev</td>
                                 <td class="tr__td td-phoneNumber">024 567 84 34</td>
                                 <td class="tr__td td-email">ivanivanov@yahoo.com</td>
-                                <td class="tr__td td-companyName">Google</td>
+                                <td class="tr__td td-companyName">Eoogle</td>
                                 <td class="tr__button"><button class="panel__control-delete panel-control-style delete-person">&#128465;</button></td>
                             </tr>
-                            <tr class="tbody__tr">
-                                <td class="tr__td td-firstName">Petya</td>
-                                <td class="tr__td td-lastName">Petrov</td>
-                                <td class="tr__td td-age">24</td>
-                                <td class="tr__td td-city">Zhovti Vody</td>
+                            <tr class="tbody__tr" onselectstart="return false">
+                                <td class="tr__td td-firstName">Daniel</td>
+                                <td class="tr__td td-lastName">Danielov</td>
+                                <td class="tr__td td-age">89</td>
+                                <td class="tr__td td-city">Zmenka</td>
                                 <td class="tr__td td-phoneNumber">0245678434</td>
                                 <td class="tr__td td-email">petyapetrow@yahoo.com</td>
-                                <td class="tr__td td-companyName">Yahoo</td>
+                                <td class="tr__td td-companyName">Fahoo</td>
                                 <td class="tr__button"><button class="panel__control-delete panel-control-style delete-person">&#128465;</button></td>
                             </tr>
-                            <tr class="tbody__tr">
-                                <td class="tr__td td-firstName">Ivan</td>
-                                <td class="tr__td td-lastName">Ivanov</td>
+                            <tr class="tbody__tr" onselectstart="return false">
+                                <td class="tr__td td-firstName">Slava</td>
+                                <td class="tr__td td-lastName">Slavov</td>
                                 <td class="tr__td td-age">25</td>
-                                <td class="tr__td td-city">Dnepr</td>
+                                <td class="tr__td td-city">Pyatihatky</td>
                                 <td class="tr__td td-phoneNumber">024 567 84 34</td>
                                 <td class="tr__td td-email">ivanivanov@yahoo.com</td>
                                 <td class="tr__td td-companyName">Google</td>
                                 <td class="tr__button"><button class="panel__control-delete panel-control-style delete-person">&#128465;</button></td>
                             </tr>
-                            <tr class="tbody__tr">
-                                <td class="tr__td td-firstName">Pedvddfvdfvddftya</td>
-                                <td class="tr__td td-lastName">Petdfvfvdfvdfvdfvrov</td>
-                                <td class="tr__td td-age">24</td>
-                                <td class="tr__td td-city">Zhovti Vody</td>
+                            <tr class="tbody__tr" onselectstart="return false">
+                                <td class="tr__td td-firstName">Artem</td>
+                                <td class="tr__td td-lastName">Artemov</td>
+                                <td class="tr__td td-age">12</td>
+                                <td class="tr__td td-city">Dnprdznsk</td>
                                 <td class="tr__td td-phoneNumber">0245678434</td>
                                 <td class="tr__td td-email">petyapedfvdfvdtrow@yahoo.com</td>
                                 <td class="tr__td td-companyName">Yadfvdfvdfvdfvfdvdfhoo</td>

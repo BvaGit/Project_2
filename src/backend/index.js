@@ -8,4 +8,3 @@ const server = new Server()
 server.serve( () => {
   console.log('-----------Server has been started--------');
 })
-
