@@ -14,6 +14,7 @@ export default function handleLanguage () {
         create: 'Створити',
         update: 'Змінити',
         sort: 'Сортувати',
+        sortLabel: 'Сортувати',
         clearAll: 'Очистити всі',
         en: 'Анг',
         ua: 'Укр',
@@ -29,6 +30,7 @@ export default function handleLanguage () {
         yourPassword: 'Попередній пароль',
         newPassword: 'Новий пароль',
         repeatPassword: 'Повторіть пароль',
+        db: 'База даних',
     };
     const enTranslations = {
         firstName: 'First name',
@@ -41,6 +43,7 @@ export default function handleLanguage () {
         create: 'Create',
         update: 'Update',
         sort: 'Sort',
+        sortLabel: 'Sort',
         clearAll: 'Clear All',
         en: 'En',
         ua: 'Ua',
@@ -56,6 +59,7 @@ export default function handleLanguage () {
         yourPassword: 'Your password',
         newPassword: 'New password',
         repeatPassword: 'Confirm password',
+        db: 'Data base'
     };
     const localStorageLanguage = localStorage.getItem('selected-language') || 'en';
     selectedLanguage.value = localStorageLanguage;

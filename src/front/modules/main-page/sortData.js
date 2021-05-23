@@ -3,12 +3,6 @@ export default function sortData () {
     const thTd = Array.from(thead.querySelectorAll('th')); 
     const sortTextContent = document.getElementById('sort');
     const sortDropdown = document.querySelector('.table__sortDropdown');
-    sortDropdown.addEventListener('click', (e) => {
-        e.preventDefault();
-        let tempTextContent = e.target.textContent
-        sortTextContent.textContent = tempTextContent;
-    })
-    sortTableByColumn(1, !(thTd[0].classList.contains('th-sort-asc')))
     const fnamesort = document.getElementById('firstNameSort');
     const lnameSort = document.getElementById('lastnameSort');
     const ageSort = document.getElementById('ageSort');
@@ -16,6 +10,14 @@ export default function sortData () {
     const phonenumberSort = document.getElementById('phonenumberSort');
     const emailSort = document.getElementById('emailSort');
     const companynameSort = document.getElementById('companynameSort');
+    
+    sortDropdown.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = e.target;
+        sortTextContent.textContent = target.textContent;
+        sortTextContent.dataset.translate = target.dataset.translate;
+    })
+    sortTableByColumn(1, !(thTd[0].classList.contains('th-sort-asc')));
     
     fnamesort.addEventListener('click', () => {
         sortTableByColumn(1, !(thTd[0].classList.contains('th-sort-asc')));

@@ -234,6 +234,7 @@
 .table {
     display: table;
     flex-direction: column;
+    position: relative;
     width: 999px;
     margin: 60px 0 0 0;
     &__panel {
@@ -312,6 +313,8 @@
             border-radius: 10px;
         }
         &-hover {
+            display: block;
+            width: 100%;
             font-size: 14px;
             color: $d-text-color;
             text-decoration: none;
@@ -333,11 +336,27 @@
         }
         &-triangleSort {
             position: absolute;
-            color: $d-text-color;
-            right: 7px;
             top: 23px;
-            z-index: 1000;
+            right: 7px;
+            color: $d-text-color;
             font-size: 18px;
+            z-index: 1000;
+        }
+        &-db {
+            display: block;
+            position: absolute;
+            top: -40px;
+            left: 0;
+            color: $d-text-color;
+            z-index: 100;
+        }
+        &-srt {
+            display: block;
+            position: absolute;
+            top: -40px;
+            left: 10px;
+            color: $d-text-color;
+            z-index: 100;
         }
     }
     &__search {
@@ -756,6 +775,10 @@
             }
             &-dms {
                 background: $l-table-nav;
+            }
+            &-db,
+            &-srt {
+                color: $l-text-color;
             }
         }
         &__input {
