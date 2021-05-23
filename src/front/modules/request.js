@@ -30,6 +30,14 @@ export function getRequest(url){
  
 }
 
-// export function getRequest(url){
-//     return (fetch(url));
-// }
+export function putRequest(url, body){
+    const token = getCookie("token");
+    return (fetch (url, {
+            method: "put",
+            headers: {
+                "Content-type": "application/json; charset=utf-8",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(body)
+        }));
+}

@@ -41,7 +41,6 @@ class Server {
     this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(redisConnector,'redis')
     this.#enableConnector(mongoDbConnector, 'mongodb')
-    this.#enableConnector(cassandraConnector, 'cassandra')
     this.#enableConnector(neo4jConnector, 'neo4j')
     this.#enableConnector(sqliteConnector, 'sqlite')
   }
