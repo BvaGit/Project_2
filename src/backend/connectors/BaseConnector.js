@@ -10,8 +10,6 @@ class BaseConnector {
   putPersonBack(personId,func) {};
   deletePersonsByUserId (userId, func) {};
   putPersonsBackByUserId(userId,func) {};
-
-
 }
 
 export { BaseConnector } 
