@@ -25,37 +25,104 @@ class PgConnect extends BaseConnector{
     }
 
     #query(query, func) {
-        this.#connection.query(query, func)
-      }
+      this.#connection.query(query, (err, result) => {
+        if (result && result.rows) {
+          result = result.rows;
+          for ( const row of result){
+            if (row.phonenumber){
+              row.phoneNumber = row.phonenumber
+              delete row.phonenumber
+            }
+            if (row.companyname){
+              row.companyName = row.companyname
+              delete row.companyname
+            }
+          }
 
-    getAllPersons(func){
-        super.getAllPersons(func);
-        this.#query('SELECT * FROM persons', func);
-        
+        }
+        if (func){
+          func (err, result)
+        }
+      })
     }
-
-    getPersons(func){
-      super.getPersons(func);
-      this.#query('SELECT * FROM persons WHERE deleted = 0', func);
+  
+    getAllPersons(func) {
+      super.getAllPersons()
+      this.#query('SELECT * FROM persons', func)
     }
-
+  
+    getPersons(func) {
+      super.getPersons()
+      this.#query('SELECT * FROM persons WHERE deleted=0', func)
+    }
+  
+    getPersonsByUserId(userId, func) {
+      super.getPersonsByUserId(userId)
+      this.#query(`SELECT * FROM persons WHERE user_id=${userId} AND deleted=0`, func)
+    }
+  
+    getDeletedPersonsByUserId(userId, func) {
+      super.getDeletedPersonsByUserId(userId)
+      this.#query(`SELECT * FROM persons WHERE user_id=${userId} AND deleted=1`, func)
+    }
+  
     postPerson(person, func) {
-      super.postPerson(person, func);
-      this.#query(`INSERT INTO persons (fname, lname, age, city, phonenumber, email, companyname, user_id, deleted) VALUES ('${person.fname}', '${person.lname}', ${person.age}, '${person.city}', '${person.phoneNumber}', '${person.email}', '${person.companyName}', '${person.user_id}', FALSE)`, func);
-      
+      super.postPerson(person)
+      this.#query(`INSERT INTO persons VALUES (DEFAULT, '${person.fname}', '${person.lname}', ${person.age}, '${person.city}', '${person.phoneNumber}', '${person.email}', '${person.companyName}', '${person.user_id}', 0)`, func)
+    }
+  
+    putPerson(person, func) {
+      super.putPerson(person)
+      this.#query(`UPDATE persons SET fname='${person.fname}', lname='${person.lname}', age=${person.age}, city='${person.city}', phoneNumber='${person.phoneNumber}', email='${person.email}', companyName='${person.companyName}' WHERE id=${person.id}`, func)
+    }
+  
+    deletePersonById(personId, func) {
+      super.deletePersonById(personId)
+      this.#query(`UPDATE persons SET deleted=1 WHERE id=${personId}`, func)
     }
 
-    deletePersonById (personId, func) {
-      super.deletePersonById(personId, func);
-      this.#query(`DELETE FROM persons WHERE id=${personId}`, func);
+    putPersonBack (personId, func) {
+      super.putPersonBack(personId, func)
+  
+      this.#query(`UPDATE persons SET deleted=0 WHERE id=${personId}`, (err,rows) => {
+        this.#query(`SELECT * FROM persons WHERE id=${personId} AND deleted=1`, (err1,rows1) =>{
+          if (rows1.length === 0) {
+            func(new Error(), null)
+          } else {
+            func(null,rows)
+          }
+        })
+      })
     }
 
-    putPerson(person, func){
-      super.putPerson(person, func);
-      this.#query(`UPDATE persons SET (fname, lname, age, city, phonenumber, email, companyname, user_id, deleted) = ('${person.fname}', '${person.lname}', ${person.age}, '${person.city}', '${person.phoneNumber}', '${person.email}', '${person.companyName}', '${person.user_id}', FALSE) WHERE id=${person.id}`, func);
+    deletePersonsByUserId (userId, func) {
+      super.deletePersonsByUserId(userId, func)
+  
+      this.#query(`SELECT * FROM persons WHERE user_id=${userId} AND deleted=0`, (err,rows) => {
+        this.#query(`UPDATE persons SET deleted=1 WHERE user_id=${userId}`, (err1,rows1) =>{
+          if (rows.length === 0) {
+            func(new Error(), null)
+          } else {
+            func(null,rows1)
+          }
+        })
+      })
+    }
+  
+    putPersonsBackByUserId (userId, func) {
+      super.putPersonsBackByUserId(userId, func)
+  
+      this.#query(`SELECT * FROM persons WHERE user_id=${userId} AND deleted=1`, (err,rows) => {
+        this.#query(`UPDATE persons SET deleted=0 WHERE user_id=${userId}`, (err1,rows1) =>{
+          if (rows.length === 0) {
+            func(new Error(), null)
+          } else {
+            func(null,rows1)
+          }
+        })
+      })
     }
 
-    
-}
+  }
 
 export { PgConnect };

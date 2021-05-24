@@ -1,6 +1,6 @@
 import {postRequest, getRequest, deleteRequest, putRequest } from '../modules/request.js';
 import deletePerson from '../modules/main-page/deletePerson';
-
+import searchBar from '../modules/main-page/searchBar';
 function main(){
 
 const URL = "http://localhost:2020/api/";
@@ -17,6 +17,7 @@ const dmsDropdown = document.querySelector(".table__dmsDropdown");
 const tBody = document.querySelector("#tbody");
 const create = document.querySelector("#create");
 const update = document.querySelector("#update");
+
 let base = "mysql";
 let idPersons = null;
 
@@ -25,8 +26,18 @@ function nameDB(arg){
         case 'PostgreSQL':
             return 'pg';
         case 'MySQL':
-            return 'mysql'; 
-    }
+            return 'mysql';
+        case 'SQLite':
+            return 'sqlite'; 
+        case 'MongoDB':
+            return 'mongodb'; 
+        case 'Redis':
+            return 'redis';
+        case 'Cassandra':
+            return 'cassandra';
+        case 'Neo4j':
+            return 'neo4j';
+}
 }
 
 function getIdPersons(){
@@ -137,9 +148,23 @@ dmsDropdown.addEventListener("click", (e)=>{
     e.preventDefault();
     const nameB = nameDB(e.target.innerHTML);
     dms.innerHTML = e.target.innerHTML;
-    getDefaultPersons(nameB); // Вызывать серч бар
+    searchBar(nameB); // Вызывать серч бар
 });
 
+// const searchFirstname = document.getElementById("searchFirstname")
+
+// searchFirstname.addEventListener("input", function(){
+//     const db = dms.innerHTML 
+//     const nameB = nameDB(db);
+//     searchBar(nameB);
+// })
+// const searchLastname = document.getElementById("searchFirstname")
+
+// searchLastname.addEventListener("input", function(){
+//     const db = dms.innerHTML 
+//     const nameB = nameDB(db);
+//     searchBar(nameB)
+// })
 
 create.addEventListener("click", addPersons);
 update.addEventListener("click", putPersons);
