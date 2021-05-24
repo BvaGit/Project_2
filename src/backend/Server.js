@@ -17,6 +17,7 @@ import { CassandraConnector } from './connectors/CassandraConnector.js'
 import { Neo4jConnector } from './connectors/Neo4jConnector.js'
 import { SqliteConnector } from './connectors/SQLIteConnector.js'
 
+
 class Server {
   #app
   #router
@@ -43,6 +44,7 @@ class Server {
     this.#enableConnector(mongoDbConnector, 'mongodb')
     this.#enableConnector(neo4jConnector, 'neo4j')
     this.#enableConnector(sqliteConnector, 'sqlite')
+
   }
 
   serve(func) {
@@ -151,12 +153,20 @@ class Server {
     })
 
     this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/:id`), (req, res) => {
-
       connector.deletePersonById(req.params.id, err => {
         if (err) {
           return res.status(400).json({message:`person with id: ${req.params.id} does not exists`})
         }
         res.status(200).json({message:`person with id: ${req.params.id} successfully deleted`})
+      })
+    })
+
+    this.addRoute(new ServerOptions('PUT', `${dbms}/persons/restore/:id`), (req, res) => {
+      connector.putPersonBack(req.params.id, err => {
+        if (err) {
+          return res.status(400).json({message:`person with id: ${req.params.id} does not exists or already restored`})
+        }
+        res.status(200).json({message:`person with id: ${req.params.id} successfully restored`})
       })
     })
 
@@ -169,6 +179,23 @@ class Server {
           rows = rows.rows
         }
         res.status(200).json(rows)
+      })
+    })
+    this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/all/:user_id`), (req, res) => {
+      connector.deletePersonsByUserId(req.params.user_id, err => {
+        if (err) {
+          return res.status(400).json({message:`persons of user with id: ${req.params.user_id} does not exists or already deleted`})
+        }
+        res.status(200).json({message:`persons of user with id: ${req.params.user_id} successfully deleted`})
+      })
+    })
+
+    this.addRoute(new ServerOptions('PUT', `${dbms}/persons/restore/all/:user_id`), (req, res) => {
+      connector.putPersonsBackByUserId(req.params.user_id, err => {
+        if (err) {
+          return res.status(400).json({message:`persons of user with id: ${req.params.user_id} does not exists or already restored`})
+        }
+        res.status(200).json({message:`persons of user with id: ${req.params.user_id} successfully restored`})
       })
     })
   }
@@ -238,13 +265,12 @@ class Server {
     this.addRoute(new ServerOptions('PUT','mysql/users/restore/:id'), (req, res) => {
       connection.putUserBack(req.params.id,(err,row) =>{
         if (err) {
-          return  res.status(400).json({message:`user with id: ${req.params.id} does not exists`})
+          return  res.status(400).json({message:`user with id: ${req.params.id} does not exists or already restored`})
         }
         res.status(200).json({message:`user with id: ${req.params.id} successfully restored`})
       })
     })
     
-   
     this.addRoute(new ServerOptions('POST','mysql/auth'), (req, res) => {
       const body = req.body
       if (ServerValidator.validateStr(body.login, ServerValidator.REG_AUTH_PATTERN) 

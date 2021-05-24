@@ -78,9 +78,22 @@ class MySQLConnector extends BaseConnector {
 
   deletePersonById (personId, func) {
     super.deletePersonById(personId, func)
+    this.#query(`SELECT * FROM persons WHERE id=${personId} AND deleted=0`, (err,rows) => {
+      this.#query(`UPDATE persons SET deleted=1 WHERE id=${personId}`, (err1,rows1) =>{
+        if (rows.length === 0) {
+          func(new Error(), null)
+        } else {
+          func(null,rows1)
+        }
+      })
+    })
+  }
 
-    this.#query(`UPDATE persons SET deleted=1 WHERE id=${personId}`, (err,rows) => {
-      this.#query(`SELECT * FROM persons WHERE id=${personId} AND deleted=0`, (err1,rows1) =>{
+  putPersonBack (personId, func) {
+    super.putPersonBack(personId, func)
+
+    this.#query(`UPDATE persons SET deleted=0 WHERE id=${personId}`, (err,rows) => {
+      this.#query(`SELECT * FROM persons WHERE id=${personId} AND deleted=1`, (err1,rows1) =>{
         if (rows1.length === 0) {
           func(new Error(), null)
         } else {
@@ -101,6 +114,34 @@ class MySQLConnector extends BaseConnector {
           func(null,rows)
         }
       } )
+    })
+  }
+
+  deletePersonsByUserId (userId, func) {
+    super.deletePersonsByUserId(userId, func)
+
+    this.#query(`SELECT * FROM persons WHERE user_id=${userId} AND deleted=0`, (err,rows) => {
+      this.#query(`UPDATE persons SET deleted=1 WHERE user_id=${userId}`, (err1,rows1) =>{
+        if (rows.length === 0) {
+          func(new Error(), null)
+        } else {
+          func(null,rows1)
+        }
+      })
+    })
+  }
+
+  putPersonsBackByUserId (userId, func) {
+    super.putPersonsBackByUserId(userId, func)
+
+    this.#query(`SELECT * FROM persons WHERE user_id=${userId} AND deleted=1`, (err,rows) => {
+      this.#query(`UPDATE persons SET deleted=0 WHERE user_id=${userId}`, (err1,rows1) =>{
+        if (rows.length === 0) {
+          func(new Error(), null)
+        } else {
+          func(null,rows1)
+        }
+      })
     })
   }
 
