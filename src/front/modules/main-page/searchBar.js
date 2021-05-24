@@ -8,10 +8,8 @@ export default function searchBar(dbms){
         .then(res => res.json())
         .then((data) => {
             filterArray(data);
-         }).then(() => {
-            deletePerson();
-            deleteBtnPerson();
-        })
+            console.log("from searchBar");
+         })
         .catch(() => {
             console.log("failed get request from db");
         }); 
