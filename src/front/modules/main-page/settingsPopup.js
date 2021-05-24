@@ -1,4 +1,5 @@
 import  supportMain  from './supportMain';
+import changeCreds  from '../changeCreds';
 
 export default function settingsPopup () {
     const settings = document.getElementById('settings');
@@ -6,6 +7,7 @@ export default function settingsPopup () {
     const cancelBtn = document.getElementById('settingsPopupCancel');
     const crossBtn = document.getElementById('closeSettingsPopUp');
     const settingsIcon = document.getElementById('settings-icon');
+    const settingsPopupConfirm = document.getElementById('settingsPopupConfirm');
     const clear = document.querySelectorAll('[data-clear]');
     const show = document.querySelectorAll('[data-show]');
     const eyes = document.querySelectorAll('.eye');
@@ -47,4 +49,5 @@ export default function settingsPopup () {
             supportMain.changeType(show);
         })
     })
+    settingsPopupConfirm.addEventListener("click", changeCreds)
 }

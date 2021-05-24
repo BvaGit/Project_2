@@ -1,9 +1,9 @@
 import putRequest from "../modules/request"
-import changeCreds from "../constants/constants"
+import changeCredsURL from "../constants/constants"
 //повесть листенера на кнопку конфирм и вызывать эту функцию
 // const settingsPopupConfirm = document.addEventListener("click", ChangeCreds)
 
-function ChangeCreds(){
+function changeCreds(){
     const newLogin = document.getElementById("newLogin")
     const newPassword = document.getElementById("newPassword")
     const repeatPassword = document.getElementById("repeatPassword")
@@ -13,7 +13,7 @@ function ChangeCreds(){
             login: newLogin.value,
             password: newPassword.value,
         }
-        putRequest(changeCreds, body).then(data=>{
+        putRequest(changeCredsURL, body).then(data=>{
             if(data.status === 201){
                 console.log("всё четко");
             }else{
@@ -22,4 +22,4 @@ function ChangeCreds(){
         })
     }
 }
-export default ChangeCreds
+export default changeCreds
