@@ -11,16 +11,18 @@ export default function settingsPopup () {
     const show = document.querySelectorAll('[data-show]');
     const eyes = document.querySelectorAll('.eye');
     const popupClass = 'hideSettingsPopup';
-
     const settingsPopupConfirm = document.getElementById('settingsPopupConfirm');
-
-    settingsPopupConfirm.addEventListener("click", ChangeCreds)
 
     const closePopup = () => {
         supportMain.closePopup(settingsPopup, popupClass);
         supportMain.clearInputs(clear);
         supportMain.resetPasswordType(show);
     };
+
+    settingsPopupConfirm.addEventListener("click", () => {
+        ChangeCreds();
+        closePopup();
+    })
 
     settings.addEventListener('mouseenter', () => {
         settingsIcon.src = '../img/shestir_yellow.png';
