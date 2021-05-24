@@ -15,7 +15,6 @@
     cursor: pointer;
 }
 .panel-control-style {
-    // padding: 0 30px;
     font-size: 24px;
     border: none;
     background: transparent;
@@ -51,6 +50,9 @@
         }
     }
     &__td {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
         width: 142px;
         height: 43px;
         border: 1px solid #1a1a1a;
@@ -58,7 +60,7 @@
         font-weight: 400;
         overflow-y: hidden;
         text-align: center;
-        padding: 12px 7px;
+        padding: 0 10px;
         &:nth-child(3) {
             width: 84px;
         }
@@ -232,6 +234,7 @@
 .table {
     display: table;
     flex-direction: column;
+    position: relative;
     width: 999px;
     margin: 60px 0 0 0;
     &__panel {
@@ -261,7 +264,7 @@
         position: absolute;
         top:100%;
         left:0;
-        width: 157px;
+        width: 200px;
         height: auto; 
         border-top-left-radius: 5%;
         border-top-right-radius: 5%;
@@ -270,21 +273,23 @@
         position: absolute;
         top:100%;
         left: 10px;
-        width: 133px;
+        width: 240px;
         height: auto;
         border-top-left-radius: 5%;
         border-top-right-radius: 5%;
     }
     &__nav {
+        position: relative;
         display: flex;
         justify-content: space-between;
         color: $d-text-color;
         font-size: 28px;
         &-dms {     
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;   
-            width: 157px;
+            padding: 0 15px;
+            width: 200px;
             height: 65px;
             background: $d-table-nav;
             font-size: 28px;
@@ -294,28 +299,64 @@
         }
         &-sort {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;  
             margin: 0 0 0 10px;
-            width: auto;
-            padding: 0 20px;
+            width: 245px;
+            padding: 0 15px;
             height: 65px;
             background: $d-table-nav;
             font-size: 28px;
             color: $d-text-color;
             text-decoration: none;
+            text-align: center;
             border-radius: 10px;
         }
         &-hover {
+            display: block;
+            width: 100%;
             font-size: 14px;
             color: $d-text-color;
             text-decoration: none;
             padding: 10px 15px;
+            cursor: pointer;
             &:hover {
                 color: $d-hover-color;
                 text-decoration: underline;
                 font-size: 14px;
             }
+        }
+        &-triangleBD {
+            position: absolute;
+            color: $d-text-color;
+            left: 175px;
+            top: 23px;
+            font-size: 18px;
+            z-index: 10;
+        }
+        &-triangleSort {
+            position: absolute;
+            top: 23px;
+            right: 7px;
+            color: $d-text-color;
+            font-size: 18px;
+            z-index: 10;
+        }
+        &-db {
+            display: block;
+            position: absolute;
+            top: -40px;
+            left: 0;
+            color: $d-text-color;
+            z-index: 10;
+        }
+        &-srt {
+            display: block;
+            position: absolute;
+            top: -40px;
+            left: 10px;
+            color: $d-text-color;
+            z-index: 10;
         }
     }
     &__search {
@@ -356,12 +397,12 @@
         width: 999px;
         min-height: 315px;
         height: auto;
-        overflow-y: auto;
+        // overflow-y: auto;
         background: $d-text-color;
         border: 1px solid $d-border-color;
     }
     &__input {
-        width: 299px;
+        width: 240px;
         height: 65px;
         font-size: 18px;
         color: $d-main-page-bg;
@@ -380,6 +421,7 @@
 }
 .tbody {
     width: 100%;
+    min-height: 315px;
     &__tr {
         display: flex;
         align-items: center;
@@ -417,7 +459,7 @@
     left: 0;
     visibility: visible;
     transition: transform .4s ease;
-    z-index: 10;
+    z-index: 100;
     &__container {
         width: 590px;
         height: auto;
@@ -559,7 +601,7 @@
     left: 0;
     visibility: visible;
     transition: transform .4s ease;
-    z-index: 10;
+    z-index: 100;
     &__container {
         width: 600px; 
         height: auto; 
@@ -669,7 +711,7 @@
         &__nav {
             &-language {
                 &:hover {
-                    color: $l-hover-color;
+                    color: $l-header-hover-color;
                 }
                 &:focus {
                     outline: none;
@@ -677,7 +719,7 @@
             }
             &-theme {
                 &:hover {
-                    color: $l-hover-color;
+                    color: $l-header-hover-color;
                 }
                 &:focus {
                     outline: none;
@@ -734,6 +776,10 @@
             }
             &-dms {
                 background: $l-table-nav;
+            }
+            &-db,
+            &-srt {
+                color: $l-text-color;
             }
         }
         &__input {

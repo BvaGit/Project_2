@@ -46,23 +46,23 @@
                     <div class="panel__inputs">
                         <label for="firstName" class="panel__label">
                             <span data-translate="firstName">First name</span>
-                            <input type="text" name="firstName" id="firstnameInput" class="panel__inputs-firstName panel__input" data-placeholder="firstName" placeholder="First name" maxlength="21">
+                            <input type="text" name="firstName" id="firstnameInput" class="panel__inputs-firstName panel__input" data-placeholder="firstName" placeholder="First name" minlength="1" maxlength="20" required>
                         </label>
                         <label for="city" class="panel__label">
                             <span data-translate="city">City</span>
-                            <input type="text" name="city" id="cityInput" class="panel__inputs-city panel__input" data-placeholder="city" placeholder="City" maxlength="21">
+                            <input type="text" name="city" id="cityInput" class="panel__inputs-city panel__input" data-placeholder="city" placeholder="City" minlength="1" maxlength="20" required>
                         </label>
                         <label for="email" class="panel__label">
                             <span data-translate="email">Email</span>
-                            <input type="email" name="email" id="emailInput" class="panel__inputs-email panel__input" data-placeholder="email" placeholder="Email" maxlength="21">
+                            <input type="email" name="email" id="emailInput" class="panel__inputs-email panel__input" data-placeholder="email" placeholder="Email" maxlength="20" required>
                         </label>
                         <label for="lastName" class="panel__label">
                             <span data-translate="lastName">Last name</span>
-                            <input type="text" name="lastName" id="lastnameInput" class="panel__inputs-lastName panel__input" data-placeholder="lastName" placeholder="Last name" maxlength="21">
+                            <input type="text" name="lastName" id="lastnameInput" class="panel__inputs-lastName panel__input" data-placeholder="lastName" placeholder="Last name" minlength="10" maxlength="20">
                         </label>
                         <label for="phone" class="panel__label">
                             <span data-translate="phone">Phone number</span>
-                            <input type="tel" name="phone" id="phonenumberInput" class="panel__inputs-phone panel__input" data-placeholder="phone" placeholder="Phone number">
+                            <input type="tel" name="phone" id="phonenumberInput" class="panel__inputs-phone panel__input"  pattern="([0-9]{3})-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12" data-placeholder="phone" placeholder="Phone number">
                         </label>
                         <label for="company" class="panel__label">
                             <span data-translate="company">Company name</span>
@@ -80,28 +80,33 @@
                     </div>
                 </div>
                 <div id="table" class="table">
+                    
                     <div class="table__panel">
                         <ul class="table__nav">
-                            <li><a href="#" class="table__nav-dms" id="dms">MySQL</a>
+                        <span class="table__nav-triangleBD">&#9660;</span>
+                        <span class="table__nav-triangleSort">&#9660;</span>
+                        <span data-translate="db" class="table__nav-db">Data base</span>
+                        
+                            <li><a class="table__nav-dms" id="dms">MySQL</a>
                               <ul class="table__dmsDropdown">
-                                <li><a href="#" class="table__nav-hover" id="MySQL">MySQL</a></li>
-                                <li><a href="#" class="table__nav-hover" id="PostgreSQL">PostgreSQL</a></li>
-                                <li><a href="#" class="table__nav-hover" id="H2">H2</a></li>
-                                <li><a href="#" class="table__nav-hover" id="MongoDB">MongoDB</a>
-                                <li><a href="#" class="table__nav-hover" id="Redis">Redis</a></li>
-                                <li><a href="#" class="table__nav-hover" id="Cassandra">Cassandra</a></li>
-                                <li><a href="#" class="table__nav-hover" id="GraphDB">GraphDB</a></li>
+                                <li><a class="table__nav-hover" id="MySQL">MySQL</a></li>
+                                <li><a class="table__nav-hover" id="PostgreSQL">PostgreSQL</a></li>
+                                <li><a class="table__nav-hover" id="SQLite">SQLite</a></li>
+                                <li><a class="table__nav-hover" id="MongoDB">MongoDB</a>
+                                <li><a class="table__nav-hover" id="Redis">Redis</a></li>
+                                <li><a class="table__nav-hover" id="Cassandra">Cassandra</a></li>
+                                <li><a class="table__nav-hover" id="Neo4j">Neo4j</a></li>
                               </ul>
                             </li>
-                            <li><a href="#" id="sort" class="table__nav-sort"><span data-translate="sort">Sort</span></a>
+                            <li><a id="sort" class="table__nav-sort" data-translate="firstName"></a><span data-translate="sortLabel" class="table__nav-srt sortLabel"></span>
                               <ul class="table__sortDropdown">
-                                <li><a href="#" class="table__nav-hover" id="firstNameSort"><span data-translate="firstName">First name</span></a></li>
-                                <li><a href="#" class="table__nav-hover" id="lastnameSort"><span data-translate="lastName">Last name</span></a></li>
-                                <li><a href="#" class="table__nav-hover" id="ageSort"><span data-translate="age">Age</span></a></li>
-                                <li><a href="#" class="table__nav-hover" id="citySort"><span data-translate="city">City</span></a></li>
-                                <li><a href="#" class="table__nav-hover" id="phonenumberSort"><span data-translate="phone">Phone number</span></a></li>
-                                <li><a href="#" class="table__nav-hover" id="emailSort"><span data-translate="email">Email</span></a></li>
-                                <li><a href="#" class="table__nav-hover" id="companynameSort"><span data-translate="company">Company name</span></a></li>
+                                <li><a class="table__nav-hover" id="firstNameSort" data-translate="firstName">First name</a></li>
+                                <li><a class="table__nav-hover" id="lastnameSort" data-translate="lastName">Last name</a></li>
+                                <li><a class="table__nav-hover" id="ageSort" data-translate="age">Age</a></li>
+                                <li><a class="table__nav-hover" id="citySort" data-translate="city">City</a></li>
+                                <li><a class="table__nav-hover" id="phonenumberSort" data-translate="phone">Phone number</a></li>
+                                <li><a class="table__nav-hover" id="emailSort" data-translate="email">Email</a></li>
+                                <li><a class="table__nav-hover" id="companynameSort" data-translate="company">Company name</a></li>
                               </ul>
                             </li>
                            </ul>
@@ -154,8 +159,6 @@
                 <span class="settingsPopup__header-help" data-translate="help">you can change your password and login</span>
                 <div class="settingsPopup__group">
                     <input type="text" name="newLogin" id="newLogin" data-placeholder="newLogin" placeholder="New login" class="settingsPopup__group-newlogin" data-clear="clear">
-                    <input type="password" name="yourPassword" id="yourPassword" data-placeholder="yourPassword" placeholder="Your password" class="settingsPopup__group-yourPassword settingsPopup__input" data-clear="clear" data-show="password">
-                    <span class="eye">&#128065;</span>
                     <input type="password" name="newPassword" id="newPassword" data-placeholder="newPassword" placeholder="New password" class="settingsPopup__group-newPassword settingsPopup__input" data-clear="clear" data-show="password" >
                     <span class="eye">&#128065;</span>
                     <input type="password" name="repeatPassword" id="repeatPassword" data-placeholder="repeatPassword" placeholder="Repeat password" class="settingsPopup__group-repeatPassword settingsPopup__input" data-clear="clear" data-show="password" >
