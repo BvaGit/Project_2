@@ -9,8 +9,8 @@
   "pg_connect":{
     "host": "localhost",
     "user": "postgres",
-    "password": "1111",
-    "database": "basepg"
+    "password": "root",
+    "database": "crud_project"
     },
   
    "redis_connection": {
