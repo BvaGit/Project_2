@@ -53,7 +53,7 @@ class Server {
     this.#app.use(express.urlencoded({ extended: true }))
     this.#app.use(cors())
     this.#app.use(logger)
-    // this.#app.use(JwtService.authenticateToken)
+    this.#app.use(JwtService.authenticateToken)
   
     this.#app.use(this.#router)
     
