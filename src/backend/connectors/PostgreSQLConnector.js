@@ -80,10 +80,6 @@ class PgConnect extends BaseConnector{
       super.deletePersonById(personId)
       this.#query(`UPDATE persons SET deleted=1 WHERE id=${personId}`, func)
     }
-    // putPersonBack(personId, func) {
-    //   super.putPersonBack(personId)
-    //   this.#query(`UPDATE persons SET deleted=0 WHERE id=${personId}`, func)
-    // }
 
     putPersonBack (personId, func) {
       super.putPersonBack(personId, func)
