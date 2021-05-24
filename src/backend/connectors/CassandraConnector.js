@@ -38,8 +38,23 @@ class CassandraConnector extends BaseConnector {
         });
   }
 
-  #query(query, cb, params) {
-    this.#connection.execute(query, params, { prepare : true }, cb);
+  #query(query, callback, params) {
+    this.#connection.execute(query, params, { prepare : true }, (err, result) => {
+      let data = [];
+      if (result && result.rows) {
+        data = result.rows.map(row => {
+          return {
+            ...row,
+            phoneNumber: row.phonenumber,
+            companyName: row.companyname
+          };
+        });
+      }
+
+      if (typeof callback === 'function') {
+        callback(err, data);
+      }
+    });
   }
 
   #close() {
@@ -56,13 +71,13 @@ class CassandraConnector extends BaseConnector {
     this.#query(`SELECT * FROM ${this.tableName} WHERE deleted = false ALLOW FILTERING`, func)
   }
 
-  getAllPersonsByUserId(user_id, func) {
-    super.getAllPersonsByUserId(user_id, func)
+  getPersonsByUserId(user_id, func) {
+    super.getPersonsByUserId(user_id, func)
     this.#query(`SELECT * FROM ${this.tableName} WHERE user_id = ? AND deleted = ? ALLOW FILTERING`, func, [ user_id, false ]);
   }
 
   getDeletedPersonsByUserId(user_id, func) {
-    super.getAllPersonsByUserId(user_id, func)
+    super.getDeletedPersonsByUserId(user_id, func)
     this.#query(`SELECT * FROM ${this.tableName} WHERE user_id = ? AND deleted = ? ALLOW FILTERING`, func, [ user_id, true ]);
   }
 
