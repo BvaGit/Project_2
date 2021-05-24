@@ -1,4 +1,5 @@
 import  supportMain  from './supportMain';
+import  ChangeCreds  from '../main-page/changeCreds';
 
 export default function settingsPopup () {
     const settings = document.getElementById('settings');
@@ -10,6 +11,10 @@ export default function settingsPopup () {
     const show = document.querySelectorAll('[data-show]');
     const eyes = document.querySelectorAll('.eye');
     const popupClass = 'hideSettingsPopup';
+
+    const settingsPopupConfirm = document.getElementById('settingsPopupConfirm');
+
+    settingsPopupConfirm.addEventListener("click", ChangeCreds)
 
     const closePopup = () => {
         supportMain.closePopup(settingsPopup, popupClass);
