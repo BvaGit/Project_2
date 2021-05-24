@@ -12,7 +12,7 @@ class SqliteConnector extends BaseConnector{
     #open() {
         this.#connection = new sqlite3.Database('sqliteDB/persons.db', function(err){
             if(err) console.log(err);
-            console.log('connected to SQLIte');
+            console.log('Connection to SQLite successfully opened');
           })
     }
     getAllPersons(func){

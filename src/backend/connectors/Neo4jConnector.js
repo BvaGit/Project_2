@@ -14,7 +14,7 @@ class Neo4jConnector extends BaseConnector{
         const connection = new JsonReader().read('connections.json').neo4j_connection
         this.#connection = neo4j.driver(connection.url, neo4j.auth.basic  (connection.user, connection.password))
         if(this.#connection){
-            console.log("connected to neo4j");
+            console.log("Connection to Neo4j successfully opened");
         }
     }
     #query(query, func){
