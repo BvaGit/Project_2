@@ -9,20 +9,19 @@ import main from '../modules/main';
 window.addEventListener('DOMContentLoaded', () => {
     hello();
     if (window.location.pathname === '/main.html') {
+        main();
         settingsPopup();
         clearAllPopup();
         logout();
         themeHandler();
-        deletePerson();
+       // deletePerson();
         handleLanguage();
-        main();
+        
     }
     else if (window.location.pathname === '/regpage.html') {
-        console.log('тут будут скрипты для страницы регистрации')
         registration();
     }
     else if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
-        console.log('тут будут скрипты для страницы авторизации')
         authorization();
     }
   })

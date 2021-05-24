@@ -1,6 +1,9 @@
-import {postRequest, getRequest } from '../modules/request.js';
+import {postRequest, getRequest, deleteRequest, putRequest } from '../modules/request.js';
+import deletePerson from '../modules/main-page/deletePerson';
 
 function main(){
+
+const URL = "http://localhost:2020/api/";
 
 const fName = document.querySelector("#firstnameInput");
 const lastName = document.querySelector("#lastnameInput");
@@ -11,7 +14,11 @@ const comName = document.querySelector("#companynameInput");
 const age = document.querySelector("#ageInput");
 const dms = document.querySelector("#dms");
 const dmsDropdown = document.querySelector(".table__dmsDropdown");
-
+const tBody = document.querySelector("#tbody");
+const create = document.querySelector("#create");
+const update = document.querySelector("#update");
+let base = "mysql";
+let idPersons = null;
 
 function nameDB(arg){
     switch (arg){
@@ -22,11 +29,20 @@ function nameDB(arg){
     }
 }
 
+function getIdPersons(){
+    const tbodyTr = document.querySelector(".tbody__tr");
+    tbody.addEventListener('click', () => {
+        idPersons = tbodyTr.getAttribute("data-index");
+        console.log(idPersons);
+    });
+}
+
 function renderTable(table){
-    const tBody = document.querySelector("#tbody");
+    tbody.innerHTML = "";
     for(let i = 0; i < table.length; i++){
         const elementTr = document.createElement('tr');
         elementTr.classList.add("tbody__tr");
+        elementTr.setAttribute("data-index", table[i].id);
         elementTr.innerHTML = `
         <td class="tr__td td-firstName">${table[i].fname}</td>
         <td class="tr__td td-lastName">${table[i].lname}</td>
@@ -35,51 +51,100 @@ function renderTable(table){
         <td class="tr__td td-phoneNumber">${table[i].phoneNumber}</td>
         <td class="tr__td td-email">${table[i].email}</td>
         <td class="tr__td td-companyName">${table[i].companyName}</td>
-        <td class="tr__button"><button class="panel__control-delete panel-control-style delete-person">&#128465;</button></td>
+        <td class="tr__button"><button class="panel__control-delete panel-control-style delete-person" data-index="${table[i].id}">&#128465;</button></td>
         `;
         tBody.append(elementTr);
     }
-
 }
 
-getRequest("http://localhost:2020/api/"+"mysql"+"/persons/"+localStorage.getItem("id_user"))
-.then(res => res.json()).then((data)=>{
-    console.log(data);
-});
+function deleteBtnPerson(){
+    const URL = "http://localhost:2020/api/" + base + "/persons/";
+    tbody.addEventListener('click', (e) => {
+       const delIndex = e.target;
+       const del = delIndex.getAttribute("data-index");
+       if(del !== null){
+        deleteRequest(URL+del)
+        .then(() => {
+            getDefaultPersons(base);
+        });
+       }
+    });
+}
 
-const personsDB = {
-    fname: "qwerty",
-    lname: "asdf",
-    age: "23",
-    city: "Dnepr",
-    phoneNumber: "(000)-000-0000",
-    email: "afsdf@sdfds.com",
-    companyName: "WoW",
-    user_id: localStorage.getItem("id_user")
-};
+function getDefaultPersons(nameBase){
+    getRequest(URL + nameBase + "/persons/" + localStorage.getItem("id_user"))
+        .then(res => res.json())
+        .then((data) => {
+             renderTable(data);
+         })
+        .then(() => {
+             deletePerson();
+             deleteBtnPerson();
+             getIdPersons();
+         })
+         .catch(() => {
+             console.log("No");
+         }); 
+}
+
+function putPersons(){
+    const URL = "http://localhost:2020/api/" + base + "/persons/";
+    const personsAdd = {
+        fname: fName.value,
+        lname: lastName.value,
+        age: +age.value,
+        city: city.value,
+        phoneNumber: pNumber.value,
+        email: email.value,
+        companyName: comName.value,
+        user_id: +localStorage.getItem("id_user")
+    };
+        putRequest(URL + idPersons, personsAdd)
+            .then(() => {
+                getDefaultPersons(base);
+        });
+}
+
+function addPersons(){
+    const personsAdd = {
+        fname: fName.value,
+        lname: lastName.value,
+        age: +age.value,
+        city: city.value,
+        phoneNumber: pNumber.value,
+        email: email.value,
+        companyName: comName.value,
+        user_id: +localStorage.getItem("id_user")
+    };
+
+    console.log(personsAdd);
+
+    postRequest(URL + base + "/persons", personsAdd)
+        .then(() => {
+            getRequest(URL + base + "/persons/" + localStorage.getItem("id_user"))
+                .then(res => res.json())
+                .then((data) => {
+                    renderTable(data);
+                })
+                .then(() => {
+                    deletePerson();
+                    deleteBtnPerson();
+                });
+        });
+}
 
 dmsDropdown.addEventListener("click", (e)=>{
     e.preventDefault();
     const nameB = nameDB(e.target.innerHTML);
     dms.innerHTML = e.target.innerHTML;
-    console.log( personsDB)
-    postRequest("http://localhost:2020/api/"+nameB+"/persons", personsDB).then(() => {
-        getRequest("http://localhost:2020/api/"+nameB+"/persons/all")
-        .then(res => {
-        console.log(res.json());
-    });
-    });
-
+    getDefaultPersons(nameB); // Вызывать серч бар
 });
 
 
+create.addEventListener("click", addPersons);
+update.addEventListener("click", putPersons);
 
-
-
-
-
-
-
+getDefaultPersons(base);
 
 }
 

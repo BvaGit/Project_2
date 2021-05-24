@@ -29,7 +29,7 @@ class Server {
     this.#router = Router()
          
     const mySqlConnector = new MySQLConnector()
-    // const redisConnector = new RedisConnector()
+    const redisConnector = new RedisConnector()
     // const mongoDbConnector = new MongoDBConnector()
 
     
@@ -40,7 +40,7 @@ class Server {
     this.#enableMySQLUsers(mySqlConnector)
     this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(mySqlConnector, 'mysql')
-    // this.#enableConnector(redisConnector,'redis')
+    this.#enableConnector(redisConnector,'redis')
     // this.#enableConnector(mongoDbConnector, 'mongodb')
     // this.#enableConnector(cassandraConnector, 'cassandra')
   }
