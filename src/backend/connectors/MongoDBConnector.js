@@ -124,11 +124,21 @@ class MongoDBConnector extends BaseConnector {
   };
   async putPerson(person, func) {
    super.putPerson(person)
-
-    await this.#PersonModel.findOneAndUpdate({_id: person.id}, {...person})
+    try {
+      await this.#PersonModel.findOneAndUpdate({_id: person.id}, {...person})
+      func(null)
+    } catch (e){
+      func(e)
+    }
  }
   async deletePersonById(personId, func){
     super.deletePersonById(personId)
+    try{
+    await this.#PersonModel.findOneAndUpdate({_id: personId}, {deleted: 1})
+    func(null)
+    } catch (e) {
+      func(e)
+    }
 
     await this.#PersonModel.findOneAndUpdate({_id: personId}, {deleted: 1})
     func(null)
@@ -143,7 +153,39 @@ class MongoDBConnector extends BaseConnector {
       func(null, result)
     })
   }
+
+  async putPersonBack(personId, func) {
+    super.putPersonBack(personId)
+    try {
+      await this.#PersonModel.findOneAndUpdate({_id: personId}, {deleted: 0})
+      func(null)
+    } catch (e) {
+      func(e)
+    }
+  }
+
+  async deletePersonsByUserId (userId, func) {
+    super.getDeletedPersonsByUserId(userId)
+    try {
+      await this.#PersonModel.updateMany({ user_id: userId, deleted: 0 }, { deleted: 1 })
+      func(null)
+    } catch (e) {
+      func(e)
+    }
+  }
+  async putPersonsBackByUserId (userId, func) {
+    super.putPersonsBackByUserId(userId)
+    try {
+      await this.#PersonModel.updateMany({ user_id: userId, deleted: 1 }, { deleted: 0 })
+      func(null)
+    } catch (e) {
+      func(e)
+    }
+  }
 }
+
+
+
 
 
  export { MongoDBConnector }
