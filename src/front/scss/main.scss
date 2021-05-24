@@ -58,7 +58,7 @@
         border: 1px solid #1a1a1a;
         background: $d-table-td;
         font-weight: 400;
-        overflow: auto;
+        overflow-y: hidden;
         text-align: center;
         padding: 0 10px;
         &:nth-child(3) {

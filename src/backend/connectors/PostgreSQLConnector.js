@@ -41,7 +41,7 @@ class PgConnect extends BaseConnector{
 
     postPerson(person, func) {
       super.postPerson(person, func);
-      this.#query(`INSERT INTO persons (fname, lname, age, city, phonenumber, email, companyname, user_id, deleted) VALUES ('${person.fname}', '${person.lname}', ${person.age}, '${person.city}', '${person.phoneNumber}', '${person.email}', '${person.companyName}', '${person.user_id}','${person.deleted}')`, func);
+      this.#query(`INSERT INTO persons (fname, lname, age, city, phonenumber, email, companyname, user_id, deleted) VALUES ('${person.fname}', '${person.lname}', ${person.age}, '${person.city}', '${person.phoneNumber}', '${person.email}', '${person.companyName}', '${person.user_id}', FALSE)`, func);
       
     }
 
@@ -52,7 +52,7 @@ class PgConnect extends BaseConnector{
 
     putPerson(person, func){
       super.putPerson(person, func);
-      this.#query(`UPDATE persons SET (fname, lname, age, city, phonenumber, email, companyname, user_id, deleted) = ('${person.fname}', '${person.lname}', ${person.age}, '${person.city}', '${person.phoneNumber}', '${person.email}', '${person.companyName}', '${person.user_id}','${person.deleted}') WHERE id=${person.id}`, func);
+      this.#query(`UPDATE persons SET (fname, lname, age, city, phonenumber, email, companyname, user_id, deleted) = ('${person.fname}', '${person.lname}', ${person.age}, '${person.city}', '${person.phoneNumber}', '${person.email}', '${person.companyName}', '${person.user_id}', FALSE) WHERE id=${person.id}`, func);
     }
 
     

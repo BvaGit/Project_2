@@ -18,6 +18,19 @@ export function postRequest(url, obj){
  
 }
 
+export function putRequest(url, obj){
+    const token = getCookie("token");
+    return (fetch(url, {
+        method: "PUT",
+        headers: {
+            "Content-type": "application/json; charset=utf-8",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(obj)
+    }));
+
+}
+
 
 export function getRequest(url){
     const token = getCookie("token");
@@ -29,6 +42,18 @@ export function getRequest(url){
         }));
  
 }
+
+export function deleteRequest(url){
+    const token = getCookie("token");
+    return (fetch (url, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    }));
+}
+
+
 
 // export function getRequest(url){
 //     return (fetch(url));
