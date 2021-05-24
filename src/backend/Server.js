@@ -29,21 +29,21 @@ class Server {
          
     const mySqlConnector = new MySQLConnector()
     const redisConnector = new RedisConnector()
-    const mongoDbConnector = new MongoDBConnector()
+    // const mongoDbConnector = new MongoDBConnector()
     const pgConnect = new PgConnect();
-    const neo4jConnector = new Neo4jConnector();
-    const cassandraConnector = new CassandraConnector();
-    const sqliteConnector = new SqliteConnector();
+    // const neo4jConnector = new Neo4jConnector();
+    // const cassandraConnector = new CassandraConnector();
+    // const sqliteConnector = new SqliteConnector();
     
     this.#enableMySQLUsers(mySqlConnector)
 
     this.#enableConnector(mySqlConnector, 'mysql')
-    this.#enableConnector(cassandraConnector, 'cassandra')
+    // this.#enableConnector(cassandraConnector, 'cassandra')
     this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(redisConnector,'redis')
-    this.#enableConnector(mongoDbConnector, 'mongodb')
-    this.#enableConnector(neo4jConnector, 'neo4j')
-    this.#enableConnector(sqliteConnector, 'sqlite')
+    // this.#enableConnector(mongoDbConnector, 'mongodb')
+    // this.#enableConnector(neo4jConnector, 'neo4j')
+    // this.#enableConnector(sqliteConnector, 'sqlite')
 
   }
 
@@ -51,7 +51,6 @@ class Server {
     this.#app.use(cors());
     this.#app.use(express.json())
     this.#app.use(express.urlencoded({ extended: true }))
-    this.#app.use(cors())
     this.#app.use(logger)
     this.#app.use(JwtService.authenticateToken)
   
