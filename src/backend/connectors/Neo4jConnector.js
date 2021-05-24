@@ -84,12 +84,10 @@ class Neo4jConnector extends BaseConnector{
         this.#query(`MATCH (n) WHERE n.user_id = ${user_id} SET n.deleted = 1`, ()=>{})
     }
 
-
     putPersonsBackByUserId(user_id, func) {
         super.putPersonsBackByUserId(user_id, func)
         this.#query(`MATCH (n) WHERE n.user_id = ${user_id} SET n.deleted = 0`, ()=>{})
     }
-    
 }
 
 export { Neo4jConnector }

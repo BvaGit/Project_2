@@ -56,27 +56,23 @@ class SqliteConnector extends BaseConnector{
     }
     
     getDeletedPersonsByUserId(user_id, func) {
-        super.getDeletedPersonsByUserId(user_id, func)
-        this.#connection.run(`SELECT * FROM persons WHERE user_id =${user_id} AND deleted=1`, func)
-    }
+      super.getDeletedPersonsByUserId(user_id, func)
+      this.#connection.run(`SELECT * FROM persons WHERE user_id =${user_id} AND deleted=1`, func)
+  }
     
     putPersonBack (personId, func) {
       super.putPersonBack(personId, func)
-
-        this.#connection.all(`SELECT * FROM persons WHERE id=${personId} AND deleted=1`, func)
+      this.#connection.all(`SELECT * FROM persons WHERE id=${personId} AND deleted=1`, func)
     }
 
     deletePersonsByUserId (userId, func) {
       super.deletePersonsByUserId(userId, func)
- 
-        this.#connection.run(`UPDATE persons SET deleted=1 WHERE user_id=${userId}`, func)
+      this.#connection.run(`UPDATE persons SET deleted=1 WHERE user_id=${userId}`, func)
     }
   
     putPersonsBackByUserId (userId, func) {
       super.putPersonsBackByUserId(userId, func)
-
-        this.#connection.run(`UPDATE persons SET deleted=0 WHERE user_id=${userId}`, func)
-
+      this.#connection.run(`UPDATE persons SET deleted=0 WHERE user_id=${userId}`, func)
     }
 }
 
