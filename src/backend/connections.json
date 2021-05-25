@@ -25,7 +25,7 @@
    "cassandra_connection": {
     "contactPoints": ["127.0.0.1:9042"],
     "localDataCenter": "datacenter1",
-    "keyspace": "qwerty"
+    "keyspace": "crud_project"
     },
 
     "neo4j_connection": {
