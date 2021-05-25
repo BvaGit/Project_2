@@ -8,6 +8,11 @@ function valid(login, pass){
         return false;
     }
 
+    const minUp = 101;
+    const maxUp = 132;
+
+
+
 
 
 

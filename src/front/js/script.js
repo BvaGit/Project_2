@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
         themeHandler();
        // deletePerson();
         handleLanguage();
-        sortData();
+        // sortData();
     }
     else if (window.location.pathname === '/regpage.html') {
         registration();

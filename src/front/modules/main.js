@@ -1,5 +1,6 @@
 import {postRequest, getRequest, deleteRequest, putRequest } from '../modules/request.js';
 import deletePerson from '../modules/main-page/deletePerson';
+import sortData from '../modules/main-page/sortData';
 
 function main(){
 
@@ -26,14 +27,24 @@ function nameDB(arg){
             return 'pg';
         case 'MySQL':
             return 'mysql'; 
+        case 'SQLite':
+            return 'sqlite';
+        case 'MongoDB':
+            return 'mongodb';
+        case 'Redis':
+            return 'redis';
+        case 'Cassandra':
+            return 'cassandra';
+        case 'Neo4j':
+            return 'neo4j';
     }
 }
 
 function getIdPersons(){
     const tbodyTr = document.querySelector(".tbody__tr");
-    tbody.addEventListener('click', () => {
-        idPersons = tbodyTr.getAttribute("data-index");
-        console.log(idPersons);
+    tbody.addEventListener('click', (e) => {
+        let td = e.target.closest('tr');
+        idPersons = td.getAttribute("data-index");
     });
 }
 
@@ -81,6 +92,7 @@ function getDefaultPersons(nameBase){
              deletePerson();
              deleteBtnPerson();
              getIdPersons();
+             sortData();
          })
          .catch(() => {
              console.log("No");
@@ -135,9 +147,9 @@ function addPersons(){
 
 dmsDropdown.addEventListener("click", (e)=>{
     e.preventDefault();
-    const nameB = nameDB(e.target.innerHTML);
+    base = nameDB(e.target.innerHTML);
     dms.innerHTML = e.target.innerHTML;
-    getDefaultPersons(nameB); // Вызывать серч бар
+    getDefaultPersons(base); // Вызывать серч бар
 });
 
 
