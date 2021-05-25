@@ -6,6 +6,7 @@ import  registration  from '../modules/registration';
 import sortData from '../modules/main-page/sortData'
 import authorization from '../modules/auth';
 import main from '../modules/main';
+import controlPanelValidation from "../modules/main-page/controlPanelValidation";
 
 window.addEventListener('DOMContentLoaded', () => {
     hello();
@@ -18,6 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
        // deletePerson();
         handleLanguage();
         sortData();
+        controlPanelValidation();
     }
     else if (window.location.pathname === '/regpage.html') {
         registration();
