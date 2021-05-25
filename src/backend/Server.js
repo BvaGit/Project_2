@@ -77,6 +77,7 @@ class Server {
   }
 
   #enableConnector(connector, dbms) {
+    
     this.addRoute(new ServerOptions('GET', `${dbms}/persons`), (req, res) => {
       connector.getPersons((err, rows) => {
         if (err){

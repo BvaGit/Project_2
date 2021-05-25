@@ -1,6 +1,7 @@
 import {postRequest, getRequest, deleteRequest, putRequest } from '../modules/request.js';
 import deletePerson from '../modules/main-page/deletePerson';
 import sortData from '../modules/main-page/sortData';
+import searchBar from '../modules/main-page/searchBar';
 
 function main(){
 
@@ -18,6 +19,7 @@ const dmsDropdown = document.querySelector(".table__dmsDropdown");
 const tBody = document.querySelector("#tbody");
 const create = document.querySelector("#create");
 const update = document.querySelector("#update");
+
 let base = "mysql";
 let idPersons = null;
 
@@ -26,11 +28,11 @@ function nameDB(arg){
         case 'PostgreSQL':
             return 'pg';
         case 'MySQL':
-            return 'mysql'; 
+            return 'mysql';
         case 'SQLite':
-            return 'sqlite';
+            return 'sqlite'; 
         case 'MongoDB':
-            return 'mongodb';
+            return 'mongodb'; 
         case 'Redis':
             return 'redis';
         case 'Cassandra':
@@ -41,7 +43,6 @@ function nameDB(arg){
 }
 
 function getIdPersons(){
-    const tbodyTr = document.querySelector(".tbody__tr");
     tbody.addEventListener('click', (e) => {
         let td = e.target.closest('tr');
         idPersons = td.getAttribute("data-index");
@@ -149,9 +150,24 @@ dmsDropdown.addEventListener("click", (e)=>{
     e.preventDefault();
     base = nameDB(e.target.innerHTML);
     dms.innerHTML = e.target.innerHTML;
-    getDefaultPersons(base); // Вызывать серч бар
+    getDefaultPersons(base);
+    searchBar(nameB); 
 });
 
+// const searchFirstname = document.getElementById("searchFirstname")
+
+// searchFirstname.addEventListener("input", function(){
+//     const db = dms.innerHTML 
+//     const nameB = nameDB(db);
+//     searchBar(nameB);
+// })
+// const searchLastname = document.getElementById("searchFirstname")
+
+// searchLastname.addEventListener("input", function(){
+//     const db = dms.innerHTML 
+//     const nameB = nameDB(db);
+//     searchBar(nameB)
+// })
 
 create.addEventListener("click", addPersons);
 update.addEventListener("click", putPersons);
