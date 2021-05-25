@@ -23,7 +23,6 @@ class Neo4jConnector extends BaseConnector{
             if(result.records[0]){
                 var persons = []
                 result.records.forEach(function(record){
-                    record._fields[0].properties.phoneNumber = record._fields[0].properties.phoneNumber.low
                     record._fields[0].properties.user_id = record._fields[0].properties.user_id.low
                     record._fields[0].properties.age = record._fields[0].properties.age.low
                     record._fields[0].properties.deleted = record._fields[0].properties.deleted.low

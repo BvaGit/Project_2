@@ -151,7 +151,7 @@ dmsDropdown.addEventListener("click", (e)=>{
     base = nameDB(e.target.innerHTML);
     dms.innerHTML = e.target.innerHTML;
     getDefaultPersons(base);
-    searchBar(nameB); 
+    //searchBar(base); 
 });
 
 // const searchFirstname = document.getElementById("searchFirstname")
