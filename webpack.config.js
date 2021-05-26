@@ -31,14 +31,17 @@ module.exports = {
         new HTMLPlugin({
             filename: 'index.html',
             template: './src/front/index.html',
+            favicon: './src/front/img/logo.png'
         }),
         new HTMLPlugin({
             filename: 'main.html',
-            template: './src/front/main.html'
+            template: './src/front/main.html',
+            favicon: './src/front/img/logo.png'
         }),
         new HTMLPlugin({
             filename: 'regpage.html',
-            template: './src/front/regpage.html'
+            template: './src/front/regpage.html',
+            favicon: './src/front/img/logo.png'
         }),
         new CopyPlugin({
             patterns: [{from:'src/front/img/', to: 'img'}]
