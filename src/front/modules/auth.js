@@ -18,7 +18,7 @@ function authorization(){
             const token = await (data.json());
 
             localStorage.setItem('id_user', token.id);
-            document.cookie = `token=${token.token}; path=/`;
+            document.cookie = `token=${token.token}; path=/; max-age=60*60*2`;
 
             if(data.ok){
                 document.location.href = "/main.html";
