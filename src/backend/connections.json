@@ -9,7 +9,7 @@
   "pg_connect":{
     "host": "localhost",
     "user": "postgres",
-    "password": "root",
+    "password": "1111",
     "database": "crud_project"
     },
   

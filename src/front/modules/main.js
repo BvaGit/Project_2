@@ -1,6 +1,8 @@
 import {postRequest, getRequest, deleteRequest, putRequest } from '../modules/request.js';
 import deletePerson from '../modules/main-page/deletePerson';
+import sortData from '../modules/main-page/sortData';
 import searchBar from '../modules/main-page/searchBar';
+
 function main(){
 
 const URL = "http://localhost:2020/api/";
@@ -18,10 +20,11 @@ const tBody = document.querySelector("#tbody");
 const create = document.querySelector("#create");
 const update = document.querySelector("#update");
 
-let base = "mysql";
+let base = 'mysql';
 let idPersons = null;
 
 function nameDB(arg){
+    console.log(arg);
     switch (arg){
         case 'PostgreSQL':
             return 'pg';
@@ -37,14 +40,13 @@ function nameDB(arg){
             return 'cassandra';
         case 'Neo4j':
             return 'neo4j';
-}
+    }
 }
 
 function getIdPersons(){
-    const tbodyTr = document.querySelector(".tbody__tr");
-    tbody.addEventListener('click', () => {
-        idPersons = tbodyTr.getAttribute("data-index");
-        console.log(idPersons);
+    tbody.addEventListener('click', (e) => {
+        let td = e.target.closest('tr');
+        idPersons = td.getAttribute("data-index");
     });
 }
 
@@ -69,16 +71,21 @@ function renderTable(table){
 }
 
 function deleteBtnPerson(){
-    const URL = "http://localhost:2020/api/" + base + "/persons/";
-    tbody.addEventListener('click', (e) => {
-       const delIndex = e.target;
-       const del = delIndex.getAttribute("data-index");
-       if(del !== null){
+    
+    function del(e){
+        const URL = "http://localhost:2020/api/" + base + "/persons/";
+        const delIndex = e.target;
+        const del = delIndex.getAttribute("data-index");
+        if(del !== null){
         deleteRequest(URL+del)
         .then(() => {
             getDefaultPersons(base);
         });
        }
+    }
+    
+    tbody.addEventListener('click', (e) => {
+        del(e);
     });
 }
 
@@ -86,15 +93,15 @@ function getDefaultPersons(nameBase){
     getRequest(URL + nameBase + "/persons/" + localStorage.getItem("id_user"))
         .then(res => res.json())
         .then((data) => {
-             renderTable(data);
+            renderTable(data);
          })
         .then(() => {
-             deletePerson();
-             deleteBtnPerson();
-             getIdPersons();
+            getIdPersons();
+            deletePerson();
+            sortData();
          })
          .catch(() => {
-             console.log("No");
+            console.log("No");
          }); 
 }
 
@@ -128,47 +135,24 @@ function addPersons(){
         user_id: +localStorage.getItem("id_user")
     };
 
-    console.log(personsAdd);
-
     postRequest(URL + base + "/persons", personsAdd)
         .then(() => {
-            getRequest(URL + base + "/persons/" + localStorage.getItem("id_user"))
-                .then(res => res.json())
-                .then((data) => {
-                    renderTable(data);
-                })
-                .then(() => {
-                    deletePerson();
-                    deleteBtnPerson();
-                });
+            getDefaultPersons(base);
         });
 }
 
 dmsDropdown.addEventListener("click", (e)=>{
     e.preventDefault();
-    const nameB = nameDB(e.target.innerHTML);
+    base = nameDB(e.target.innerHTML);
     dms.innerHTML = e.target.innerHTML;
-    searchBar(nameB); // Вызывать серч бар
+    getDefaultPersons(base);
+    //searchBar(base); 
 });
-
-// const searchFirstname = document.getElementById("searchFirstname")
-
-// searchFirstname.addEventListener("input", function(){
-//     const db = dms.innerHTML 
-//     const nameB = nameDB(db);
-//     searchBar(nameB);
-// })
-// const searchLastname = document.getElementById("searchFirstname")
-
-// searchLastname.addEventListener("input", function(){
-//     const db = dms.innerHTML 
-//     const nameB = nameDB(db);
-//     searchBar(nameB)
-// })
 
 create.addEventListener("click", addPersons);
 update.addEventListener("click", putPersons);
 
+deleteBtnPerson();
 getDefaultPersons(base);
 
 }

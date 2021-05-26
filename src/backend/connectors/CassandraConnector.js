@@ -21,9 +21,9 @@ class CassandraConnector extends BaseConnector {
   }
 
   #open() {
-    const createKsQuery = `CREATE KEYSPACE IF NOT EXISTS ${this.config.keyspace} WITH REPLICATION = { 'class': 'SimpleStrategy', 'replication_factor': 1 }`;
+    const createKsQuery = `CREATE KEYSPACE IF NOT EXISTS ${this.config.keyspace} WITH REPLICATION = { 'class': 'SimpleStrategy', 'replication_factor': 10 }`;
     const createPersonTableQuery = `CREATE TABLE IF NOT EXISTS
-     ${this.tableName} (id UUID PRIMARY KEY, fname varchar, lname varchar, age int, city varchar, phoneNumber varchar, email text, companyName varchar, deleted boolean, user_id int);`;
+     ${this.tableName} (id UUID PRIMARY KEY, fname varchar, lname varchar, age int, city varchar, phoneNumber varchar, email text, companyName varchar, deleted smallint, user_id int);`;
 
     this.#connection
         .connect()
@@ -68,17 +68,17 @@ class CassandraConnector extends BaseConnector {
 
   getPersons(func) {
     super.getPersons(func)
-    this.#query(`SELECT * FROM ${this.tableName} WHERE deleted = false ALLOW FILTERING`, func)
+    this.#query(`SELECT * FROM ${this.tableName} WHERE deleted = 0 ALLOW FILTERING`, func)
   }
 
   getPersonsByUserId(user_id, func) {
     super.getPersonsByUserId(user_id, func)
-    this.#query(`SELECT * FROM ${this.tableName} WHERE user_id = ? AND deleted = ? ALLOW FILTERING`, func, [ user_id, false ]);
+    this.#query(`SELECT * FROM ${this.tableName} WHERE user_id = ? AND deleted = ? ALLOW FILTERING`, func, [ user_id, 0 ]);
   }
 
   getDeletedPersonsByUserId(user_id, func) {
     super.getDeletedPersonsByUserId(user_id, func)
-    this.#query(`SELECT * FROM ${this.tableName} WHERE user_id = ? AND deleted = ? ALLOW FILTERING`, func, [ user_id, true ]);
+    this.#query(`SELECT * FROM ${this.tableName} WHERE user_id = ? AND deleted = ? ALLOW FILTERING`, func, [ user_id, 1 ]);
   }
 
   postPerson(person, func) {
@@ -90,13 +90,13 @@ class CassandraConnector extends BaseConnector {
     this.#query(
         query,
         func,
-        [ fname, lname, age, city, phoneNumber, email, companyName, user_id, false ]
+        [ fname, lname, age, city, phoneNumber, email, companyName, user_id, 0 ]
     );
   }
 
   deletePersonById(personId, func) {
     super.deletePersonById(personId, func);
-    this.#query(`UPDATE ${this.tableName} SET deleted = true WHERE id = ?`, func, [ personId ]);
+    this.#query(`UPDATE ${this.tableName} SET deleted = 1 WHERE id = ?`, func, [ personId ]);
   }
 
   putPerson(person, func) {

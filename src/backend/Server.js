@@ -51,7 +51,6 @@ class Server {
     this.#app.use(cors());
     this.#app.use(express.json())
     this.#app.use(express.urlencoded({ extended: true }))
-    this.#app.use(cors())
     this.#app.use(logger)
     this.#app.use(JwtService.authenticateToken)
   
@@ -106,7 +105,7 @@ class Server {
     })
 
     this.addRoute(new ServerOptions('GET', `${dbms}/persons/:id`), (req, res) => {
-      connector.getPersonsByUserId(req.params.id, (err, rows) => {
+      connector.getPersonsByUserId(Number(req.params.id), (err, rows) => {
         if (err) {
           return console.error(`Error:${err.message}`)
         }
