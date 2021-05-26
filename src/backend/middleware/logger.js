@@ -25,6 +25,6 @@ export const logger = ( req,res,next ) =>{
       console.log(colors.bgBlack(`[${today}] ${colors.red('[DELETE]')} [${req.path}] [${req.ip}]`))
       break     
   }
-
+  
   next()
-}
+} 
