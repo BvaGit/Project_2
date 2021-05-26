@@ -53,7 +53,7 @@ export function deleteRequest(url){
     }));
 }
 
-export function deleteAllRequest(url){
+/*export function deleteAllRequest(url){
     const token = getCookie("token");
     return (fetch (url, {
         method: 'DELETE',
@@ -61,7 +61,7 @@ export function deleteAllRequest(url){
             "Authorization": `Bearer ${token}`
         }
     }));
-}
+}*/
 
 
 
