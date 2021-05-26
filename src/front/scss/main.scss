@@ -889,3 +889,19 @@
 .has-error {
     border-bottom: 3px solid $d-error;
 }
+.settingsError {
+    position: absolute;
+    bottom: 5px;
+    color: $d-error;
+    font-size: 16px;
+    transform: scale(1.5);
+    transition: transform 2s ease-in;
+}
+.settingsSuccess {
+    position: absolute;
+    bottom: 5px;
+    color: $d-hover-color;
+    font-size: 16px;
+    transform: scale(1.5);
+    transition: transform 2s ease-in;
+}
