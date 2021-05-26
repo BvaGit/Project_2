@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/src/front/img/logo.png">
+    <title>Qwerty</title>
 </head>
 <body>    
     <div id="general" class="general theme-light">
@@ -37,6 +38,8 @@
                             <image id="logout-icon" src="../img/exit_white.png"/>
                         </button>
                     </a>
+                    <span class="settingsSuccess hide" data-translate="success"></span>
+                    <span class="settingsError hide" data-translate="error"></span>
                 </div>
             </div>
         </header>
@@ -51,10 +54,12 @@
                         <label for="city" class="panel__label">
                             <span data-translate="city">City</span>
                             <input type="text" name="city" id="cityInput" class="panel__inputs-city panel__input" data-placeholder="city" placeholder="City" minlength="1" maxlength="20" required>
+                            <span class="input-error-city hide" data-translate="cityError"></span>
                         </label>
                         <label for="email" class="panel__label">
                             <span data-translate="email">Email</span>
                             <input type="email" name="email" id="emailInput" class="panel__inputs-email panel__input" data-placeholder="email" placeholder="Email" maxlength="20" required>
+                            <span class="input-error-email hide" data-translate="emailError"></span>
                         </label>
                         <label for="lastName" class="panel__label">
                             <span data-translate="lastName">Last name</span>
@@ -63,6 +68,7 @@
                         <label for="phone" class="panel__label">
                             <span data-translate="phone">Phone number</span>
                             <input type="tel" name="phone" id="phonenumberInput" class="panel__inputs-phone panel__input"  pattern="([0-9]{3})-[0-9]{3}-[0-9]{4}" minlength="14" maxlength="14" data-placeholder="phone" placeholder="Phone number">
+                            <span class="input-error-phone hide">(xxx)-xxx-xxxx</span>
                         </label>
                         <label for="company" class="panel__label">
                             <span data-translate="company">Company name</span>
@@ -71,6 +77,7 @@
                         <label for="age" class="panel__label">
                             <span data-translate="age">Age</span>
                             <input type="number" name="age" id="ageInput" class="panel__inputs-age panel__input" data-placeholder="age" placeholder="Age" min="0" max="200" maxlength="3" onkeydown="return event.keyCode !== 69">
+                            <span class="input-error-age hide" data-translate="ageError"></span>
                         </label>
                         <div class="panel__control">
                             <button id="create" class="panel__control-create panel-control-style"><span data-translate="create">Create</span></button>
