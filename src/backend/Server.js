@@ -29,7 +29,7 @@ class Server {
          
     const mySqlConnector = new MySQLConnector()
     const redisConnector = new RedisConnector()
-    const mongoDbConnector = new MongoDBConnector()
+    // const mongoDbConnector = new MongoDBConnector()
     const pgConnect = new PgConnect();
     const neo4jConnector = new Neo4jConnector();
     const cassandraConnector = new CassandraConnector();
@@ -41,7 +41,7 @@ class Server {
     this.#enableConnector(cassandraConnector, 'cassandra')
     this.#enableConnector(pgConnect, 'pg');
     this.#enableConnector(redisConnector,'redis')
-    this.#enableConnector(mongoDbConnector, 'mongodb')
+    // this.#enableConnector(mongoDbConnector, 'mongodb')
     this.#enableConnector(neo4jConnector, 'neo4j')
     this.#enableConnector(sqliteConnector, 'sqlite')
 

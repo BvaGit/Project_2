@@ -148,7 +148,7 @@
         display: flex;
         flex-direction: column;
         color: $d-text-color;
-        font-size: 26px;
+        font-size: 24px;
         margin: 0 0 10px;
     }
     &__inputs {
@@ -170,7 +170,7 @@
         margin: 10px 0 0;
         padding: 25px;
         color: $d-main-page-bg;
-        font-size: 26px;
+        font-size: 24px;
         &:focus {
             outline: 1px solid $d-hover-color;
         }
@@ -220,7 +220,7 @@
             padding: 0 20px;
             height: 65px;
             background: $d-clearAll;
-            font-size: 28px;
+            font-size: 26px;
             color: $d-text-color;
             text-decoration: none;
             border-radius: 10px;
@@ -283,7 +283,7 @@
         display: flex;
         justify-content: space-between;
         color: $d-text-color;
-        font-size: 28px;
+        font-size: 25px;
         &-dms {     
             display: flex;
             justify-content: flex-start;
@@ -292,7 +292,7 @@
             width: 200px;
             height: 65px;
             background: $d-table-nav;
-            font-size: 28px;
+            font-size: 26px;
             color: $d-text-color;
             text-decoration: none;
             border-radius: 10px;
@@ -306,7 +306,7 @@
             padding: 0 15px;
             height: 65px;
             background: $d-table-nav;
-            font-size: 28px;
+            font-size: 26px;
             color: $d-text-color;
             text-decoration: none;
             text-align: center;
