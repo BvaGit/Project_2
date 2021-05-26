@@ -18,7 +18,6 @@ export default function deletePerson () {
 
     table.addEventListener('click', function(e) {
         const targetTr = e.target.closest('tr');
-       // console.log(targetTr);
         if (targetTr) {
             tbodytr.forEach(trElement => {
                 if (trElement === targetTr) {
