@@ -1,50 +1,52 @@
 import { ServerValidator } from "../../../backend/service/ServerValidator";
 
-function validateName(input) {
-    const inputValue = input.value;
-    if (ServerValidator.NAME_PATTERN.test(inputValue)) {
-        input.classList.remove('has-error');
-    } else {
-        input.classList.add('has-error');
-        input.value = '';
-    }
-}
-function validateCity(input) {
-    const inputValue = input.value;
-    if (ServerValidator.CITY_PATTERN.test(inputValue)) {
-        input.classList.remove('has-error');
-    } else {
-        input.classList.add('has-error');
-        input.value = '';
-    }
-}
-function validateEmail(input) {
-    const inputValue = input.value;
-    if (ServerValidator.EMAIL_PATTERN.test(inputValue)) {
-        input.classList.remove('has-error');
-    } else {
-        input.classList.add('has-error');
-        input.value = '';
-        input.placeholder = 'your-email@domain.com'
-    }
-}
-function validatePhone(input) {
-    const inputValue = input.value;
-    if (ServerValidator.PHONE_PATTERN.test(inputValue)) {
-        input.classList.remove('has-error');
-    } else {
-        input.classList.add('has-error');
-        input.value = '';
-        input.placeholder = '(xxx)-xxx-xxxx';
-    }
-}
-function validateAge(input) {
-    const inputValue = input.value;
-    if (inputValue > 0 && inputValue <= 123 && inputValue !== '') {
-        input.classList.remove('has-error');
-    } else {
-        input.classList.add('has-error');
-        input.value = '';
+const validationOnInputs = {
+    validateName(input) {
+        const inputValue = input.value;
+        if (ServerValidator.NAME_PATTERN.test(inputValue)) {
+            input.classList.remove('has-error');
+        } else {
+            input.classList.add('has-error');
+            input.value = '';
+        }
+    },
+    validateCity(input) {
+        const inputValue = input.value;
+        if (ServerValidator.CITY_PATTERN.test(inputValue)) {
+            input.classList.remove('has-error');
+        } else {
+            input.classList.add('has-error');
+            input.value = '';
+        }
+    },
+    validateEmail(input) {
+        const inputValue = input.value;
+        if (ServerValidator.EMAIL_PATTERN.test(inputValue)) {
+            input.classList.remove('has-error');
+        } else {
+            input.classList.add('has-error');
+            input.value = '';
+            input.placeholder = 'your-email@domain.com'
+        }
+    },
+    validatePhone(input) {
+        const inputValue = input.value;
+        if (ServerValidator.PHONE_PATTERN.test(inputValue)) {
+            input.classList.remove('has-error');
+        } else {
+            input.classList.add('has-error');
+            input.value = '';
+            input.placeholder = '(xxx)-xxx-xxxx';
+        }
+    }, 
+    validateAge(input) {
+        const inputValue = input.value;
+        if (inputValue > 0 && inputValue <= 123 && inputValue !== '') {
+            input.classList.remove('has-error');
+        } else {
+            input.classList.add('has-error');
+            input.value = '';
+        }
     }
 }
 
@@ -56,22 +58,22 @@ export default function controlPanelValidation () {
             const inputName = e.target.name;
             switch (inputName) {
                 case 'firstName':
-                    validateName(input);
+                    validationOnInputs.validateName(input);
                     break;
                 case 'lastName':
-                    validateName(input);
+                    validationOnInputs.validateName(input);
                     break;
                 case 'city':
-                    validateCity(input);
+                    validationOnInputs.validateCity(input);
                     break;
                 case 'email':
-                    validateEmail(input);
+                    validationOnInputs.validateEmail(input);
                     break;
                 case 'phone':
-                    validatePhone(input);
+                    validationOnInputs.validatePhone(input);
                     break;
                 case 'age':
-                    validateAge(input);
+                    validationOnInputs.validateAge(input);
                     break;
             }
         })

@@ -31,6 +31,8 @@ export default function handleLanguage () {
         newPassword: 'Новий пароль',
         repeatPassword: 'Повторіть пароль',
         db: 'База даних',
+        success: 'Дані успішно змінені',
+        error: 'Сталася помилка, спробуйте ще раз'
     };
     const enTranslations = {
         firstName: 'First name',
@@ -59,7 +61,9 @@ export default function handleLanguage () {
         yourPassword: 'Your password',
         newPassword: 'New password',
         repeatPassword: 'Confirm password',
-        db: 'Data base'
+        db: 'Data base',
+        success: 'Changed successfully',
+        error: 'Mistakes happens, try again'
     };
     const localStorageLanguage = localStorage.getItem('selected-language') || 'en';
     selectedLanguage.value = localStorageLanguage;
