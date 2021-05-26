@@ -15,8 +15,7 @@ window.addEventListener('DOMContentLoaded', () => {
         settingsPopup();
         clearAllPopup();
         logout();
-        themeHandler();
-       // deletePerson();
+        themeHandler(
         handleLanguage();
         sortData();
         controlPanelValidation();
