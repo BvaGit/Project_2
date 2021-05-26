@@ -53,7 +53,7 @@ class Server {
     this.#app.use(express.urlencoded({ extended: true }))
     this.#app.use(cors())
     this.#app.use(logger)
-    // this.#app.use(JwtService.authenticateToken)
+    this.#app.use(JwtService.authenticateToken)
   
     this.#app.use(this.#router)
     
@@ -276,17 +276,19 @@ class Server {
       const body = req.body
       if (ServerValidator.validateStr(body.login, ServerValidator.REG_AUTH_PATTERN) 
       && ServerValidator.validateStr(body.password, ServerValidator.REG_AUTH_PATTERN)) {
-        connection.getUserByLoginAndPassword(body, (err, rows) => {
+        connection.getUserByLogin(body, (err, rows) => {
           if (err) {
             return console.error(`Error: ${err.message}`)
           }
-          if (rows.length > 0) {
-            const userLogin = rows[0].login
-            const deleted = rows[0].deleted
-            const token = JwtService.generateAccessToken({login: userLogin})
-            res.status(200).json({id: rows[0].id, token, deleted})
-          } else {
-            res.status(401).json({message: "Unauthorized"})
+          if (rows.length > 0 && body.login === rows[0].login && body.password !== rows[0].password) {
+              res.status(400).json({message: "incorrect password"})
+            } else if (rows.length > 0) {
+              const userLogin = rows[0].login
+              const deleted = rows[0].deleted
+              const token = JwtService.generateAccessToken({login: userLogin})
+              res.status(200).json({id: rows[0].id, token, deleted})
+            } else {
+              res.status(401).json({message: "Unauthorized"})
           }
         })
       }
