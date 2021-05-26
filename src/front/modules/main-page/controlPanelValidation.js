@@ -30,7 +30,7 @@ function validateEmail(input) {
 }
 function validatePhone(input) {
     const inputValue = input.value;
-    if (ServerValidator.EMAIL_PATTERN.test(inputValue)) {
+    if (ServerValidator.PHONE_PATTERN.test(inputValue)) {
         input.classList.remove('has-error');
     } else {
         input.classList.add('has-error');
