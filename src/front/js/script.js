@@ -7,6 +7,7 @@ import sortData from '../modules/main-page/sortData'
 import authorization from '../modules/auth';
 import main from '../modules/main';
 import controlPanelValidation from "../modules/main-page/controlPanelValidation";
+import checkCookie from "../modules/main-page/ripCookie"
 
 window.addEventListener('DOMContentLoaded', () => {
     hello();
@@ -19,6 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
         handleLanguage();
         sortData();
         controlPanelValidation();
+        checkCookie()
     }
     else if (window.location.pathname === '/regpage.html') {
         registration();
