@@ -32,7 +32,10 @@ export default function handleLanguage () {
         repeatPassword: 'Повторіть пароль',
         db: 'База даних',
         success: 'Дані успішно змінені',
-        error: 'Сталася помилка, спробуйте ще раз'
+        error: 'Сталася помилка, спробуйте ще раз',
+        cityError: 'З великої літери та тільки літери, зайченятко',
+        emailError: `Пам\'ятай про равлика, сонечко`,
+        ageError: `Не вигадуй, дуже прошу.`
     };
     const enTranslations = {
         firstName: 'First name',
@@ -63,7 +66,10 @@ export default function handleLanguage () {
         repeatPassword: 'Confirm password',
         db: 'Data base',
         success: 'Changed successfully',
-        error: 'Mistakes happens, try again'
+        error: 'Mistakes happens, try again',
+        cityError: 'Only capital letters',
+        emailError: 'your-email@domain.com',
+        ageError: 'Max age 123'
     };
     const localStorageLanguage = localStorage.getItem('selected-language') || 'en';
     selectedLanguage.value = localStorageLanguage;

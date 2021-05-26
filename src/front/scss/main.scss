@@ -147,9 +147,10 @@
     &__label {
         display: flex;
         flex-direction: column;
+        position: relative;
         color: $d-text-color;
         font-size: 24px;
-        margin: 0 0 10px;
+        margin: 0 0 17px;
     }
     &__inputs {
         display: flex;
@@ -184,7 +185,7 @@
         height: 61px;
         &-create {
             cursor: pointer;
-            padding-right: 30px;
+            margin-right: 30px;
             &:hover {
                 color: $d-hover-color;
             }
@@ -904,4 +905,28 @@
     font-size: 16px;
     transform: scale(1.5);
     transition: transform 2s ease-in;
+}
+.input-error-phone {
+    position: absolute;
+    color: $d-error;
+    bottom: -20px;
+    font-size: 14px;
+}
+.input-error-city {
+    position: absolute;
+    color: $d-error;
+    bottom: -20px;
+    font-size: 14px;
+}
+.input-error-email {
+    position: absolute;
+    color: $d-error;
+    bottom: -20px;
+    font-size: 14px;
+}
+.input-error-age {
+    position: absolute;
+    color: $d-error;
+    bottom: -20px;
+    font-size: 14px;
 }
