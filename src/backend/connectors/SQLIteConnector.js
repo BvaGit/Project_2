@@ -33,7 +33,7 @@ class SqliteConnector extends BaseConnector{
 
     postPerson(person, func) {
       super.postPerson(person, func);
-      this.#connection.run(`INSERT INTO persons (fname, lname, age, city, phonenumber, email, companyname, user_id, deleted) VALUES ('${person.fname}', '${person.lname}', ${person.age}, '${person.city}', '${person.phoneNumber}', '${person.email}', '${person.companyName}', ${person.user_id}, FALSE)`, func);
+      this.#connection.run(`INSERT INTO persons (fname, lname, age, city, phonenumber, email, companyname, user_id, deleted) VALUES ('${person.fname}', '${person.lname}', ${person.age}, '${person.city}', '${person.phoneNumber}', '${person.email}', '${person.companyName}', ${person.user_id}, 0)`, func);
       
     }
 
@@ -52,7 +52,7 @@ class SqliteConnector extends BaseConnector{
 
     putPerson(person, func){
       super.putPerson(person, func);
-      this.#connection.run(`UPDATE persons SET (fname, lname, age, city, phonenumber, email, companyname, user_id, deleted) = ('${person.fname}', '${person.lname}', ${person.age}, '${person.city}', '${person.phoneNumber}', '${person.email}', '${person.companyName}', ${person.user_id},'${person.deleted}') WHERE id=${person.id}`, func);
+      this.#connection.run(`UPDATE persons SET (fname, lname, age, city, phonenumber, email, companyname, user_id) = ('${person.fname}', '${person.lname}', ${person.age}, '${person.city}', '${person.phoneNumber}', '${person.email}', '${person.companyName}', ${person.user_id}) WHERE id=${person.id}`, func);
     }
     
     getDeletedPersonsByUserId(user_id, func) {

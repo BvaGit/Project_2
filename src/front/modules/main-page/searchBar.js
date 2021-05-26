@@ -49,3 +49,18 @@ export default function searchBar(dbms){
         }
     }
 }
+
+// const searchFirstname = document.getElementById("searchFirstname")
+
+// searchFirstname.addEventListener("input", function(){
+//     const db = dms.innerHTML 
+//     const nameB = nameDB(db);
+//     searchBar(nameB);
+// })
+// const searchLastname = document.getElementById("searchFirstname")
+
+// searchLastname.addEventListener("input", function(){
+//     const db = dms.innerHTML 
+//     const nameB = nameDB(db);
+//     searchBar(nameB)
+// })
