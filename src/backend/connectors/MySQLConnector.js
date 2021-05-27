@@ -10,11 +10,61 @@ class MySQLConnector extends BaseConnector {
     super()
 
     const connections = new JsonReader().read('connections.json').mysql_connection
+
+    const name = connections.database
+    delete connections.database
+
     this.#connection = mysql.createConnection({
       ...connections
-
     })
-    this.#open()
+
+    this.#migrate(connections, name)
+  }
+
+  #migrate(connection, name) {
+    this.#query(`CREATE DATABASE IF NOT EXISTS ${name}`, err => {
+      if (err) {
+        return console.error(`Error: ${err.message}`)
+      }
+
+      this.#query(`USE \`${name}\``, err => {
+        if (err) {
+          return console.error(`Error: ${err.message}`)
+        }
+
+        this.#query(`CREATE TABLE IF NOT EXISTS users (
+          id INT AUTO_INCREMENT PRIMARY KEY,
+          login VARCHAR(255) NOT NULL UNIQUE,
+          password VARCHAR(255) NOT NULL,
+          deleted BOOLEAN NOT NULL
+        )`, err => {
+          if (err) {
+            return console.error(`Error: ${err.message}`)
+          }
+
+          this.#query(`CREATE TABLE IF NOT EXISTS persons (
+              id INT AUTO_INCREMENT PRIMARY KEY,
+              fname VARCHAR(255) NOT NULL,
+              lname VARCHAR(255) NOT NULL,
+              age INT NOT NULL,
+              city VARCHAR(255) NOT NULL,
+              phoneNumber VARCHAR(255) NOT NULL,
+              email VARCHAR(255) NOT NULL,
+              companyName VARCHAR(255) NOT NULL,
+              user_id INT NOT NULL,
+              deleted BOOLEAN NOT NULL,
+              CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+            )`, err => {
+            if (err) {
+              return console.error(`Error: ${err.message}`)
+            }
+            this.#close()
+            this.#connection = mysql.createConnection({...connection, database: `${name}`})
+            this.#open()
+          })
+        })
+      })
+    })
   }
 
   #open() {
@@ -35,7 +85,6 @@ class MySQLConnector extends BaseConnector {
       if (err) {
         return console.error(`Error: ${err.message}`)
       }
-      console.log('Connection to MySQL successfully closed');
     })
   }
   
