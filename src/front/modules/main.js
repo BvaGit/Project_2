@@ -18,7 +18,7 @@ const dmsDropdown = document.querySelector(".table__dmsDropdown");
 
 const create = document.querySelector("#create");
 const update = document.querySelector("#update");
-const clearAll = document.querySelector("#clearAll");
+const clearAll = document.querySelector("#clearAllPopupConfirm");
 
 let base = 'mysql';
 let idPersons = null;
@@ -199,8 +199,14 @@ function searchBar(dbms){
 }
 
 function clerAll(){
-    
+    const url = "http://localhost:2020/api/" + base + "/persons/all/" + localStorage.getItem("id_user");
+    deleteRequest(url)
+        .then(() => {
+            getDefaultPersons(base);
+        })
 }
+
+clearAll.addEventListener("click", clerAll);
 
 deleteBtnPerson();
 getDefaultPersons(base);
