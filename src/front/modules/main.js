@@ -15,6 +15,10 @@ const comName = document.querySelector("#companynameInput");
 const age = document.querySelector("#ageInput");
 const dms = document.querySelector("#dms");
 const dmsDropdown = document.querySelector(".table__dmsDropdown");
+const msgStatus = document.querySelector("#msgStatus");
+const spinner = document.querySelector("#spinner");
+const status = document.querySelector("#status");
+
 
 const create = document.querySelector("#create");
 const update = document.querySelector("#update");
@@ -22,6 +26,23 @@ const clearAll = document.querySelector("#clearAllPopupConfirm");
 
 let base = 'mysql';
 let idPersons = null;
+
+const message = {
+    error: "Error",
+    success: "Сreated successfully",
+    noData: "Enter your details",
+    putSuccess: "Update successful"
+};
+
+function spinnerShow(){
+    spinner.classList.remove('hideSpinner');
+    spinner.classList.add('showSpinner');
+}
+
+function spinnerHide(){
+    spinner.classList.remove('showSpinner');
+    spinner.classList.add('hideSpinner');
+}
 
 function nameDB(arg){
     console.log(arg);
@@ -69,6 +90,7 @@ function deleteBtnPerson(){
 }
 
 function getDefaultPersons(nameBase){
+    spinnerShow();
     getRequest(URL + nameBase + "/persons/" + localStorage.getItem("id_user"))
         .then(res => res.json())
         .then((data) => {
@@ -78,10 +100,11 @@ function getDefaultPersons(nameBase){
             getIdPersons();
             deletePerson();
             sortData();
+            spinnerHide();
          })
-         .catch(() => {
+        .catch(() => {
             console.log("No");
-         }); 
+    }); 
 }
 
 function putPersons(){
@@ -96,10 +119,17 @@ function putPersons(){
         companyName: comName.value,
         user_id: +localStorage.getItem("id_user")
     };
-        putRequest(URL + idPersons, personsAdd)
-            .then(() => {
-                getDefaultPersons(base);
-        });
+
+    spinnerShow();   
+    putRequest(URL + idPersons, personsAdd)
+        .then(() => {
+            spinnerHide();
+            status.innerHTML = message.putSuccess;
+            getDefaultPersons(base);
+            setTimeout(()=> {
+                status.innerHTML = "";
+            },2000) ;
+     });
 }
 
 function addPersons(){
@@ -114,10 +144,21 @@ function addPersons(){
         user_id: +localStorage.getItem("id_user")
     };
 
-    postRequest(URL + base + "/persons", personsAdd)
+    if(fName.value === "" || lastName.value === "" || age.value === "" || city.value === "" || pNumber.value === "" || email.value === "" || comName.value === ""){
+        msgStatus.innerHTML = message.noData;
+    } else {
+        spinnerShow();
+        postRequest(URL + base + "/persons", personsAdd)
         .then(() => {
+            spinnerHide();
+            status.innerHTML = message.success;
+           
+            setTimeout(()=> {
+                status.innerHTML = "";
+            },2000) ;
             getDefaultPersons(base);
         });
+    }
 }
 
 dmsDropdown.addEventListener("click", (e)=>{
@@ -143,10 +184,11 @@ const searchLastname = document.getElementById("searchLastname")
 searchLastname.addEventListener("change", function(){
     const db = dms.innerHTML; 
     const nameB = nameDB(db);
-    searchBar(nameB)
+    searchBar(nameB);
 });
 
 function searchBar(dbms){
+    spinnerShow();
     getRequest(URL + dbms + "/persons/" + localStorage.getItem("id_user"))
     .then(res => res.json())
     .then((data) => {
@@ -157,6 +199,7 @@ function searchBar(dbms){
         getIdPersons();
         deletePerson();
         sortData();
+        spinnerHide();
      })
     .catch(() => {
         console.log("failed get request from db");

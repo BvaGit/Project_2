@@ -79,11 +79,16 @@
                             <input type="number" name="age" id="ageInput" class="panel__inputs-age panel__input" data-placeholder="age" placeholder="Age" min="0" max="200" maxlength="3" onkeydown="return event.keyCode !== 69">
                             <span class="input-error-age hide" data-translate="ageError"></span>
                         </label>
+                        <div id="msgStatus" class="panel__status">
+                            <img src="../img/spinner.svg" class="hideSpinner" id="spinner" alt="spinner">
+                            <span id="status"></span>
+                        </div>
                         <div class="panel__control">
                             <button id="create" class="panel__control-create panel-control-style"><span data-translate="create">Create</span></button>
                             <span class="side-border"></span>
                             <button id="update" class="panel__control-update panel-control-style"><span data-translate="update">Update</span></button>
                         </div>
+                        
                     </div>
                 </div>
                 <div id="table" class="table">
