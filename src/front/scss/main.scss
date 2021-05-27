@@ -239,10 +239,11 @@
         }
     }
     &__msstatus{
-        font-size: 18px;
         position: absolute;
-        right: 50px;
-        bottom:  -18px;
+        width: 100%;
+        right: -5px;
+        bottom: -28px;
+        font-size: 21px;
     }
 }
 .table {
@@ -742,6 +743,9 @@
         }
     }
     .panel {
+        &__msstatus {
+            color: $l-header-bg;
+        }
         &__label {
             color: $l-text-color;
         }

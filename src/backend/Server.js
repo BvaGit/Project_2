@@ -44,7 +44,6 @@ class Server {
     this.#enableConnector(mongoDbConnector, 'mongodb')
     this.#enableConnector(neo4jConnector, 'neo4j')
     this.#enableConnector(sqliteConnector, 'sqlite')
-
   }
 
   serve(func) {

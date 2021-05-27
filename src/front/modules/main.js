@@ -17,7 +17,10 @@ const dms = document.querySelector("#dms");
 const dmsDropdown = document.querySelector(".table__dmsDropdown");
 const msgStatus = document.querySelector("#msgStatus");
 const spinner = document.querySelector("#spinner");
-const status = document.querySelector("#status");
+const status1 = document.querySelector("#status1");
+const status2 = document.querySelector("#status2");
+const status3 = document.querySelector("#status3");
+const status4 = document.querySelector("#status4");
 
 
 const create = document.querySelector("#create");
@@ -27,22 +30,11 @@ const clearAll = document.querySelector("#clearAllPopupConfirm");
 let base = 'mysql';
 let idPersons = null;
 
-let message;
-
-if(localStorage.getItem("selected-language") === "en"){
-    message = {
-        success: "Сreated successfully",
-        noData: "Enter your details",
-        putSuccess: "Update successful",
-        del: "deleted successfully"
-    };
-} else if(localStorage.getItem("selected-language") === "ua"){
-    message = {
-        success: "Дані створено успішно",
-        noData: "Введіть свої дані",
-        putSuccess: "Дані оновлено успішно",
-        del: "Дані видалено успішно"
-    };
+let message = {
+    success: "Сreated successfully",
+    noData: "Enter your details",
+    putSuccess: "Update successful",
+    del: "deleted successfully"
 }
 
 function spinnerShow(){
@@ -91,9 +83,9 @@ function deleteBtnPerson(){
         deleteRequest(URL+del)
         .then(() => {
             getDefaultPersons(base);
-            status.innerHTML = message.del;
+            status3.classList.remove('hide');
             setTimeout(()=> {
-                status.innerHTML = "";
+                status3.classList.add('hide');
             },2000) ;
         });
        }
@@ -139,10 +131,10 @@ function putPersons(){
     putRequest(URL + idPersons, personsAdd)
         .then(() => {
             spinnerHide();
-            status.innerHTML = message.putSuccess;
+            status2.classList.remove('hide');
             getDefaultPersons(base);
             setTimeout(()=> {
-                status.innerHTML = "";
+                status2.classList.add('hide');
             },2000) ;
      });
 }
@@ -160,16 +152,18 @@ function addPersons(){
     };
 
     if(fName.value === "" || lastName.value === "" || age.value === "" || city.value === "" || pNumber.value === "" || email.value === "" || comName.value === ""){
-        msgStatus.innerHTML = message.noData;
+        status4.classList.remove('hide');
+        setTimeout(()=> {
+            status4.classList.add('hide');
+        },2000) ;
     } else {
         spinnerShow();
         postRequest(URL + base + "/persons", personsAdd)
         .then(() => {
             spinnerHide();
-            status.innerHTML = message.success;
-           
+            status1.classList.remove('hide');
             setTimeout(()=> {
-                status.innerHTML = "";
+                status1.classList.add('hide');
             },2000) ;
             getDefaultPersons(base);
         });

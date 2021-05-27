@@ -35,7 +35,11 @@ export default function handleLanguage () {
         error: 'Сталася помилка, спробуйте ще раз',
         cityError: 'З великої літери та тільки літери, зайченятко',
         emailError: `Пам\'ятай про равлика, сонечко`,
-        ageError: `Не вигадуй, дуже прошу.`
+        ageError: `Не вигадуй, дуже прошу.`,
+        deleteCP: 'Дані успішно видалені',
+        createCP: 'Дані успішно створені',
+        updateCP: 'Дані успішно змінені',
+        noCP: 'Введіть дані'
     };
     const enTranslations = {
         firstName: 'First name',
@@ -69,7 +73,11 @@ export default function handleLanguage () {
         error: 'Mistakes happens, try again',
         cityError: 'Only capital letters',
         emailError: 'your-email@domain.com',
-        ageError: 'Max age 123'
+        ageError: 'Max age 123',
+        deleteCP: 'Successfully deleted',
+        createCP: 'Successfully created',
+        updateCP: 'Successfully updated',
+        noCP: 'Enter your data'
     };
     const localStorageLanguage = localStorage.getItem('selected-language') || 'en';
     selectedLanguage.value = localStorageLanguage;
