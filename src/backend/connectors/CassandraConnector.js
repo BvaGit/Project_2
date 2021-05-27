@@ -94,6 +94,14 @@ class CassandraConnector extends BaseConnector {
     );
   }
 
+  deletePersonsByUserId(user_id, func) {
+    super.deletePersonsByUserId(user_id, func);
+    this.getPersonsByUserId(user_id, (err, result) => {
+      const ids = result.map(person => person.id);
+      this.#query(`UPDATE ${this.tableName} SET deleted = 1 WHERE id IN (${ids.join(',')})`, func);
+    });
+  }
+
   deletePersonById(personId, func) {
     super.deletePersonById(personId, func);
     this.#query(`UPDATE ${this.tableName} SET deleted = 1 WHERE id = ?`, func, [ personId ]);

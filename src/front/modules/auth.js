@@ -19,7 +19,7 @@ function authorization(){
             if(data.ok){
                 const token = await (data.json());
                 localStorage.setItem('id_user', token.id);
-                document.cookie = `token=${token.token}; path=/; max-age=60*60*2`;
+                document.cookie = `token=${token.token}; path=/; max-age=7200`;
                 document.location.href = "/main.html";
             }else if(data.status === 400){
                 authPassInputError();
