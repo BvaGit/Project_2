@@ -410,9 +410,8 @@
     &__data {
         display: block;
         width: 999px;
-        min-height: 315px;
-        height: auto;
-        // overflow-y: auto;
+        height: 310px;
+        overflow-y: auto;
         background: $d-text-color;
         border: 1px solid $d-border-color;
     }
