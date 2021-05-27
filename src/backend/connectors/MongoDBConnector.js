@@ -80,6 +80,7 @@ class MongoDBConnector extends BaseConnector {
       func(null, result)
     })
   };
+
   getPersons(func) {
     super.getPersons()
     this.#PersonModel.find({ deleted: 0}, (err, result) => {
@@ -99,6 +100,7 @@ class MongoDBConnector extends BaseConnector {
       func(null, result)
     })
   }
+
   getPersonsByUserId(userId, func) {
     super.getPersonsByUserId(userId)
     this.#PersonModel.find({ deleted: 0, user_id: userId}, (err, result) => {
@@ -122,6 +124,7 @@ class MongoDBConnector extends BaseConnector {
       }
     })
   };
+
   async putPerson(person, func) {
    super.putPerson(person)
     try {
@@ -129,8 +132,9 @@ class MongoDBConnector extends BaseConnector {
       func(null)
     } catch (e){
       func(e)
-    }
- }
+      }
+  }
+
   async deletePersonById(personId, func){
     super.deletePersonById(personId)
     try{
@@ -173,6 +177,7 @@ class MongoDBConnector extends BaseConnector {
       func(e)
     }
   }
+
   async putPersonsBackByUserId (userId, func) {
     super.putPersonsBackByUserId(userId)
     try {
