@@ -36,10 +36,10 @@ export default function handleLanguage () {
         cityError: 'З великої літери та тільки літери, зайченятко',
         emailError: `Пам\'ятай про равлика, сонечко`,
         ageError: `Не вигадуй, дуже прошу.`,
-        deleteCP: 'Дані успішно видалені',
-        createCP: 'Дані успішно створені',
-        updateCP: 'Дані успішно змінені',
-        noCP: 'Введіть дані'
+        deleteCP: 'Дані успішно видалені, цьомки бомки',
+        createCP: 'Зірка народилась, кошенятко',
+        updateCP: 'Дані успішно змінені, насолоджуйся',
+        noCP: 'Введіть дані, я чекаю.'
     };
     const enTranslations = {
         firstName: 'First name',
