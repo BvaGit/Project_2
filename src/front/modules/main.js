@@ -31,7 +31,8 @@ const message = {
     error: "Error",
     success: "Сreated successfully",
     noData: "Enter your details",
-    putSuccess: "Update successful"
+    putSuccess: "Update successful",
+    del: "deleted successfully"
 };
 
 function spinnerShow(){
@@ -80,6 +81,10 @@ function deleteBtnPerson(){
         deleteRequest(URL+del)
         .then(() => {
             getDefaultPersons(base);
+            status.innerHTML = message.del;
+            setTimeout(()=> {
+                status.innerHTML = "";
+            },2000) ;
         });
        }
     }
@@ -246,6 +251,10 @@ function clerAll(){
     deleteRequest(url)
         .then(() => {
             getDefaultPersons(base);
+            status.innerHTML = message.del;
+            setTimeout(()=> {
+                status.innerHTML = "";
+            },2000) ;
         })
 }
 
