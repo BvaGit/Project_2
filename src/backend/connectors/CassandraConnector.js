@@ -23,7 +23,7 @@ class CassandraConnector extends BaseConnector {
   #open() {
     const createKsQuery = `CREATE KEYSPACE IF NOT EXISTS ${this.config.keyspace} WITH REPLICATION = { 'class': 'SimpleStrategy', 'replication_factor': 1 }`;
     const createPersonTableQuery = `CREATE TABLE IF NOT EXISTS
-     ${this.tableName} (id UUID PRIMARY KEY, fname varchar, lname varchar, age int, city varchar, phoneNumber varchar, email text, companyName varchar, deleted boolean, user_id int);`;
+     ${this.tableName} (id UUID PRIMARY KEY, fname varchar, lname varchar, age int, city varchar, phoneNumber varchar, email text, companyName varchar, deleted smallint, user_id int);`;
 
     this.#connection
         .connect()
