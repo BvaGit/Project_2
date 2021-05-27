@@ -231,6 +231,19 @@
             }
         }
     }
+
+    &__status{
+        align-self: center;
+        img{
+            width: 55px;
+        }
+    }
+    &__msstatus{
+        font-size: 18px;
+        position: absolute;
+        right: 50px;
+        bottom:  -18px;
+    }
 }
 .table {
     display: table;
@@ -929,4 +942,12 @@
     color: $d-error;
     bottom: -20px;
     font-size: 14px;
+}
+
+.hideSpinner{
+    display: none;
+}
+
+.showSpinner{
+    display: inline;
 }

@@ -31,7 +31,6 @@ export function putRequest(url, obj){
 
 }
 
-
 export function getRequest(url){
     const token = getCookie("token");
     return (fetch (url, {
