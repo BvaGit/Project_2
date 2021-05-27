@@ -238,6 +238,12 @@
             width: 55px;
         }
     }
+    &__msstatus{
+        font-size: 18px;
+        position: absolute;
+        right: 50px;
+        bottom:  -18px;
+    }
 }
 .table {
     display: table;

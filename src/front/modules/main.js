@@ -27,13 +27,23 @@ const clearAll = document.querySelector("#clearAllPopupConfirm");
 let base = 'mysql';
 let idPersons = null;
 
-const message = {
-    error: "Error",
-    success: "Сreated successfully",
-    noData: "Enter your details",
-    putSuccess: "Update successful",
-    del: "deleted successfully"
-};
+let message;
+
+if(localStorage.getItem("selected-language") === "en"){
+    message = {
+        success: "Сreated successfully",
+        noData: "Enter your details",
+        putSuccess: "Update successful",
+        del: "deleted successfully"
+    };
+} else if(localStorage.getItem("selected-language") === "ua"){
+    message = {
+        success: "Дані створено успішно",
+        noData: "Введіть свої дані",
+        putSuccess: "Дані оновлено успішно",
+        del: "Дані видалено успішно"
+    };
+}
 
 function spinnerShow(){
     spinner.classList.remove('hideSpinner');
