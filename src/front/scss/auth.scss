@@ -86,9 +86,16 @@ body{
         font-weight: bold;
         text-align: center;
         color: $d-main-page-bg;
+        cursor: pointer;
         background-color: #ffff00;
         border: none;
         padding: 24px 0;
+        transition: all .3s;
+
+        &:hover{
+            background-color: #5c5c0d;
+            color: $d-text-color;
+        }
     }
     &__descrlink{
         font-size: 14px;

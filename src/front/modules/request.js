@@ -53,15 +53,7 @@ export function deleteRequest(url){
     }));
 }
 
-/*export function deleteAllRequest(url){
-    const token = getCookie("token");
-    return (fetch (url, {
-        method: 'DELETE',
-        headers: {
-            "Authorization": `Bearer ${token}`
-        }
-    }));
-}*/
+
 
 
 
