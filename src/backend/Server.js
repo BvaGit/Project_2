@@ -182,7 +182,7 @@ class Server {
       })
     })
     this.addRoute(new ServerOptions('DELETE', `${dbms}/persons/all/:user_id`), (req, res) => {
-      connector.deletePersonsByUserId(req.params.user_id, err => {
+      connector.deletePersonsByUserId(Number(req.params.user_id), err => {
         if (err) {
           return res.status(400).json({message:`persons of user with id: ${req.params.user_id} does not exists or already deleted`})
         }

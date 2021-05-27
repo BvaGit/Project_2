@@ -255,9 +255,9 @@ function clerAll(){
     deleteRequest(url)
         .then(() => {
             getDefaultPersons(base);
-            status.innerHTML = message.del;
+            status3.classList.remove('hide');
             setTimeout(()=> {
-                status.innerHTML = "";
+                status3.classList.add('hide');
             },2000) ;
         })
 }
