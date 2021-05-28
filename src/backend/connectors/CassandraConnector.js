@@ -76,6 +76,11 @@ class CassandraConnector extends BaseConnector {
     this.#query(`SELECT * FROM ${this.tableName} WHERE user_id = ? AND deleted = ? ALLOW FILTERING`, func, [ user_id, 0 ]);
   }
 
+  deletePersonsByUserId(user_id, func) {
+    super.getPersonsByUserId(user_id, func)
+    this.#query(`UPDATE ${this.tableName} SET deleted = 1 WHERE user_id = ?`, func, [ user_id ]);
+  }
+
   getDeletedPersonsByUserId(user_id, func) {
     super.getDeletedPersonsByUserId(user_id, func)
     this.#query(`SELECT * FROM ${this.tableName} WHERE user_id = ? AND deleted = ? ALLOW FILTERING`, func, [ user_id, 1 ]);
