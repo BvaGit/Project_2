@@ -3,7 +3,7 @@ export default function themeHandler () {
     const selectedTheme = document.getElementById('select-theme');
     const darkThemeClass = 'theme-dark';
     const lightThemeClass = 'theme-light';
-
+    
     const localStorageTheme = localStorage.getItem('selected-theme')|| 'dark';
     selectedTheme.value = localStorageTheme;
     setTheme(general, localStorageTheme);
@@ -11,7 +11,6 @@ export default function themeHandler () {
     selectedTheme.addEventListener('change', () => {
         setTheme(general, selectedTheme.value);
     })
-
     function setTheme(rootElement, theme) {
         localStorage.setItem('selected-theme', theme);
         switch (theme) {

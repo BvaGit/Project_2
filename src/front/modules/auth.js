@@ -1,6 +1,5 @@
 import {postRequest, getRequest } from '../modules/request';
 
-
 function authorization(){
     const url = "http://localhost:2020/api/mysql/auth";
     const authlogin = document.querySelector("#authlogin");
@@ -28,7 +27,6 @@ function authorization(){
             }
         });
     }
-
     autBtn.addEventListener("click", ()=>{
         const auth = {
             login: authlogin.value,
@@ -40,10 +38,6 @@ function authorization(){
         } else if (auth.password.length < 5){
             authPassInputError();
         } 
-
     });
-
-
 }
-
 export default authorization;

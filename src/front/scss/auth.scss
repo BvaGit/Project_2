@@ -28,13 +28,14 @@ body{
             font-size: 38px;
             font-weight: bold;
             margin-left: 26px;
+            cursor: default;
         }
     }
     &__body{
         display: flex;
         justify-content: space-between;
         margin-top: 85px;
-        border-left: 17px solid #fff;
+        border-left: 17px solid $d-text-color;
     }
     &__info{
         margin-left: 32px;
@@ -45,8 +46,9 @@ body{
         color: $d-text-color;
         text-transform: uppercase;
         line-height: 73px;
+        cursor: default;
         &-color{
-            color: #ffff00;
+            color: $d-hover-color;
         }
     }
     &__db{
@@ -56,13 +58,15 @@ body{
     &__sqlnosql{
         font-size: 35px;
         font-weight: bold;
-        color: #ffff00;
+        color: $d-hover-color;
+        cursor: default;
     }
     &__descr{
         font-size: 22px;
         font-weight: bold;
         color: $d-text-color;
         margin-left: 42px;
+        cursor: default;
     }
     &__auth{
         width: 430px;
@@ -87,13 +91,13 @@ body{
         text-align: center;
         color: $d-main-page-bg;
         cursor: pointer;
-        background-color: #ffff00;
+        background-color: $d-hover-color;
         border: none;
         padding: 24px 0;
         transition: all .3s;
 
         &:hover{
-            background-color: #5c5c0d;
+            background-color: $d-table-nav;
             color: $d-text-color;
         }
     }
@@ -102,6 +106,7 @@ body{
         color: $d-text-color;
         text-align: right;
         margin-top: 25px;
+        cursor: default;
     }
     &__link{
         display: block;
@@ -112,7 +117,7 @@ body{
         margin: 5px;
         transition: all .3s; 
         &:hover{
-            color: #ffff00;
+            color: $d-hover-color;
         }
     }
     &__footer{

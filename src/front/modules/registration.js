@@ -11,33 +11,20 @@ function registration(){
     function register (){
         if(valid(regLogin.value, regPass.value) && confirmRegPass.value !== ""){
             if(regPass.value === confirmRegPass.value){
-
                 const user = {
                     login: regLogin.value,
                     password: regPass.value
                 };
-            
                 postRequest(url, user).then(()=>{
                     document.location.href = "/index.html";
                 });
-    
             } else {
                 confirmRegPass.style.backgroundColor = '#fd9595';
-            }
-            
+            }   
         } else {
             console.log("No reg");
         }
-    
     } 
-
     regBtn.addEventListener("click", register);
-
-
 }
-
 export default registration;
-
-
-
-

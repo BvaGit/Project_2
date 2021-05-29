@@ -3,7 +3,7 @@ function getCookie(name) {
       "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
     ));
     return matches ? decodeURIComponent(matches[1]) : undefined;
-  }
+}
 
 export function postRequest(url, obj){
     const token = getCookie("token");
@@ -14,8 +14,8 @@ export function postRequest(url, obj){
                 "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(obj)
-        }));
- 
+        })
+    );
 }
 
 export function putRequest(url, obj){
@@ -28,7 +28,6 @@ export function putRequest(url, obj){
         },
         body: JSON.stringify(obj)
     }));
-
 }
 
 export function getRequest(url){
@@ -38,10 +37,9 @@ export function getRequest(url){
             headers: {
                 "Authorization": `Bearer ${token}`
             }
-        }));
- 
+        })
+    );
 }
-
 export function deleteRequest(url){
     const token = getCookie("token");
     return (fetch (url, {
@@ -51,9 +49,3 @@ export function deleteRequest(url){
         }
     }));
 }
-
-
-
-
-
-
