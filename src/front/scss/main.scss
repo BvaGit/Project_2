@@ -55,7 +55,7 @@
         align-items: center;
         width: 142px;
         height: 43px;
-        border: 1px solid #1a1a1a;
+        border: 1px solid $d-border-color;
         background: $d-table-td;
         font-weight: 400;
         overflow-y: hidden;
@@ -103,7 +103,7 @@
         height: 110px;
         color: $d-text-color; 
         &-icon {
-            color: #ccc;
+            color: $d-placeholder-color;
             width: 105px;
             height: 105px;
         }
@@ -410,7 +410,7 @@
     }
     &__data {
         display: block;
-        width: 999px;
+        width: 1001px;
         height: 310px;
         overflow-y: auto;
         background: $d-text-color;
@@ -462,6 +462,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         color: $d-footer-copyright-sign;
+        cursor: default;
     }
 }
 /* SETTINGS POPUP */
@@ -533,6 +534,7 @@
             text-align: center;
             padding: 0 0 50px;
             font-size: 22px;
+            cursor: default;
         }
     }
     &__group {
@@ -947,11 +949,9 @@
     bottom: -20px;
     font-size: 14px;
 }
-
 .hideSpinner{
     display: none;
 }
-
 .showSpinner{
     display: inline;
 }

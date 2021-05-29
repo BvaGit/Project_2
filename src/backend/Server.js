@@ -17,7 +17,6 @@ import { CassandraConnector } from './connectors/CassandraConnector.js'
 import { Neo4jConnector } from './connectors/Neo4jConnector.js'
 import { SqliteConnector } from './connectors/SQLIteConnector.js'
 
-
 class Server {
   #app
   #router
