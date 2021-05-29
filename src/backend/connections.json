@@ -7,19 +7,19 @@
     },
   
   "pg_connect":{
-    "host": "localhost",
+    "host": "18.217.70.70",
     "user": "postgres",
     "password": "1111",
     "database": "crud_project"
     },
   
    "redis_connection": {
-      "host": "localhost",
+      "host": "18.217.70.70",
       "port": "6379"
     },
   
    "mongodb_connection": {
-      "url": "mongodb://localhost:27017/crud-project"
+      "url": "mongodb://18.217.70.70:27017/crud-project"
     },
   
    "cassandra_connection": {
@@ -29,7 +29,7 @@
     },
 
     "neo4j_connection": {
-      "url": "bolt://localhost",
+      "url": "bolt://18.217.70.70",
       "user": "neo4j",
       "password": "neo4j"
     }

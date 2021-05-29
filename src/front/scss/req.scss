@@ -7,7 +7,7 @@ body{
     &__points{
         width: 275px;
         height: 148px;
-        background-image: url(http://localhost:8080/../img/points.png);
+        background-image: url("http://18.217.70.70/img/points.png");
         position: absolute;
         top: 15px;
         right: 0;
@@ -121,7 +121,7 @@ body{
         &-points{
             width: 275px;
             height: 148px;
-            background-image: url(http://localhost:8080/../img/points.png);
+            background-image: url("http://18.217.70.70/img/points.png");
             position: absolute;
             bottom: -100px;
             right: 0;

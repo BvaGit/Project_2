@@ -2,7 +2,7 @@ import {postRequest, getRequest } from '../modules/request';
 
 
 function authorization(){
-    const url = "http://localhost:2020/api/mysql/auth";
+    const url = "http://18.217.70.70:2020/api/mysql/auth";
     const authlogin = document.querySelector("#authlogin");
     const authpass = document.querySelector("#authpass");
     const autBtn = document.querySelector(".auth__btn");
@@ -15,7 +15,6 @@ function authorization(){
 
     function postAuthorization(obj){
         postRequest(url, obj).then(async (data) => {
-            console.log(data.status);
             if(data.ok){
                 const token = await (data.json());
                 localStorage.setItem('id_user', token.id);

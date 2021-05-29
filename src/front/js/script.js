@@ -1,6 +1,5 @@
 import '../scss/style.scss';
 
-import hello from '../modules/hello';
 import { clearAllPopup, handleLanguage, logout, settingsPopup, themeHandler } from '../modules/main-page/index'
 import  registration  from '../modules/registration';
 import sortData from '../modules/main-page/sortData'
@@ -12,7 +11,6 @@ import inputsControl from '../modules/main-page/inputsControl';
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    hello();
     if (window.location.pathname === '/main.html') {
         main();
         settingsPopup();

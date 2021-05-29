@@ -4,7 +4,7 @@ import sortData from '../modules/main-page/sortData';
 
 function main(){
 
-const URL = "http://localhost:2020/api/";
+const URL = "http://18.217.70.70:2020/api/";
 
 const fName = document.querySelector("#firstnameInput");
 const lastName = document.querySelector("#lastnameInput");
@@ -48,7 +48,6 @@ function spinnerHide(){
 }
 
 function nameDB(arg){
-    console.log(arg);
     switch (arg){
         case 'PostgreSQL':
             return 'pg';
@@ -76,7 +75,7 @@ function getIdPersons(){
 
 function deleteBtnPerson(){
     function del(e){
-        const URL = "http://localhost:2020/api/" + base + "/persons/";
+        const URL = "http://18.217.70.70:2020/api/" + base + "/persons/";
         const delIndex = e.target;
         const del = delIndex.getAttribute("data-index");
         if(del !== null){
@@ -109,13 +108,13 @@ function getDefaultPersons(nameBase){
             sortData();
             spinnerHide();
          })
-        .catch(() => {
-            console.log("No");
+        .catch((err) => {
+            console.error(err);
     }); 
 }
 
 function putPersons(){
-    const URL = "http://localhost:2020/api/" + base + "/persons/";
+    const URL = "http://18.217.70.70:2020/api/" + base + "/persons/";
     const personsAdd = {
         fname: fName.value,
         lname: lastName.value,
@@ -202,7 +201,6 @@ function searchBar(dbms){
     .then(res => res.json())
     .then((data) => {
         filterArray(data);
-        console.log("from searchBar");
      })
      .then(() => {
         getIdPersons();
@@ -210,8 +208,8 @@ function searchBar(dbms){
         sortData();
         spinnerHide();
      })
-    .catch(() => {
-        console.log("failed get request from db");
+    .catch((err) => {
+        console.error(err);
     }); 
 
     function filterArray(array){
@@ -251,7 +249,7 @@ function searchBar(dbms){
 }
 
 function clerAll(){
-    const url = "http://localhost:2020/api/" + base + "/persons/all/" + localStorage.getItem("id_user");
+    const url = "http://18.217.70.70:2020/api/" + base + "/persons/all/" + localStorage.getItem("id_user");
     deleteRequest(url)
         .then(() => {
             getDefaultPersons(base);

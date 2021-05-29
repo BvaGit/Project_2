@@ -10,73 +10,51 @@ import { ServerValidator } from './service/ServerValidator.js'
 import { ServerOptions } from './service/ServerOptions.js'
 
 import { MySQLConnector } from './connectors/MySQLConnector.js'
-import { PgConnect } from './connectors/PostgreSQLConnector.js';
-import { RedisConnector } from './connectors/RedisConnector.js'
-import { MongoDBConnector } from './connectors/MongoDBConnector.js'
-import { CassandraConnector } from './connectors/CassandraConnector.js'
-import { Neo4jConnector } from './connectors/Neo4jConnector.js'
-import { SqliteConnector } from './connectors/SQLIteConnector.js'
-
 
 class Server {
-  #app
-  #router
+  app
+  router
   
   constructor() {
   
-    this.#app = express()
-    this.#router = Router()
+    this.app = express()
+    this.router = Router()
          
     const mySqlConnector = new MySQLConnector()
-    // const redisConnector = new RedisConnector()
-    // const mongoDbConnector = new MongoDBConnector()
-    // const pgConnect = new PgConnect();
-    // const neo4jConnector = new Neo4jConnector();
-    // const cassandraConnector = new CassandraConnector();
-    // const sqliteConnector = new SqliteConnector();
-    
-    this.#enableMySQLUsers(mySqlConnector)
-
-    this.#enableConnector(mySqlConnector, 'mysql')
-    // this.#enableConnector(cassandraConnector, 'cassandra')
-    // this.#enableConnector(pgConnect, 'pg');
-    // this.#enableConnector(redisConnector,'redis')
-    // this.#enableConnector(mongoDbConnector, 'mongodb')
-    // this.#enableConnector(neo4jConnector, 'neo4j')
-    // this.#enableConnector(sqliteConnector, 'sqlite')
-
+    this.enableMySQLUsers(mySqlConnector)
+    this.enableConnector(mySqlConnector, 'mysql')
   }
 
   serve(func) {
-    this.#app.use(cors());
-    this.#app.use(express.json())
-    this.#app.use(express.urlencoded({ extended: true }))
-    this.#app.use(logger)
-    this.#app.use(JwtService.authenticateToken)
+    this.app.use(cors());
+    this.app.use(express.json())
+    this.app.use(express.urlencoded({ extended: true }))
+    this.app.use(logger)
+    this.app.use(JwtService.authenticateToken)
   
-    this.#app.use(this.#router)
+    this.app.use(this.router)
     
-    this.#app.listen(process.env.PORT, func)
+    this.app.listen(process.env.PORT, func)
   }
 
   addRoute(options, func) {
     switch (options.method) {
       case 'GET':
-        this.#router.get(`/api/${options.url}`, func)
+        this.router.get(`/api/${options.url}`, func)
       break
       case 'POST':
-        this.#router.post(`/api/${options.url}`, func)
+        this.router.post(`/api/${options.url}`, func)
       break
       case 'PUT':
-        this.#router.put(`/api/${options.url}`, func)
+        this.router.put(`/api/${options.url}`, func)
       break
       case 'DELETE':
-        this.#router.delete(`/api/${options.url}`, func)
+        this.router.delete(`/api/${options.url}`, func)
       break
     }
   }
 
-  #enableConnector(connector, dbms) {
+  enableConnector(connector, dbms) {
     
     this.addRoute(new ServerOptions('GET', `${dbms}/persons`), (req, res) => {
       connector.getPersons((err, rows) => {
@@ -200,7 +178,7 @@ class Server {
     })
   }
 
-  #enableMySQLUsers(connection) {
+  enableMySQLUsers(connection) {
     this.addRoute(new ServerOptions('GET', 'mysql/users'), (req, res) => {
       connection.getUsers((err, rows) => {
         if (err) {

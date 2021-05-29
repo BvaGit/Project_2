@@ -282,8 +282,7 @@
         left:0;
         width: 200px;
         height: auto; 
-        border-top-left-radius: 5%;
-        border-top-right-radius: 5%;
+        border-radius: 5%;
     }
     &__sortDropdown {
         position: absolute;
@@ -291,8 +290,7 @@
         left: 10px;
         width: 240px;
         height: auto;
-        border-top-left-radius: 5%;
-        border-top-right-radius: 5%;
+        border-radius: 5%;
     }
     &__nav {
         position: relative;
@@ -336,10 +334,12 @@
             text-decoration: none;
             padding: 10px 15px;
             cursor: pointer;
+            border-radius: 5%;
             &:hover {
                 color: $d-hover-color;
                 text-decoration: underline;
                 font-size: 14px;
+                border-radius: 5%;
             }
         }
         &-triangleBD {
