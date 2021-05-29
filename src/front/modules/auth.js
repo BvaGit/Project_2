@@ -2,7 +2,7 @@ import {postRequest, getRequest } from '../modules/request';
 
 
 function authorization(){
-    const url = "http://18.217.70.70:2020/api/mysql/auth";
+    const url = "http://3.133.161.246:80/api/mysql/auth";
     const authlogin = document.querySelector("#authlogin");
     const authpass = document.querySelector("#authpass");
     const autBtn = document.querySelector(".auth__btn");

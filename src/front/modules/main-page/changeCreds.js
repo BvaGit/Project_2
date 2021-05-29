@@ -1,5 +1,5 @@
 import {putRequest} from "../request"
-const URL = "http://18.217.70.70:2020/api/";
+const URL = "http://3.133.161.246:80/api/";
 
 export default function ChangeCreds(){
     const newLogin = document.getElementById("newLogin");

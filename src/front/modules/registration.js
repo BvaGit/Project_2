@@ -2,7 +2,7 @@ import {postRequest, getRequest } from '../modules/request';
 import valid from "./valid";
 
 function registration(){
-    const url = "http://18.217.70.70:2020/api/mysql/users";
+    const url = "http://3.133.161.246:80/api/mysql/users";
     const regLogin = document.querySelector("#reglogin");
     const regPass = document.querySelector("#regpass");
     const confirmRegPass = document.querySelector("#confirmregpass");

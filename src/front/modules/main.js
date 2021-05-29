@@ -4,7 +4,7 @@ import sortData from '../modules/main-page/sortData';
 
 function main(){
 
-const URL = "http://18.217.70.70:2020/api/";
+const URL = "http://3.133.161.246:80/api/";
 
 const fName = document.querySelector("#firstnameInput");
 const lastName = document.querySelector("#lastnameInput");
@@ -75,7 +75,7 @@ function getIdPersons(){
 
 function deleteBtnPerson(){
     function del(e){
-        const URL = "http://18.217.70.70:2020/api/" + base + "/persons/";
+        const URL = "http://3.133.161.246:80/api/" + base + "/persons/";
         const delIndex = e.target;
         const del = delIndex.getAttribute("data-index");
         if(del !== null){
@@ -114,7 +114,7 @@ function getDefaultPersons(nameBase){
 }
 
 function putPersons(){
-    const URL = "http://18.217.70.70:2020/api/" + base + "/persons/";
+    const URL = "http://3.133.161.246:80/api/" + base + "/persons/";
     const personsAdd = {
         fname: fName.value,
         lname: lastName.value,
@@ -249,7 +249,7 @@ function searchBar(dbms){
 }
 
 function clerAll(){
-    const url = "http://18.217.70.70:2020/api/" + base + "/persons/all/" + localStorage.getItem("id_user");
+    const url = "http://3.133.161.246:80/api/" + base + "/persons/all/" + localStorage.getItem("id_user");
     deleteRequest(url)
         .then(() => {
             getDefaultPersons(base);
