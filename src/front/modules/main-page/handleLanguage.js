@@ -83,32 +83,32 @@ export default function handleLanguage () {
     };
     const localStorageLanguage = localStorage.getItem('selected-language') || 'en';
     selectedLanguage.value = localStorageLanguage;
-    setLanguage(localStorageLanguage);
+    setLanguage(localStorageLanguage, translateElements, placeholderElements, uaTranslations, enTranslations);
 
     selectedLanguage.addEventListener('change', (event) => {
-        setLanguage(selectedLanguage.value);
+        setLanguage(selectedLanguage.value, translateElements, placeholderElements, uaTranslations, enTranslations);
     })
-    function setLanguage (lang) {
-        let translation = getTranslation(lang);
-        localStorage.setItem('selected-language', lang);
+}
+export function setLanguage (lang, translateElements, placeholderElements, uaTranslations, enTranslations) {
+    let translation = getTranslation(lang, uaTranslations, enTranslations);
+    localStorage.setItem('selected-language', lang);
 
-        translateElements.forEach((el) => {
-            const translateKey = el.dataset.translate;
-            el.textContent = translation[translateKey];
-        });
-        placeholderElements.forEach((el) => {
-            const placeholderKey = el.dataset.placeholder;
-            el.placeholder =  translation[placeholderKey];
-        })
-    }
-    function getTranslation(lang) {
-        switch (lang) {
-            case 'ua':
-                return uaTranslations;
-            case 'en':
-                return enTranslations;
-            default: 
-                return enTranslations;
-        }
+    translateElements.forEach((el) => {
+        const translateKey = el.dataset.translate;
+        el.textContent = translation[translateKey];
+    });
+    placeholderElements.forEach((el) => {
+        const placeholderKey = el.dataset.placeholder;
+        el.placeholder =  translation[placeholderKey];
+    })
+}
+export function getTranslation(lang, uaTranslations, enTranslations) {
+    switch (lang) {
+        case 'ua':
+            return uaTranslations;
+        case 'en':
+            return enTranslations;
+        default: 
+            return enTranslations;
     }
 }

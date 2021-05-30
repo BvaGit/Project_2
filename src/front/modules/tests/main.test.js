@@ -1,4 +1,4 @@
-import main from "../main"
+import main from "../main";
 
 describe('main', function () {
     it('should be defined', function () {

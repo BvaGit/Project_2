@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 
- import inputsControl from '../main-page/inputsControl';
- import { clearInputsCP } from '../main-page/inputsControl';
+import inputsControl from '../main-page/inputsControl';
+import { clearInputsCP } from '../main-page/inputsControl';
 
 describe('inputsControl', function () {
     it('inputsControl should be defined', function () {

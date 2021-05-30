@@ -68,8 +68,8 @@ export default function deletePerson () {
             companynameInput.value = dataCompanyName.textContent;
         }
     })
-    
-    function clearInputs (params) {
+}    
+export function clearInputs (params) {
         const { firstName, lastName, age, city, phoneNumber, email, companyName } = params;
         firstName.value = '';
         lastName.value = '';
@@ -79,4 +79,3 @@ export default function deletePerson () {
         email.value = '';
         phoneNumber.value = '';
     }
-}
