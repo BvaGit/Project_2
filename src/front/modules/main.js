@@ -43,7 +43,6 @@ function main(){
         spinner.classList.add('hideSpinner');
     }
     function nameDB(arg){
-        console.log(arg);
         switch (arg){
             case 'PostgreSQL':
                 return 'pg';
@@ -100,8 +99,8 @@ function main(){
             sortData();
             spinnerHide();
         })
-        .catch(() => {
-            console.log("No");
+        .catch((err) => {
+            console.error(err);
         }); 
     }
     function putPersons(){
@@ -188,7 +187,6 @@ function main(){
         .then(res => res.json())
         .then((data) => {
             filterArray(data);
-            console.log("from searchBar");
         })
         .then(() => {
             getIdPersons();
@@ -196,8 +194,8 @@ function main(){
             sortData();
             spinnerHide();
         })
-        .catch(() => {
-            console.log("failed get request from db");
+        .catch((err) => {
+            console.error(err);
         }); 
 
         function filterArray(array){

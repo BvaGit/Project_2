@@ -4,7 +4,7 @@ export default function handleLanguage () {
     const placeholderElements = document.querySelectorAll('[data-placeholder]');
     
     const uaTranslations = {
-        firstName: 'Імя',
+        firstName: `Ім\'я`,
         lastName: 'Прізвище',
         age: 'Вік',
         city: 'Місто',

@@ -21,9 +21,7 @@ function registration(){
             } else {
                 confirmRegPass.style.backgroundColor = '#fd9595';
             }   
-        } else {
-            console.log("No reg");
-        }
+        } 
     } 
     regBtn.addEventListener("click", register);
 }
