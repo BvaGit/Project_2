@@ -1,9 +1,22 @@
-import { ServerValidator } from "../../../backend/service/ServerValidator";
+class FrontValidator {
+    static NAME_PATTERN = /^([A-ZА-Я]{1,20})$/i
+    static EMAIL_PATTERN = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+    static PHONE_PATTERN = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+    static REG_AUTH_PATTERN =/^([A-Z0-9!#$%&'*+/=?^_`{|}~-]{5,20})$/i
+    static CITY_PATTERN = /^([A-ZА-Я]{1}[a-zа-я\s0-9-]{0,19})$/
+  
+    static validateStr(str,regexp) {
+      return typeof str === 'string' && regexp.test(str)
+    }
+    static validateNumber(num,func) {
+      return typeof num === 'number' && func(num)
+    }
+}
 
-const validationOnInputs = {
+export const validationOnInputs = {
     validateName(input) {
         const inputValue = input.value;
-        if (ServerValidator.NAME_PATTERN.test(inputValue)) {
+        if (FrontValidator.NAME_PATTERN.test(inputValue)) {
             input.classList.remove('has-error');
         } else {
             input.classList.add('has-error');
@@ -13,7 +26,7 @@ const validationOnInputs = {
     validateCity(input) {
         const inputValue = input.value;
         const cityError = document.querySelector('.input-error-city');
-        if (ServerValidator.CITY_PATTERN.test(inputValue)) {
+        if (FrontValidator.CITY_PATTERN.test(inputValue)) {
             input.classList.remove('has-error');
             cityError.classList.add('hide');
         } else {
@@ -25,7 +38,7 @@ const validationOnInputs = {
     validateEmail(input) {
         const inputValue = input.value;
         const emailError = document.querySelector('.input-error-email');
-        if (ServerValidator.EMAIL_PATTERN.test(inputValue)) {
+        if (FrontValidator.EMAIL_PATTERN.test(inputValue)) {
             input.classList.remove('has-error');
             emailError.classList.add('hide');
         } else {
@@ -38,7 +51,7 @@ const validationOnInputs = {
         const inputValue = input.value;
         const phoneError = document.querySelector('.input-error-phone');
 
-        if (ServerValidator.PHONE_PATTERN.test(inputValue)) {
+        if (FrontValidator.PHONE_PATTERN.test(inputValue)) {
             input.classList.remove('has-error');
             phoneError.classList.add('hide');
         } else {

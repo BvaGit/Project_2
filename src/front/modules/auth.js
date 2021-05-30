@@ -14,7 +14,6 @@ function authorization(){
 
     function postAuthorization(obj){
         postRequest(url, obj).then(async (data) => {
-            console.log(data.status);
             if(data.ok){
                 const token = await (data.json());
                 localStorage.setItem('id_user', token.id);

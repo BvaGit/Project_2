@@ -11,14 +11,17 @@ export default function inputsControl () {
     for (let input of inputs) {
         window.addEventListener('keyup', function (event) {
             if (supportMain.isEscapeKey(event)) {
-                input.value = '';
-                input.classList.remove('has-error');
-                event.target.blur();
-                phoneError.classList.add('hide');
-                emailError.classList.add('hide');
-                ageError.classList.add('hide');
-                cityError.classList.add('hide');
-            }
+                clearInputsCP(event, input, phoneError, emailError, ageError, cityError, createBtn);
+            }  
         })
     }
+}
+export function clearInputsCP (event, input, phone, email, age, city) {
+    input.value = '';
+    input.classList.remove('has-error');
+    event.target.blur();
+    phone.classList.add('hide');
+    email.classList.add('hide');
+    age.classList.add('hide');
+    city.classList.add('hide');
 }
