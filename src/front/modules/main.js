@@ -1,9 +1,12 @@
 import {postRequest, getRequest, deleteRequest, putRequest } from '../modules/request.js';
 import deletePerson from '../modules/main-page/deletePerson';
 import sortData from '../modules/main-page/sortData';
+const url1 = "http://3.133.161.246:80/api/";
+const url2 = "http://18.217.70.70:2020/api/";
+const localUrl = "http://localhost:2020/api/";
 
 function main(){
-    const URL = "http://localhost:2020/api/";
+    const URL = localUrl;
 
     const fName = document.querySelector("#firstnameInput");
     const lastName = document.querySelector("#lastnameInput");
@@ -68,7 +71,7 @@ function main(){
     }
     function deleteBtnPerson(){
         function del(e){
-            const URL = "http://localhost:2020/api/" + base + "/persons/";
+            const URL = `${localUrl} + base + "/persons/`;
             const delIndex = e.target;
             const del = delIndex.getAttribute("data-index");
             if(del !== null){
@@ -104,7 +107,7 @@ function main(){
         }); 
     }
     function putPersons(){
-        const URL = "http://localhost:2020/api/" + base + "/persons/";
+        const URL = `${localUrl} + base + "/persons/`;
         const personsAdd = {
             fname: fName.value,
             lname: lastName.value,
@@ -167,7 +170,7 @@ function main(){
 
     const searchFirstname = document.getElementById("searchFirstname");
 
-    searchFirstname.addEventListener("change", function(e){
+    searchFirstname.addEventListener("input", function(e){
         const db = dms.innerHTML;
         const nameB = nameDB(db);
         searchBar(nameB);
@@ -175,7 +178,7 @@ function main(){
 
     const searchLastname = document.getElementById("searchLastname")
 
-    searchLastname.addEventListener("change", function(){
+    searchLastname.addEventListener("input", function(){
         const db = dms.innerHTML; 
         const nameB = nameDB(db);
         searchBar(nameB);
@@ -234,7 +237,7 @@ function main(){
         }
     }
     function clerAll(){
-        const url = "http://localhost:2020/api/" + base + "/persons/all/" + localStorage.getItem("id_user");
+        const url = `${localUrl} + base + "/persons/all/" + localStorage.getItem("id_user)`;
         deleteRequest(url)
         .then(() => {
             getDefaultPersons(base);

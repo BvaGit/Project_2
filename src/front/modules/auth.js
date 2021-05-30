@@ -1,7 +1,10 @@
 import {postRequest, getRequest } from '../modules/request';
+const url1 = "http://3.133.161.246:80/api/";
+const url2 = "http://18.217.70.70:2020/api/";
+const localUrl = "http://localhost:2020/api/";
 
 function authorization(){
-    const url = "http://localhost:2020/api/mysql/auth";
+    const url = `${localUrl}mysql/auth`;
     const authlogin = document.querySelector("#authlogin");
     const authpass = document.querySelector("#authpass");
     const autBtn = document.querySelector(".auth__btn");
