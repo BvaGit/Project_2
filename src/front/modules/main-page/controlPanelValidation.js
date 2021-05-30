@@ -1,7 +1,7 @@
 class FrontValidator {
     static NAME_PATTERN = /^([A-ZА-Я]{1,20})$/i
     static EMAIL_PATTERN = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-    static PHONE_PATTERN = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+    static PHONE_PATTERN = /^\(?\(([0-9]{3}\))\)?[-. ]?\-([0-9]{3})[-. ]?\-([0-9]{4})$/
     static REG_AUTH_PATTERN =/^([A-Z0-9!#$%&'*+/=?^_`{|}~-]{5,20})$/i
     static CITY_PATTERN = /^([A-ZА-Я]{1}[a-zа-я\s0-9-]{0,19})$/
   
@@ -12,7 +12,6 @@ class FrontValidator {
       return typeof num === 'number' && func(num)
     }
 }
-
 export const validationOnInputs = {
     validateName(input) {
         const inputValue = input.value;
@@ -21,6 +20,7 @@ export const validationOnInputs = {
         } else {
             input.classList.add('has-error');
             input.value = '';
+            updateBtn.disabled = true;
         }
     },
     validateCity(input) {
@@ -71,6 +71,18 @@ export const validationOnInputs = {
             input.value = '';
             ageError.classList.remove('hide');
         }
+    },
+    validateCompany(input) {
+        const inputValue = input.value;
+        const companyError = document.querySelector('.input-error-company');
+        if (inputValue !== '') {
+            input.classList.remove('has-error');
+            companyError.classList.add('hide');
+        } else {
+            input.classList.add('has-error');
+            input.value = '';
+            companyError.classList.remove('hide');
+        }
     }
 }
 
@@ -99,6 +111,9 @@ export default function controlPanelValidation () {
                     break;
                 case 'age':
                     validationOnInputs.validateAge(input);
+                    break;
+                case 'company':
+                    validationOnInputs.validateCompany(input);
                     break;
             }
         })
