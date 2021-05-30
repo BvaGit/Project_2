@@ -71,7 +71,7 @@ function main(){
     }
     function deleteBtnPerson(){
         function del(e){
-            const URL = `${localUrl} + base + "/persons/`;
+            const URL = `${localUrl}${base}/persons/`;
             const delIndex = e.target;
             const del = delIndex.getAttribute("data-index");
             if(del !== null){
@@ -107,7 +107,7 @@ function main(){
         }); 
     }
     function putPersons(){
-        const URL = `${localUrl} + base + "/persons/`;
+        const URL = `${localUrl}${base}/persons/`;
         
         if(fName.value !== "" && lastName.value !== "" && age.value !== "" && city.value !== "" && pNumber.value !== "" && email.value !== "" && comName.value !== "") {
             const personsAdd = {
@@ -245,7 +245,7 @@ function main(){
         }
     }
     function clerAll(){
-        const url = `${localUrl} + base + "/persons/all/" + localStorage.getItem("id_user)`;
+        const url = `${localUrl}${base}/persons/all/${localStorage.getItem("id_user")}`;
         deleteRequest(url)
         .then(() => {
             getDefaultPersons(base);
