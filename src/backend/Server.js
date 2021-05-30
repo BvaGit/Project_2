@@ -10,12 +10,12 @@ import { ServerValidator } from './service/ServerValidator.js'
 import { ServerOptions } from './service/ServerOptions.js'
 
 import { MySQLConnector } from './connectors/MySQLConnector.js'
-// import { PgConnect } from './connectors/PostgreSQLConnector.js';
-// import { RedisConnector } from './connectors/RedisConnector.js'
-// import { MongoDBConnector } from './connectors/MongoDBConnector.js'
+import { PgConnect } from './connectors/PostgreSQLConnector.js';
+import { RedisConnector } from './connectors/RedisConnector.js'
+import { MongoDBConnector } from './connectors/MongoDBConnector.js'
 import { CassandraConnector } from './connectors/CassandraConnector.js'
-// import { Neo4jConnector } from './connectors/Neo4jConnector.js'
-// import { SqliteConnector } from './connectors/SQLIteConnector.js'
+import { Neo4jConnector } from './connectors/Neo4jConnector.js'
+import { SqliteConnector } from './connectors/SQLIteConnector.js'
 
 class Server {
   #app
