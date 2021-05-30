@@ -24,11 +24,6 @@ const supportMain = {
         }
         for (let i of input) {
             i.value = '';
-            if (i.type === 'text') {
-                i.type === 'text';
-            } else {
-                i.type = 'password';
-            }
         }
     },
     changeType(inputs) {

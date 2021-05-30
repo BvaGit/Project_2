@@ -282,8 +282,7 @@
         left:0;
         width: 200px;
         height: auto; 
-        border-top-left-radius: 5%;
-        border-top-right-radius: 5%;
+        border-radius: 12px;
     }
     &__sortDropdown {
         position: absolute;
@@ -291,8 +290,7 @@
         left: 10px;
         width: 240px;
         height: auto;
-        border-top-left-radius: 5%;
-        border-top-right-radius: 5%;
+        border-radius: 12px;
     }
     &__nav {
         position: relative;

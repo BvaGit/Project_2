@@ -1,6 +1,6 @@
 class ServerValidator {
 
-  static NAME_PATTERN = /^([A-ZА-Я]{1,20})$/i
+  static NAME_PATTERN = /^([A-ZА-ЯІЇЄ]{1,20})$/i
   static EMAIL_PATTERN = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
   static PHONE_PATTERN = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
   static REG_AUTH_PATTERN =/^([A-Z0-9!#$%&'*+/=?^_`{|}~-]{5,20})$/i
