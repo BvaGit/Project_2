@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import  supportMain  from '../main-page/supportMain'
+import  supportMain  from '../main-page/supportMain';
 
 describe('supportMain', function () {
     it('should be defined', function () {

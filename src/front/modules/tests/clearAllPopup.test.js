@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
- import  clearAllPopup  from '../main-page/clearAllPopup'
+ import  clearAllPopup  from '../main-page/clearAllPopup';
 
  describe('clearAllPopup', function () {
      it('should be defined', function () {

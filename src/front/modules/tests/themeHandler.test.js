@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 
-import { setTheme } from '../main-page/themeHandler'
-import themeHandler from '../main-page/themeHandler'
+import { setTheme } from '../main-page/themeHandler';
+import themeHandler from '../main-page/themeHandler';
 
 describe('setTheme', function () {
     it('should be defined', function () {

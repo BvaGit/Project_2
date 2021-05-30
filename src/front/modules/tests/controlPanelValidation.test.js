@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 
-import  controlPanelValidation  from '../main-page/controlPanelValidation'
-import  { validationOnInputs }  from '../main-page/controlPanelValidation'
+import  controlPanelValidation  from '../main-page/controlPanelValidation';
+import  { validationOnInputs }  from '../main-page/controlPanelValidation';
 
 describe('controlPanelValidation', function () {
     it('controlPanelValidation should be defined', function () {
