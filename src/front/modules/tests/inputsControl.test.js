@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 
- import  inputsControl  from '../main-page/inputsControl'
- import  clearInputsCP  from '../main-page/inputsControl'
+ import inputsControl from '../main-page/inputsControl';
+ import { clearInputsCP } from '../main-page/inputsControl';
 
 describe('inputsControl', function () {
     it('inputsControl should be defined', function () {
@@ -20,16 +20,41 @@ describe('clearInputsCP', function () {
     it('clearInputsCP should be function', function () {
         expect(typeof clearInputsCP).toBe('function');
     })
-    // it('clearInputsCP should clear inputs', function (e) {
-    //     let input = document.createElement('input');
-    //     document.body.append(input);
-    //     input.value = 'lalala';
-    //     input.classList.add('has-error');
-    //     let phone = document.createElement('input');
-    //     let email = document.createElement('input');
-    //     let age = document.createElement('input');
-    //     let city = document.createElement('input');
-    //     clearInputsCP(e, input, phone, email, age, city);
-    //     expect(input.value).toBe('');
-    // })
+    it('clearInputsCP should clear inputs', function () {
+        const input = document.createElement('input');
+        document.body.append(input);
+        input.value = 'lalala';
+        input.classList.add('has-error');
+        const phone = document.createElement('input');
+        const email = document.createElement('input');
+        const age = document.createElement('input');
+        const city = document.createElement('input');
+        const event = {
+            target: {
+                blur: () => {}
+            }
+        };
+        clearInputsCP(event, input, phone, email, age, city);
+        expect(input.value).toBe('');
+    })
+    it('clearInputsCP should change classLists of inputs', function () {
+        const input = document.createElement('input');
+        document.body.append(input);
+        input.value = 'lalala';
+        input.classList.add('has-error');
+        const phone = document.createElement('input');
+        const email = document.createElement('input');
+        const age = document.createElement('input');
+        const city = document.createElement('input');
+        const event = {
+            target: {
+                blur: () => {}
+            }
+        };
+        clearInputsCP(event, input, phone, email, age, city);
+        expect(phone.classList.contains('hide')).toBe(true);
+        expect(email.classList.contains('hide')).toBe(true);
+        expect(age.classList.contains('hide')).toBe(true);
+        expect(city.classList.contains('hide')).toBe(true);
+    })
 })

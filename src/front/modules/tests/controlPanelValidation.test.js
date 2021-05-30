@@ -170,4 +170,16 @@ describe('controlPanelValidation', function () {
             expect(ageError.classList.contains('hide')).toBe(false);
         }
     })
+    it('validationOnInputs.validateCompany should be function', function () {
+        expect(typeof validationOnInputs.validateCompany).toBe('function');
+    })
+    it('validationOnInputs.validateCompany should validate company name correctly Loki', function () {
+        const input = document.createElement('input'); 
+        const companyError = document.createElement('input');
+        if (input.value === 'Loki') {
+            validationOnInputs.validateCompany(input.value);
+            expect(input.classList.contains('has-error')).toBe(false);
+            expect(companyError.classList.contains('hide')).toBe(true);
+        }
+    })
 })

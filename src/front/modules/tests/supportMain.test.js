@@ -33,7 +33,6 @@ describe('supportMain', function () {
     })
     it('isEscapeKey should be escape key by click', function () {
         let event = new KeyboardEvent('keydown', {'keyCode': 27});
-        document.dispatchEvent(event);
         expect(supportMain.isEscapeKey(event)).toBe(true);
     })
     it('exitOnEscape should be function', function () {
