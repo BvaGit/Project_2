@@ -1,3 +1,136 @@
-h1{
-    color: blue;
+body{
+    background-color: $d-main-page-bg;   
+}
+.auth{
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+    &__points{
+        width: 275px;
+        height: 148px;
+        background-image: url(http://localhost:8080/../img/points.png);
+        position: absolute;
+        top: 15px;
+        right: 0;
+    }
+    &__header{
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-top: 37px;
+    }
+    &__logo{
+        width: 106px;
+        &-img{
+            width: 100%;
+        }
+        &-name{
+            color: $d-text-color;
+            font-size: 38px;
+            font-weight: bold;
+            margin-left: 26px;
+            cursor: default;
+        }
+    }
+    &__body{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 85px;
+        border-left: 17px solid $d-text-color;
+    }
+    &__info{
+        margin-left: 32px;
+    }
+    &__title{
+        font-size: 55px;
+        font-weight: bold;
+        color: $d-text-color;
+        text-transform: uppercase;
+        line-height: 73px;
+        cursor: default;
+        &-color{
+            color: $d-hover-color;
+        }
+    }
+    &__db{
+        margin-top: 80px;
+        opacity: .3;
+    }
+    &__sqlnosql{
+        font-size: 35px;
+        font-weight: bold;
+        color: $d-hover-color;
+        cursor: default;
+    }
+    &__descr{
+        font-size: 22px;
+        font-weight: bold;
+        color: $d-text-color;
+        margin-left: 42px;
+        cursor: default;
+    }
+    &__auth{
+        width: 430px;
+    }
+    &__label{
+        font-size: 27px;
+        font-weight: bold;
+        color: $d-text-color;
+        text-transform: uppercase;
+    }
+    &__input{
+        width: 100%;
+        padding: 26px 24px;
+        margin-top: 20px;
+        font-size: 27px;
+        margin-bottom: 35px;
+    }
+    &__btn{
+        width: 100%;
+        font-size: 29px;
+        font-weight: bold;
+        text-align: center;
+        color: $d-main-page-bg;
+        cursor: pointer;
+        background-color: $d-hover-color;
+        border: none;
+        padding: 24px 0;
+        transition: all .3s;
+
+        &:hover{
+            background-color: $d-table-nav;
+            color: $d-text-color;
+        }
+    }
+    &__descrlink{
+        font-size: 14px;
+        color: $d-text-color;
+        text-align: right;
+        margin-top: 25px;
+        cursor: default;
+    }
+    &__link{
+        display: block;
+        font-size: 15px;
+        color: $d-text-color;
+        text-decoration: underline;
+        text-align: right;
+        margin: 5px;
+        transition: all .3s; 
+        &:hover{
+            color: $d-hover-color;
+        }
+    }
+    &__footer{
+        height: 85px;
+        overflow: hidden;
+        position: relative;
+        &-points{
+            width: 275px;
+            height: 148px;
+            background-image: url(http://localhost:8080/../img/points.png);
+            position: absolute;
+            bottom: -100px;
+            right: 0;
+        }
+    }
 }
