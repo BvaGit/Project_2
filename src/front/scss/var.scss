@@ -1,0 +1,34 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.container {
+    width: 999px;
+    margin: 0 auto;
+}
+.hide {
+    display: none;
+}
+$d-main-page-bg: rgb(26, 26, 26);
+$d-border-color: rgb(26, 26, 26);
+$d-footer-copyright-sign: rgb(92, 92, 92);
+$d-text-color: rgb(255,255,255);
+$d-placeholder-color: #aaa;
+$d-hover-color: #ff0;
+$d-table-nav: #5c5c0d;
+$d-table-td: #ffffb5;
+$d-modal-bg: rgba(26, 26, 26, 0.9);
+$d-clearAll: rgb(182, 1, 1);
+$d-error: red;
+
+$l-main-page-bg: rgb(255, 255, 235);
+$l-header-bg: #ffb179;
+$l-footer-copyright-sign: rgb(92, 92, 92);
+$l-text-color: #333;
+$l-modal-bg: rgba(255, 253, 225, 0.9);
+$l-table-nav: #e09a68;
+$l-hover-color: rgb(255, 208, 0);
+$l-header-hover-color: rgb(255, 246, 206);
+$l-clearAll: rgb(221, 72, 72);

@@ -4,10 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/src/front/img/logo.png">
+    <title>Qwerty</title>
 </head>
 <body>
-    <h1>Index</h1>
-    <a href="main.html">main</a><a href="regpage.html">regpage</a>
+    <div class="container">
+        <div class="auth">
+            <div class="auth__points"></div>
+            <div class="auth__header">
+                <div class="auth__logo">
+                    <img src="./img/logo.png" alt="logo_qwerty" class="auth__logo-img">
+                </div>
+                <p class="auth__logo-name">QWERTY</p>
+            </div>
+            <div class="auth__body">
+                <div class="auth__info">
+                    <h1 class="auth__title">
+                        Sign in<br/>your<br /><span class="auth__title-color">account</span>
+                    </h1>
+                    <div class="auth__db">
+                        <div class="auth__sql">
+                            <h2 class="auth__sqlnosql">SQL</h2>
+                            <p class="auth__descr">PostgreSQL, SQLite, MySQL</p>
+                        </div>
+                        <div class="auth_nosql">
+                            <h2 class="auth__sqlnosql">NoSQL</h2>
+                            <p class="auth__descr">MongoDB, Redis,<br />
+                            Cassandra, Neo4j</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="auth__auth">
+                    <label for="authlogin" class="auth__label">login</label>
+                    <input type="text" id="authlogin" class="auth__input" placeholder="Enter your login here">
+                    <label for="authpass" class="auth__label auth__label-mt35">PASSWORD</label>
+                    <input type="password" id="authpass" class="auth__input" placeholder="Enter your password here">
+                    <button class="auth__btn">SIGN IN</button>
+                    <p class="auth__descrlink">to register you can follow this link</p>
+                    <a href="regpage.html" class="auth__link">Sign up</a>
+                </div>
+            </div>
+            <div class="auth__footer">
+                <div class="auth__footer-points"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
