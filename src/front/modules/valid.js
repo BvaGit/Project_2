@@ -11,7 +11,7 @@ function valid(login, pass){
         return false;
     }
 
-    if((login.length < 5 && login.length > 20) && (pass.length < 5 && pass.length > 20)){
+    if((login.length < 5 || login.length > 20) || (pass.length < 5 || pass.length > 20)){
         return false;
     }
 
@@ -24,7 +24,6 @@ function valid(login, pass){
           if (char.charCodeAt(0) > maxCharUpper && char.charCodeAt(0) < minCharLow || char.charCodeAt(0) > maxCharLow) {
                 return false;
           }
-
       }
     }
 
