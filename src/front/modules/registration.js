@@ -5,7 +5,7 @@ const url2 = "http://18.217.70.70:2020/api/";
 const localUrl = "http://localhost:2020/api/";
 
 function registration(){
-    const url = `${localUrl}mysql/users`;
+    const url = `${url1}mysql/users`;
     const regLogin = document.querySelector("#reglogin");
     const regPass = document.querySelector("#regpass");
     const confirmRegPass = document.querySelector("#confirmregpass");
