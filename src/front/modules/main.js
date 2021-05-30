@@ -108,26 +108,34 @@ function main(){
     }
     function putPersons(){
         const URL = `${localUrl} + base + "/persons/`;
-        const personsAdd = {
-            fname: fName.value,
-            lname: lastName.value,
-            age: +age.value,
-            city: city.value,
-            phoneNumber: pNumber.value,
-            email: email.value,
-            companyName: comName.value,
-            user_id: +localStorage.getItem("id_user")
-        };
-        spinnerShow();   
-        putRequest(URL + idPersons, personsAdd)
-        .then(() => {
-            spinnerHide();
-            status2.classList.remove('hide');
-            getDefaultPersons(base);
+        
+        if(fName.value !== "" && lastName.value !== "" && age.value !== "" && city.value !== "" && pNumber.value !== "" && email.value !== "" && comName.value !== "") {
+            const personsAdd = {
+                fname: fName.value,
+                lname: lastName.value,
+                age: +age.value,
+                city: city.value,
+                phoneNumber: pNumber.value,
+                email: email.value,
+                companyName: comName.value,
+                user_id: +localStorage.getItem("id_user")
+            };
+            spinnerShow();   
+            putRequest(URL + idPersons, personsAdd)
+            .then(() => {
+                spinnerHide();
+                status2.classList.remove('hide');
+                getDefaultPersons(base);
+                setTimeout(()=> {
+                    status2.classList.add('hide');
+                },2000) ;
+            });
+        } else {
+            status4.classList.remove('hide');
             setTimeout(()=> {
-                status2.classList.add('hide');
+                status4.classList.add('hide');
             },2000) ;
-        });
+        }
     }
     function addPersons(){
         const personsAdd = {
