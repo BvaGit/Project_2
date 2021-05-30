@@ -11,7 +11,10 @@ function registration(){
     const confirmRegPass = document.querySelector("#confirmregpass");
     const regBtn = document.querySelector(".reg__btn");
 
+
     function register (){
+        regLogin.style.backgroundColor = '#fff';
+        regPass.style.backgroundColor = '#fff';
         if(valid(regLogin.value, regPass.value) && confirmRegPass.value !== ""){
             if(regPass.value === confirmRegPass.value){
                 const user = {
@@ -23,9 +26,15 @@ function registration(){
                 });
             } else {
                 confirmRegPass.style.backgroundColor = '#fd9595';
-            }   
-        } 
+             }   
+        } else {
+            regLogin.value = "";
+            regPass.value = "";
+            regLogin.style.backgroundColor = '#fd9595';
+            regPass.style.backgroundColor = '#fd9595';
+        }
     } 
+
     regBtn.addEventListener("click", register);
 }
 export default registration;
