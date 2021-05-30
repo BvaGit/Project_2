@@ -1,4 +1,5 @@
 import {putRequest} from "../request"
+import valid from "../valid";
 const url1 = "http://3.133.161.246:80/api/";
 const url2 = "http://18.217.70.70:2020/api/";
 const localUrl = "http://localhost:2020/api/";
@@ -12,7 +13,7 @@ export default function ChangeCreds(){
     const settingsSuccess = document.querySelector('.settingsSuccess')
     const settingsError = document.querySelector('.settingsError')
     var id = +localStorage.getItem("id_user");
-    if(newPassword.value === repeatPassword.value){
+    if((newPassword.value === repeatPassword.value) && (valid(newLogin.value, newPassword.value))){
         var body = {
             login: newLogin.value,
             password: newPassword.value,
