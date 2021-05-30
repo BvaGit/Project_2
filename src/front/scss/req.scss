@@ -80,9 +80,13 @@ body{
     &__input{
         width: 100%;
         padding: 26px 24px;
-        margin-top: 20px;
+        margin-top: 5px;
         font-size: 27px;
-        margin-bottom: 35px;
+        
+    }
+    &__valid{
+        margin: 10px 0 20px 0;
+        color: #fff;
     }
     &__btn{
         width: 100%;
@@ -95,6 +99,7 @@ body{
         padding: 24px 0;
         cursor: pointer;
         transition: all .3s;
+        margin-top: 15px;
         &:hover{
             background-color: $d-table-nav;
             color: $d-text-color;

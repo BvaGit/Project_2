@@ -8,6 +8,7 @@ function registration(){
     const confirmRegPass = document.querySelector("#confirmregpass");
     const regBtn = document.querySelector(".reg__btn");
 
+
     function register (){
         if(valid(regLogin.value, regPass.value) && confirmRegPass.value !== ""){
             if(regPass.value === confirmRegPass.value){
@@ -20,11 +21,15 @@ function registration(){
                 });
             } else {
                 confirmRegPass.style.backgroundColor = '#fd9595';
-            }   
+             }   
         } else {
-            console.log("No reg");
+            regLogin.value = "";
+            regPass.value = "";
+            regLogin.placeholder = "Only latin letters and numbers min 5, max 20";
+            regPass.placeholder = "Only latin letters and numbers min 5, max 20";
         }
     } 
+
     regBtn.addEventListener("click", register);
 }
 export default registration;
