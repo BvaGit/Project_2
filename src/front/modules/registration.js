@@ -10,6 +10,8 @@ function registration(){
 
 
     function register (){
+        regLogin.style.backgroundColor = '#fff';
+        regPass.style.backgroundColor = '#fff';
         if(valid(regLogin.value, regPass.value) && confirmRegPass.value !== ""){
             if(regPass.value === confirmRegPass.value){
                 const user = {
@@ -25,8 +27,8 @@ function registration(){
         } else {
             regLogin.value = "";
             regPass.value = "";
-            regLogin.placeholder = "Only latin letters and numbers min 5, max 20";
-            regPass.placeholder = "Only latin letters and numbers min 5, max 20";
+            regLogin.style.backgroundColor = '#fd9595';
+            regPass.style.backgroundColor = '#fd9595';
         }
     } 
 
