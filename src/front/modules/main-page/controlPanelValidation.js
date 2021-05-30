@@ -20,7 +20,6 @@ export const validationOnInputs = {
         } else {
             input.classList.add('has-error');
             input.value = '';
-            updateBtn.disabled = true;
         }
     },
     validateCity(input) {
