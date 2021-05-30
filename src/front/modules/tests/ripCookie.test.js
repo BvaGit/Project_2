@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 
-import checkCookie from '../main-page/ripCookie'
-import { getCookie } from '../main-page/ripCookie'
+import checkCookie from '../main-page/ripCookie';
+import { getCookie } from '../main-page/ripCookie';
 
 describe('checkCookie', function () {
     it('checkCookie should be defined', function () {
