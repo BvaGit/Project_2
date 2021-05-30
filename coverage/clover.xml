@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1622414181606" clover="3.2.0">
-  <project timestamp="1622414181606" name="All files">
+<coverage generated="1622415031743" clover="3.2.0">
+  <project timestamp="1622415031743" name="All files">
     <metrics statements="508" coveredstatements="51" conditionals="151" coveredconditionals="27" methods="121" coveredmethods="10" elements="780" coveredelements="88" complexity="0" loc="508" ncloc="508" packages="2" files="13" classes="13"/>
     <package name="modules">
       <metrics statements="177" coveredstatements="19" conditionals="77" coveredconditionals="22" methods="46" coveredmethods="1"/>
@@ -195,10 +195,10 @@
       <metrics statements="331" coveredstatements="32" conditionals="74" coveredconditionals="5" methods="75" coveredmethods="9"/>
       <file name="changeCreds.js" path="D:\Deveducation\Project_2\src\front\modules\main-page\changeCreds.js">
         <metrics statements="22" coveredstatements="4" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="0"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
