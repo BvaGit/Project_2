@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1622415874262" clover="3.2.0">
-  <project timestamp="1622415874262" name="All files">
-    <metrics statements="508" coveredstatements="51" conditionals="151" coveredconditionals="27" methods="121" coveredmethods="10" elements="780" coveredelements="88" complexity="0" loc="508" ncloc="508" packages="2" files="13" classes="13"/>
+<coverage generated="1622416126237" clover="3.2.0">
+  <project timestamp="1622416126237" name="All files">
+    <metrics statements="530" coveredstatements="59" conditionals="156" coveredconditionals="27" methods="127" coveredmethods="11" elements="813" coveredelements="97" complexity="0" loc="530" ncloc="530" packages="2" files="14" classes="14"/>
     <package name="modules">
       <metrics statements="177" coveredstatements="19" conditionals="77" coveredconditionals="22" methods="46" coveredmethods="1"/>
       <file name="main.js" path="D:\Deveducation\Project_2\src\front\modules\main.js">
@@ -192,7 +192,7 @@
       </file>
     </package>
     <package name="modules.main-page">
-      <metrics statements="331" coveredstatements="32" conditionals="74" coveredconditionals="5" methods="75" coveredmethods="9"/>
+      <metrics statements="353" coveredstatements="40" conditionals="79" coveredconditionals="5" methods="81" coveredmethods="10"/>
       <file name="changeCreds.js" path="D:\Deveducation\Project_2\src\front\modules\main-page\changeCreds.js">
         <metrics statements="22" coveredstatements="4" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="3" count="2" type="stmt"/>
@@ -316,7 +316,7 @@
         <line num="116" count="0" type="stmt"/>
       </file>
       <file name="deletePerson.js" path="D:\Deveducation\Project_2\src\front\modules\main-page\deletePerson.js">
-        <metrics statements="56" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <metrics statements="56" coveredstatements="8" conditionals="8" coveredconditionals="0" methods="5" coveredmethods="1"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
@@ -365,14 +365,39 @@
         <line num="66" count="0" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
         <line num="68" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+      </file>
+      <file name="handleLanguage.js" path="D:\Deveducation\Project_2\src\front\modules\main-page\handleLanguage.js">
+        <metrics statements="22" coveredstatements="0" conditionals="5" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="84" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="102" count="0" type="stmt"/>
+        <line num="106" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="110" count="0" type="stmt"/>
+        <line num="112" count="0" type="stmt"/>
       </file>
       <file name="inputsControl.js" path="D:\Deveducation\Project_2\src\front\modules\main-page\inputsControl.js">
         <metrics statements="17" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="1"/>
