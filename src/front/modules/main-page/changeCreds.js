@@ -31,6 +31,11 @@ export default function ChangeCreds(){
                 },2000) 
             }
         })
+    } else {
+        resultMessageShow(settingsError);
+        setTimeout(()=> {
+            resultMessageHide(settingsError);
+        },2000) 
     }
     function resultMessageShow (element) {
         element.classList.remove('hide');
