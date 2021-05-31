@@ -10,8 +10,8 @@ export default function ChangeCreds(){
     const newLogin = document.getElementById("newLogin");
     const newPassword = document.getElementById("newPassword");
     const repeatPassword = document.getElementById("repeatPassword");
-    const settingsSuccess = document.querySelector('.settingsSuccess')
-    const settingsError = document.querySelector('.settingsError')
+    const settingsSuccess = document.querySelector('.settingsSuccess');
+    const settingsError = document.querySelector('.settingsError');
     var id = +localStorage.getItem("id_user");
     if((newPassword.value === repeatPassword.value) && (valid(newLogin.value, newPassword.value))){
         var body = {
@@ -28,9 +28,14 @@ export default function ChangeCreds(){
                 resultMessageShow(settingsError);
                 setTimeout(()=> {
                     resultMessageHide(settingsError);
-                },2000) 
+                },2000);
             }
-        })
+        });
+    } else {
+        resultMessageShow(settingsError);
+        setTimeout(()=> {
+            resultMessageHide(settingsError);
+        },2000);
     }
     function resultMessageShow (element) {
         element.classList.remove('hide');
