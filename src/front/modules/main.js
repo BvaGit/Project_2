@@ -1,6 +1,5 @@
 import {postRequest, getRequest, deleteRequest, putRequest } from '../modules/request.js';
 import deletePerson from '../modules/main-page/deletePerson';
-import sortData from '../modules/main-page/sortData';
 const url1 = "http://3.133.161.246:80/api/";
 const url2 = "http://18.217.70.70:2020/api/";
 const localUrl = "http://localhost:2020/api/";
@@ -99,7 +98,6 @@ function main(){
         .then(() => {
             getIdPersons();
             deletePerson();
-            sortData();
             spinnerHide();
         })
         .catch((err) => {
@@ -202,7 +200,6 @@ function main(){
         .then(() => {
             getIdPersons();
             deletePerson();
-            sortData();
             spinnerHide();
         })
         .catch((err) => {
